@@ -1,9 +1,9 @@
 body {
     font-size: 14px;
-    cursor: url(../cursor/coco.cur),url(../cursor/coco.gif),auto;
+    cursor: url(../cursor/rain.cur),url(../cursor/rain.gif),auto;
 }
 a:hover {
-    cursor: url(../cursor/coco-link.cur),url(../cursor/coco-link.gif),auto;
+    cursor: url(../cursor/link.ani),url(../cursor/link.gif),auto;
 }
 /* 标题栏随滚动隐藏 */
 .animated {position: fixed;top: 0;left: 0;right: 0;transition: all .2s ease-in-out;}
