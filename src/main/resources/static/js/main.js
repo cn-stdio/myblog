@@ -44,7 +44,7 @@ window.onload= function() {
 
 /* 鼠标点击出现颜文字 */
  var a_idx = 0;
- jQuery(document).ready(function ($) {
+ $(document).ready(function ($) {
      $("body").click(function (e) {
          var a = new Array("(๑•̀ㅂ•́)و✧", "ヽ(✿ﾟ▽ﾟ)ノ", "w(ﾟДﾟ)w", "Σ(°△°|||)︴", "(u‿ฺu✿ฺ)", "φ(≧ω≦*)♪","o(*≧▽≦)ツ┏━┓","o(￣ヘ￣o＃)","~(﹁ ﹁)~~","┑(￣Д ￣)┍","(。﹏。*)");
          var $i = $("<span></span>").text(a[a_idx]);
