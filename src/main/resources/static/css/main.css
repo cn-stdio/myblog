@@ -277,6 +277,18 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     color: red;
     border: 1px solid red;
 }
+.fa-weixin img {
+    display: none;
+}
+.fa-weixin:hover img {
+    display: block;
+}
+.fa-weixin:hover .card-weixin-divout{
+    display: block;
+}
+.fa-weixin:hover .card-weixin-divin{
+    display: block;
+}
 /* 图标晃动特效 */
 .fa:hover {
     animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
@@ -298,6 +310,36 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     40%, 60% {
         transform: translate3d(4px, 0, 0);
     }
+}
+.card-weixin-divout {
+    width:150px;
+    height:150px;
+    border:1px solid silver;
+    border-radius:8px;
+    position: absolute;
+    top: 50px;
+    left: -55px;
+    display: none;
+    background-color: #eeeeee;
+}
+.card-weixin-divin {
+    width:10px;
+    height:10px;
+    border:1px solid silver;
+    position:relative;
+    left:50%;
+    margin-left: -5px;
+    top:-7px;
+    transform:rotate(45deg);
+    background-color:#eeeeee;
+    border-right:0px;
+    border-bottom:0px;
+    display: none;
+}
+#weixin-img {
+    position: absolute;
+    left: -14px;
+    top: -12px;
 }
 
 
