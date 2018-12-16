@@ -1,4 +1,4 @@
- /* 导航下滚消失上滚出现 */
+/* 导航下滚消失上滚出现 */
 (function() {
     new Headroom(document.querySelector("header.am-topbar.am-topbar-inverse.am-topbar-fixed-top"), {
         "tolerance": 5,
@@ -72,3 +72,13 @@ window.onload= function() {
              });
      });
  });
+
+ var jj = {
+     "code" : "200",
+     "acgurl" : "https://acg.toubiec.cn/random",
+     "width" : "100",
+     "height" : "100"
+ };
+
+
+

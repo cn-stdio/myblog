@@ -2,8 +2,21 @@ body {
     font-size: 14px;
     cursor: url(../cursor/rain.cur),url(../cursor/rain.gif),auto;
 }
+#header-text {
+    position: absolute;
+    margin-left: -150px;
+    font-family: "xionghaizi";
+    font-size: 30px;
+    margin-top: -5px;
+}
+#header-text:hover {
+    animation: fanzhuan 1s forwards;
+}
 a:hover {
     cursor: url(../cursor/link.ani),url(../cursor/link.gif),auto;
+}
+#live2d {
+    margin-left: -30px;
 }
 /* 标题栏随滚动隐藏 */
 .animated {position: fixed;top: 0;left: 0;right: 0;transition: all .2s ease-in-out;}
@@ -18,7 +31,9 @@ a:hover {
     height: 650px;
     width: 1519px;
 }
-
+#header-a-main-one {
+    margin-left: 130px;
+}
 /* 标题栏间隔 */
 .header-a-main {
     margin-right: 20px;
@@ -147,7 +162,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 /* 随页面滚动的小面板 */
 .main-right {
     position: absolute;
-    left: 1070px;
+    left: 1135px;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
@@ -158,7 +173,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 /* 标签云（未完成） */
 .main-right-down {
     position: absolute;
-    left: 1070px;
+    left: 1100px;
     top: 1040px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
@@ -170,25 +185,66 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 }
 .main-middle {
     position: absolute;
-    left: 450px;
+    left: 399px;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
-    width: 600px;
-    height: 200px;
+    width: 713px;
+    height: 330px;
+
+    background-color: transparent;
+}
+#main-middle-2 {
+    top: 1045px;
 }
 .main-left {
     position: absolute;
-    left: 100px;
+    left: 60px;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
     width: 315px;
-    height: 200px;
+    height: 420px;
+    background: rgba(52.94%, 80.78%, 95.16%, 0.5);
+    text-align: center;
 }
-
+.main-left-text {
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: lightslategrey;
+}
+#left-pp {
+    margin-top: 20px;
+}
+#left-pp-last {
+    float: right;
+    margin-right: 20px;
+}
+.fa-quote-left {
+    margin-left: 10px;
+    color: grey;
+}
+.fa-quote-right {
+    margin-top: 80px;
+    margin-right: -130px;
+    color: grey;
+}
+.main-left-last-text {
+    letter-spacing: 1px;
+    margin-top: 130px;
+    font-size: 18px;
+    color: lightslategrey;
+    font-weight: 700;
+}
+#main-left-last-text-one {
+    margin-left: -60px;
+    margin-bottom: 5px;
+}
+#main-left-last-text-two {
+    margin-left: 80px;
+}
 /* 名片上面的区域 */
 .card-head {
     height: 150px;
@@ -296,35 +352,18 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 .fa-weixin img {
     display: none;
 }
-.fa-weixin:hover img {
-    display: block;
-}
-.fa-weixin:hover .card-weixin-divout{
-    display: block;
-}
-.fa-weixin:hover .card-weixin-divin{
-    display: block;
-}
-/* 图标晃动特效 */
+/* 图标翻转特效 */
 .fa:hover {
-    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    background-color: aliceblue;
+    animation: fanzhuan 1s forwards;
 }
-@keyframes shake {
-    10%, 90% {
-        transform: translate3d(-1px, 0, 0);
+@keyframes fanzhuan {
+    0% {
+        transform: none;
+        filter: none;
     }
-    20%, 80% {
-        transform: translate3d(2px, 0, 0);
-    }
-    30%, 50%, 70% {
-        transform: translate3d(-4px, 0, 0);
-    }
-    40%, 60% {
-        transform: translate3d(4px, 0, 0);
+    100% {
+        transform: rotateY(360deg);
+        filter: sepia(1) saturate(90) hue-rotate(285deg);
     }
 }
 .card-weixin-divout {
@@ -333,8 +372,8 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     border:1px solid silver;
     border-radius:8px;
     position: absolute;
-    top: 50px;
-    left: -55px;
+    top: 323px;
+    left: 144px;
     display: none;
     background-color: #eeeeee;
 }

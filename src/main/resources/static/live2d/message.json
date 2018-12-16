@@ -1,0 +1,128 @@
+{
+  "mouseover": [
+    {
+      "selector": ".post-list-item-container .item-title a[href^='http']",
+      "text": ["要看看 <span style=\"color:#0099cc;\">{text}</span> 么？"]
+    },
+    {
+      "selector": "a.article-title-link",
+      "text": ["你确定要看<span style=\"color:#0099cc;\">宇宙第一不要脸</span>写的第一篇文章咩？"]
+    },
+    {
+      "selector": "#head-card-img",
+      "text": ["我家主人是不是老帅了~？"]
+    },
+    {
+      "selector": "#head-card-right-h",
+      "text": ["这是我家主人的大名哦~ 我取的！好听吧！"]
+    },
+    {
+      "selector": ".card-head-right-writing",
+      "text": ["如果你自己都放弃自己了，还有谁会救你？"]
+    },
+    {
+      "selector": ".navbar-container .navbar-logo",
+      "text": ["回到最开始的地方吧"]
+    },
+    {
+      "selector": "#comment-form #textarea",
+      "text": ["认真填写哦，垃圾评论是禁止事项"]
+    },
+    {
+      "selector": "#comment-form #misubmit",
+      "text": ["要提交了吗，首次评论需要审核，请耐心等待~"]
+    },
+    {
+      "selector": ".page-navigator .prev",
+      "text": ["去上一页看看吧"]
+    },
+    {
+      "selector": ".page-navigator .next",
+      "text": ["去下一页看看吧"]
+    },
+    {
+      "selector": ".fa-github",
+      "text": ["这里是我家主人的GitHub，去看看嘛~"]
+    },
+    {
+      "selector": ".fa-gg",
+      "text": ["这里是我家主人的码云，去看看嘛~"]
+    },
+    {
+      "selector": ".fa-qq",
+      "text": ["这里是我家主人的QQ，你想联系我家主人咩~"]
+    },
+    {
+      "selector": ".fa-weixin",
+      "text": ["这里是我家主人的微信，要不要和主人交朋友呢~"]
+    },
+    {
+      "selector": ".fa-weibo",
+      "text": ["这里是我家主人的微博(讨厌的主人从来没有打理过)~"]
+    },
+    {
+      "selector": ".waifu #live2d",
+      "text": ["干嘛呢你，快把手拿开", "鼠…鼠标放错地方了！"]
+    }
+  ],
+  "click": [
+    {
+      "selector": ".waifu #live2d",
+      "text": ["是…是不小心碰到了吧", "萝莉控是什么呀", "你看到我的小熊了吗", "再摸的话我可要报警了！⌇●﹏●⌇", "110吗，这里有个变态一直在摸我(ó﹏ò｡)"]
+    }
+  ],
+  "seasons": [
+    {
+      "date": "01/01",
+      "text": "<span style=\"color:#0099cc;\">元旦</span>了呢，新的一年又开始了，{year}年打算做些什么呢~"
+    },
+    {
+      "date": "02/14",
+      "text": "又是一年<span style=\"color:#0099cc;\">情人节</span>，{year}年找到对象了嘛~"
+    },
+    {
+      "date": "03/08",
+      "text": "今天是<span style=\"color:#0099cc;\">妇女节</span>！"
+    },
+    {
+      "date": "03/12",
+      "text": "今天是<span style=\"color:#0099cc;\">植树节</span>，要保护环境呀"
+    },
+    {
+      "date": "04/01",
+      "text": "悄悄告诉你一个秘密~<span style=\"color:#34495e;background-color:#34495e;\">今天是愚人节，不要被骗了哦~</span>"
+    },
+    {
+      "date": "05/01",
+      "text": "今天是<span style=\"color:#0099cc;\">五一劳动节</span>，计划好假期去哪里了吗~"
+    },
+    {
+      "date": "06/01",
+      "text": "<span style=\"color:#0099cc;\">儿童节</span>了呢，快活的时光总是短暂，要是永远长不大该多好啊…"
+    },
+    {
+      "date": "09/03",
+      "text": "<span style=\"color:#0099cc;\">中国人民抗日战争胜利纪念日</span>，铭记历史、缅怀先烈、珍爱和平、开创未来。"
+    },
+    {
+      "date": "09/10",
+      "text": "<span style=\"color:#0099cc;\">教师节</span>，在学校要给老师问声好呀~"
+    },
+    {
+      "date": "10/01",
+      "text": "<span style=\"color:#0099cc;\">国庆节</span>，新中国已经成立69年了呢"
+    },
+    {
+      "date": "11/05-11/12",
+      "text": "今年的<span style=\"color:#0099cc;\">双十一</span>是和谁一起过的呢~"
+    },
+    {
+      "date": "12/20-12/28",
+      "text": "这几天是<span style=\"color:#0099cc;\">圣诞节</span>，主人肯定又去剁手买买买了~"
+    },
+    {
+      "date": "12/29-12/31",
+      "text": "要<span style=\"color:#0099cc;\">年终</span>了哦~ 年初许下的愿望都实现了吗？"
+    }
+  ]
+}
