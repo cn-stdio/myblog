@@ -43,6 +43,8 @@
     <h1 id="headline" class="head-picture-font">喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
     <!-- 旋转小陀螺头像 -->
     <div class="head-sculpture"><img src="../static/img/maoer.gif" class="header-img-one"/></div>
+    <!-- 指定页面跳转位置 -->
+    <div id="turn-head"></div>
     <!-- 小名片（随页面滚动的哦） -->
     <div class="main-right" id="main-right-div">
         <div class="card-head">
@@ -81,8 +83,11 @@
     </div>
     <!-- 标签云（未完成） -->
     <div class="main-right-down"></div>
-    <div class="main-middle" id="main-middle-1">
-        <!-- 样板测试，写完后台后删掉（调用后台） -->
+    <div id="art-list">
+
+    </div>
+   <!-- <div class="main-middle" id="main-middle-1">
+        &lt;!&ndash; 样板测试，写完后台后删掉（调用后台） &ndash;&gt;
         <div class="main-middle-article">
             <div class="article-badge">
                     <a href="#" class="badge-a">臭不要脸</a>
@@ -93,33 +98,8 @@
                 </a>
             </h1>
             <div class="article-meta">
-                    <span class="am-icon-calendar"></span><span class="meta-text meta-calendar-text">2018-12-16</span>
-                    <span class="am-icon-user"></span><span class="meta-text meta-user-text">Seaguller</span>
-                    <span class="am-icon-eye"></span><span class="meta-text meta-eye-text">666</span>
-            </div>
-            <div class="article-content">
-                嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤……
-            </div>
-            <div class="article-button">
-                <a class="article-btn" href="#">阅读全文 »</a>
-            </div>
-
-        </div>
-    </div>
-    <div class="main-middle" id="main-middle-2">
-        <!-- 样板测试，写完后台后删掉（调用后台） -->
-        <div class="main-middle-article">
-            <div class="article-badge">
-                <a href="#" class="badge-a">臭不要脸</a>
-            </div>
-            <h1 class="article-title">
-                <a class="article-title-link" href="#">
-                    宇宙超级无敌玉树临风温柔体贴第一大帅哥的第二篇文章
-                </a>
-            </h1>
-            <div class="article-meta">
                 <span class="am-icon-calendar"></span><span class="meta-text meta-calendar-text">2018-12-16</span>
-                <span class="am-icon-user"></span><span class="meta-text meta-user-text">Seaguller</span>
+                <a class="am-icon-tags-aa" href="#"><span class="am-icon-tags"></span><span class="meta-text meta-tags-text">Spring boot</span></a>
                 <span class="am-icon-eye"></span><span class="meta-text meta-eye-text">666</span>
             </div>
             <div class="article-content">
@@ -131,6 +111,35 @@
 
         </div>
     </div>
+    <div class="main-middle" id="main-middle-2">
+        &lt;!&ndash; 样板测试，写完后台后删掉（调用后台） &ndash;&gt;
+        <div class="main-middle-article">
+            <div class="article-badge">
+                <a href="#" class="badge-a">臭不要脸</a>
+            </div>
+            <h1 class="article-title">
+                <a class="article-title-link" href="#">
+                    宇宙超级无敌玉树临风温柔体贴第一大帅哥的第二篇文章
+                </a>
+            </h1>
+            <div class="article-meta">
+                <span class="am-icon-calendar"></span><span class="meta-text meta-calendar-text">2018-12-16</span>
+                <a class="am-icon-tags-aa" href="#"><span class="am-icon-tags"></span><span class="meta-text meta-tags-text">Spring boot</span></a>
+                <span class="am-icon-eye"></span><span class="meta-text meta-eye-text">666</span>
+            </div>
+            <div class="article-content">
+                嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤嘤……
+            </div>
+            <div class="article-button">
+                <a class="article-btn" href="#">阅读全文 »</a>
+            </div>
+            <nav class="article-pagination" role="navigation">
+                &lt;!&ndash;<a class="next" href="#">下一页</a>&ndash;&gt;
+                <a class="prev" href="/" style="margin-right: 570px;">上一页</a>
+            </nav>
+        </div>
+    </div>-->
+
     <div class="main-left">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
@@ -165,6 +174,7 @@
     <script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
     <!-- 主页JS -->
     <script src="../static/js/main.js" type="text/javascript"></script>
+    <script src="../static/js/article.js" type="text/javascript"></script>
     <!-- 背景线条 -->
     <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
 

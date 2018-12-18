@@ -18,6 +18,12 @@ a:hover {
 #live2d {
     margin-left: -30px;
 }
+
+#turn-head {
+    position: absolute;
+    width: 100px;
+    top: 600px;
+}
 /* 标题栏随滚动隐藏 */
 .animated {position: fixed;top: 0;left: 0;right: 0;transition: all .2s ease-in-out;}
 .slideUp {top: -100px;}
@@ -195,9 +201,9 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 
     background-color: transparent;
 }
-#main-middle-2 {
+/*#main-middle-2 {
     top: 1045px;
-}
+}*/
 .main-left {
     position: absolute;
     left: 60px;
