@@ -1,5 +1,4 @@
 var pageNum = 1;
-
 var page = pageNum;
 
 function timeStampToDate(date){
