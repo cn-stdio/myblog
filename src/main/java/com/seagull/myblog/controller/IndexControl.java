@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * Description: 主页跳转
  */
 @Controller
-public class indexControl {
+public class IndexControl {
 
     @GetMapping("/")
     public String index() {

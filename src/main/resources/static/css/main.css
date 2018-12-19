@@ -11,6 +11,7 @@ body {
 }
 #header-text:hover {
     animation: fanzhuan 1s forwards;
+    text-decoration:none;
 }
 a:hover {
     cursor: url(../cursor/link.ani),url(../cursor/link.gif),auto;
@@ -174,7 +175,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
     width: 315px;
-    height: 330px;
+    height: auto;
 }
 /* 标签云（未完成） */
 .main-right-down {
