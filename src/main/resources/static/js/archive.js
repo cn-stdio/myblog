@@ -3,6 +3,83 @@ $("body,html").animate({
     scrollTop:scroll_offset.top //让body的scrollTop等于pos的top，就实现了滚动
 },0);
 
+var pageNum = 1;
+
+var page = pageNum;
+/*function pageTurn(p) {
+    $.ajax(
+    {
+        type: "post",
+        url: "/getArchive",
+        dataType: "json",
+        data: {
+            rows: '10',
+            pageNum: p
+        },
+        success: function (data) {
+            var str = "";
+            var oUl = $("#art-list");
+            var rUl = $("#main-right-text-ul");
+
+            oUl.html('');
+            rUl.html('');
+
+            $.each(data['data'], function (index, obj) {
+                var date= new Date(parseInt(obj['createTime']));
+
+                str += '<li><a href="#">>> '+ date.getFullYear() +'年'+ (date.getMonth()+1) +'月</a></li>';
+            });
+            rUl.html(str);
+
+            /!*if (data['pages'] >= 2) {
+                if (p == 1) {
+                    str = "";
+                    str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ')">下一页</a></nav>';
+                    oUl.children("div:last-child").append(str);
+                } else if (p == data['pages']) {
+                    str = "";
+                    str += '<nav class="article-pagination" role="navigation"><a class="prev" href="#turn-head" style="margin-right: 570px;" onclick="pageTurn(' + (p - 1) + ')">上一页</a></nav>';
+                    oUl.children("div:last-child").append(str);
+                } else {
+                    str = "";
+                    str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ')">上一页</a></nav>';
+                    oUl.children("div:last-child").append(str);
+                }
+            }*!/
+        },
+        error: function () {
+            alert("请求失败");
+        }
+    });
+}
+pageTurn(page);*/
+
+function pageDate() {
+    $.ajax(
+    {
+        type: "post",
+        url: "/getArchiveDate",
+        dataType: "json",
+
+        success: function (data) {
+            var rUl = $("#main-right-text-ul");
+            var str = "";
+
+            rUl.html('');
+
+            $.each(data['data'], function (index, obj) {
+                str += '<li><a href="#">>> '+ obj +'</a></li>';
+            });
+            rUl.html(str);
+
+        },
+        error: function () {
+            alert("请求失败");
+        }
+    });
+}
+pageDate();
+
 /* 目录名片 */
 $(".right-catalog-user").click(function () {
     $(".right-catalog-article").removeClass("right-catalog-style");
@@ -15,7 +92,7 @@ $(".right-catalog-user").click(function () {
         '            <div class="card-my-head">\n' +
         '                <div class="head-card-img-div">\n' +
         '                    <div class="card-head-left-img">\n' +
-        '                        <img src="../static/img/123.png" id="head-card-img"/>\n' +
+        '                        <img src="../static/img/header.jpg" id="head-card-img"/>\n' +
         '                    </div>\n' +
         '                </div>\n' +
         '                <div class="card-head-right-word">\n' +
@@ -64,8 +141,13 @@ $(".right-catalog-user").click(function () {
 $(".right-catalog-article").click(function () {
     $(".right-catalog-user").removeClass("right-catalog-style");
     $(this).addClass("right-catalog-style");
+
     var oUl=$("#main-right-text");
-    oUl.html("");
+    var str = '';
+    str += '<ul class="am-list am-list-border" id="main-right-text-ul"></ul>';
+    oUl.html(str);
+
+    pageDate();
 });
 
 

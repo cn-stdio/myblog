@@ -80,4 +80,19 @@ window.onload= function() {
      "height" : "100"
  };
 
-
+ /* 进度条 */
+(function(){
+    document.onreadystatechange = function(){
+        $.AMUI.progress.start();
+        console.log(document.readyState);
+        if(document.readyState == "Uninitialized"){
+            $.AMUI.progress.set(1);
+        }
+        if(document.readyState == "Interactive"){
+            $.AMUI.progress.set(0.5);
+        }
+        if(document.readyState == "complete"){
+            $.AMUI.progress.done();
+        }
+    }
+})();

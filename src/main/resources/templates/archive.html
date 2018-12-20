@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
     <link href="../static/css/article.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/css/archive.css">
-
+    <link rel="stylesheet" href="../static/timeArchive/css/time.css">
 </head>
 <body>
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div ><img id="table-picture" src="../static/img/003.png"/></div>
+    <div id="table-picture" style="background-image: url('../static/img/bk.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
         <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -56,8 +56,15 @@
             </ul>
         </div>
 
-        <!-- 作者信息，点击时加入 -->
-        <div id="main-right-text"></div>
+        <!-- 下拉信息，点击时加入 -->
+        <div id="main-right-text">
+            <ul class="am-list am-list-border" id="main-right-text-ul">
+                <!--<li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>-->
+            </ul>
+        </div>
 
     </div>
     <!-- 标签云（未完成） -->

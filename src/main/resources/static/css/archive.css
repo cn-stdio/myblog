@@ -1,3 +1,15 @@
 .events_list {
     margin-top: 640px;
 }
+
+.am-list>li>a {
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    font-size: 22px;
+    list-style-type:none;
+    width:100%;
+    font-family: "xionghaizi";
+    color: orchid;
+}

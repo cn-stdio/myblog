@@ -35,8 +35,9 @@ a:hover {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 650px;
-    width: 1519px;
+    height: 15.3%;
+    width: 100%;
+    background-size: 100%;
 }
 #header-a-main-one {
     margin-left: 130px;
@@ -117,7 +118,6 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     letter-spacing: -0.02em;
     line-height: 1.2em;
     text-shadow: 2px 2px 0 #ff3f1a, -1px -1px 0 #00a7e0;
-    opacity: 0.9;
 }
 .head-picture-font:hover {
     color: white;
@@ -133,10 +133,10 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     top: 175px;
     width: 130px;
     height: 130px;
-    background: no-repeat url(../img/123.gif) left top;
+    background: no-repeat url(../img/header.jpg) left top;
+    background-size: 100%;
     webkit-background-size: 220px 220px;
     moz-background-size: 220px 220px;
-    background-size: 220px 220px;
     -webkit-border-radius: 110px;
     border-radius: 110px;
     -webkit-transition: -webkit-transform 2s ease-out;
