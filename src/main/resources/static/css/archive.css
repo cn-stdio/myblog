@@ -13,3 +13,107 @@
     font-family: "xionghaizi";
     color: orchid;
 }
+
+#art-list {
+    position: absolute;
+    left: 399px;
+    top: 690px;
+    padding: 15px 0;
+    width: 713px;
+    height: auto;
+}
+
+.am-icon-calendar {
+    margin-right: 20px;
+}
+.am-icon-calendar, .am-icon-calendar a {
+    color: lightslategray;
+}
+.am-icon-folder, .am-icon-folder a {
+    color: lightslategray;
+}
+.am-icon-tags, .am-icon-tags a {
+    color: cornflowerblue;
+}
+.events-body {
+    text-align: center;
+}
+.events-header:hover {
+    color: deepskyblue;
+    text-decoration: underline;
+}
+.VivaTimeline dl dt {
+    font-family: "xiaodanchun";
+    font-size: 22px;
+}
+.container {
+    margin-top: 30px;
+}
+.container-before-icon {
+    position: absolute;
+    margin-left: 339px;
+    color: lightcoral;
+    font-size: 15px;
+}
+
+/* 翻页 */
+.article-pagination {
+    padding-bottom: 2.125rem;
+    margin-bottom: 2rem;
+}
+.next {
+    float: right;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 5px 6px 14px rgba(52.94%, 80.78%, 95.16%, 0.5);
+    transition-property: box-shadow,background-color,-webkit-box-shadow;
+    transition-duration: .2s;
+    background-color: #97dffd;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 40px;
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 80px;
+}
+.next:hover {
+    background-color: #97dffd;
+    box-shadow: 4px 6px 24px 0 #97dffd;
+    text-decoration: none;
+    color: white;
+}
+.next:visited {
+    color: white;
+}
+
+.prev {
+    float: right;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 5px 6px 14px rgba(255,192,203,0.5);
+    transition-property: box-shadow,background-color,-webkit-box-shadow;
+    transition-duration: .2s;
+    background-color: pink;
+    color: white;
+    font-weight: 600;
+    padding: 10px 40px;
+    font-size: 2rem;
+    line-height: 1;
+    margin-top: 80px;
+    margin-right: 433px;
+}
+.prev:hover {
+    background-color: pink;
+    box-shadow: 4px 6px 24px 0 pink;
+    text-decoration: none;
+    color: white;
+}
+.prev:visited {
+    color: white;
+}

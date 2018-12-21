@@ -25,7 +25,7 @@ public class ArchiveControl {
     }
 
     @ResponseBody
-    @RequestMapping("/getArchive")
+    @RequestMapping("/getAllArchive")
     public JSONObject archiveArticles(int rows, int pageNum) {
         JSONObject returnArchive = new JSONObject();
 

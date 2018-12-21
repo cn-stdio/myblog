@@ -45,6 +45,9 @@ public class ArchiveServiceImpl implements ArchiveService {
         List<Article> articles = articleMapper.queryAllArticles();
         PageInfo<Article> pageInfo = new PageInfo<>(articles);
 
+        returnArchive.put("pages", pageInfo.getPages());
+        returnArchive.put("archiveSize", articles.size());
+
         JSONArray datas = new JSONArray();
         articles.forEach(article -> {
             JSONObject data = new JSONObject();
@@ -53,7 +56,13 @@ public class ArchiveServiceImpl implements ArchiveService {
             data.put("title", article.getTitle());
             data.put("createTime", article.getCreateTime().getTime());
             data.put("type", article.getType());
-            data.put("attributeLabel", article.getAttributeLabel());
+
+            String[] attributes = article.getAttributeLabel().split(",");
+            JSONArray ats = new JSONArray();
+            for (String att : attributes) {
+                ats.add(att);
+            }
+            data.put("attributeLabel", ats);
 
             datas.add(data);
         });
