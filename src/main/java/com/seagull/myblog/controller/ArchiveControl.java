@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+
 /**
  * @author Seagull_gby
  * @date 2018/12/19 21:01
@@ -25,11 +28,19 @@ public class ArchiveControl {
     }
 
     @ResponseBody
-    @RequestMapping("/getAllArchive")
-    public JSONObject archiveArticles(int rows, int pageNum) {
+    @RequestMapping("/getArchives")
+    public JSONObject archiveArticles(HttpServletRequest request) throws ParseException {
         JSONObject returnArchive = new JSONObject();
 
-        returnArchive = archiveService.getArchiveArticles(rows, pageNum);
+        int rows = Integer.parseInt(request.getParameter("rows"));
+        int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+        String date = request.getParameter("archiveDate");
+
+        if(date.equals("2018年")) {
+            returnArchive = archiveService.getArchiveArticles(rows, pageNum);
+        } else {
+            returnArchive = archiveService.getArchiveArticleOfDate(rows, pageNum, date);
+        }
 
         return returnArchive;
     }

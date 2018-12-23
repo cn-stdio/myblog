@@ -11,51 +11,51 @@ function timeStampToDate(date){
 var pageNum = 1;
 
 var page = pageNum;
-function pageTurn(p) {
+function pageTurn(p, dd) {
     $.ajax(
-    {
-        type: "post",
-        url: "/getAllArchive",
-        dataType: "json",
-        data: {
-            rows: '5',
-            pageNum: p
-        },
+        {
+            type: "post",
+            url: "/getArchives",
+            dataType: "json",
+            data: {
+                rows: '5',
+                pageNum: p,
+                archiveDate: dd
+            },
+            success: function (data) {
+                var str = "";
+                var oUl = $(".VivaTimeline");
+                var iUl = $(".container-before-icon");
 
-        success: function (data) {
-            var str = "";
-            var oUl = $(".VivaTimeline");
-            var iUl = $(".container-before-icon");
+                oUl.html('');
 
-            oUl.html('');
+                str += '<span class="am-icon-star am-icon-lg"></span>\n' +
+                    '目前总计 '+ data['articleSize'] +' 篇日志。 (゜-゜)つロ 干杯';
+                iUl.html(str);
 
-            str += '<span class="am-icon-star am-icon-lg"></span>\n' +
-                '目前总计 '+ data['archiveSize'] +' 篇日志。 (゜-゜)つロ 干杯';
-            iUl.html(str);
+                str = "";
+                $.each(data['data'], function (index, obj) {
+                    var date= new Date(parseInt(obj['createTime']));
 
-            str = "";
-            $.each(data['data'], function (index, obj) {
-                var date= new Date(parseInt(obj['createTime']));
-
-                str += '<dl>\n';
-                if(index%2 == 0) {
-                    str += '<dd class="pos-right clearfix">\n';
-                } else {
-                    str += '<dd class="pos-left clearfix">\n';
-                }
-                str +=
-                    '                                <div class="circ"></div>\n' +
-                    '                                <div class="time">'+ (date.getMonth()+1) +'月'+ date.getDate() +'日</div>\n' +
-                    '                                <div class="events">\n' +
-                    '                                    <div class="events-header">'+ obj['title'] +'</div>\n' +
-                    '                                    <div class="events-body">\n' +
-                    '                                        <span class="am-icon-calendar">\n' +
-                    '                                            <a href="/archives?archive=2018-12-20">'+ timeStampToDate(obj['createTime']) +'</a>\n' +
-                    '                                        </span>\n' +
-                    '                                        <span class="am-icon-folder">\n' +
-                    '                                            <a href="/categories?category=面试">'+ obj['type'] +'</a>\n' +
-                    '                                        </span><br/>\n' +
-                    '                                        <span class="am-icon-tags">\n';
+                    str += '<dl>\n';
+                    if(index%2 == 0) {
+                        str += '<dd class="pos-right clearfix">\n';
+                    } else {
+                        str += '<dd class="pos-left clearfix">\n';
+                    }
+                    str +=
+                        '                                <div class="circ"></div>\n' +
+                        '                                <div class="time">'+ (date.getMonth()+1) +'月'+ date.getDate() +'日</div>\n' +
+                        '                                <div class="events">\n' +
+                        '                                    <div class="events-header">'+ obj['title'] +'</div>\n' +
+                        '                                    <div class="events-body">\n' +
+                        '                                        <span class="am-icon-calendar">\n' +
+                        '                                            <a href="/archives?archive=2018-12-20">'+ timeStampToDate(obj['createTime']) +'</a>\n' +
+                        '                                        </span>\n' +
+                        '                                        <span class="am-icon-folder">\n' +
+                        '                                            <a href="/categories?category=面试">'+ obj['type'] +'</a>\n' +
+                        '                                        </span><br/>\n' +
+                        '                                        <span class="am-icon-tags">\n';
 
                     var lAttributeLabel = obj['attributeLabel'].length;
                     $.each(obj['attributeLabel'], function (index, obj) {
@@ -66,41 +66,42 @@ function pageTurn(p) {
                         }
                     });
 
-                str += '                                        </span>\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </dd>\n' +
-                    '                        </dl>';
-            });
-            oUl.html(str);
-            var rUl = $(".VivaTimeline").children(":first");
-            str = "";
-            str += '<dt>2018年</dt>';
-            rUl.prepend(str);
+                    str += '                                        </span>\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                            </dd>\n' +
+                        '                        </dl>';
+                });
+                oUl.html(str);
+                var rUl = $(".VivaTimeline").children(":first");
+                str = "";
+                str += '<dt>'+ dd +'</dt>';
+                rUl.prepend(str);
 
-            var lUl = $(".article-pagination");
-            if (data['pages'] >= 2) {
-                if (p == 1) {
-                    str = "";
-                    str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ')">下一页</a></nav>';
-                    lUl.html(str);
-                } else if (p == data['pages']) {
-                    str = "";
-                    str += '<nav class="article-pagination" role="navigation"><a class="prev" href="#turn-head" style="margin-right: 570px;" onclick="pageTurn(' + (p - 1) + ')">上一页</a></nav>';
-                    lUl.html(str);
-                } else {
-                    str = "";
-                    str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ')">上一页</a></nav>';
-                    lUl.html(str);
+                var lUl = $(".article-pagination");
+                lUl.html("");
+                if (data['pages'] >= 2) {
+                    if (p == 1) {
+                        str = "";
+                        str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a>';
+                        lUl.html(str);
+                    } else if (p == data['pages']) {
+                        str = "";
+                        str += '<a class="prev" href="#turn-head" style="margin-right: 570px;" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
+                        lUl.html(str);
+                    } else {
+                        str = "";
+                        str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
+                        lUl.html(str);
+                    }
                 }
+            },
+            error: function () {
+                alert("请求失败");
             }
-        },
-        error: function () {
-            alert("请求失败");
-        }
-    });
+        });
 }
-pageTurn(page);
+pageTurn(page, '2018年');
 
 function pageDate() {
     $.ajax(
@@ -116,7 +117,7 @@ function pageDate() {
             rUl.html('');
 
             $.each(data['data'], function (index, obj) {
-                str += '<li><a href="#">>> '+ obj +'</a></li>';
+                str += '<li><a href="#turn-head" class="main-right-date" onclick="pageTurn('+ page + ', \''+obj+'\');">>> '+ obj +'</a></li>';
             });
             rUl.html(str);
 

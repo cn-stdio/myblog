@@ -9,9 +9,8 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
     <link href="../static/css/article.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../static/css/archive.css">
+    <link rel="stylesheet" href="../static/css/update.css">
 
-    <link rel="stylesheet" type="text/css" href="../static/timeArchive/css/jquery.eeyellow.Timeline.css" />
 </head>
 <body>
 <div id="main-class-text">
@@ -29,8 +28,8 @@
                                 <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
                             </a>
                         </li>
-                        <li id="li-archive" class="am-active"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
-                        <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                        <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                        <li id="li-update" class="am-active"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
                         <li id="li-music"><a href="#turn-head" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
                         <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
                         <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
@@ -49,22 +48,40 @@
     <div id="turn-head"></div>
     <!-- 小名片（随页面滚动的哦） -->
     <div class="main-right" id="main-right-div">
-        <!-- 名片目录，点进文章的时候再加进去 -->
-        <div id="right-catalog-div">
-            <ul class="right-catalog">
-                <li class="right-catalog-article right-catalog-style">日期归类</li>
-                <li class="right-catalog-user">作者信息</li>
-            </ul>
-        </div>
 
-        <!-- 下拉信息，点击时加入 -->
         <div id="main-right-text">
-            <ul class="am-list am-list-border" id="main-right-text-ul">
-                <!--<li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>-->
-            </ul>
+            <div class="card-head">
+                <div class="card-my-head">
+                    <div class="head-card-img-div">
+                        <div class="card-head-left-img">
+                            <img src="../static/img/header.jpg" id="head-card-img"/>
+                        </div>
+                    </div>
+                    <div class="card-head-right-word">
+                        <h1 id="head-card-right-h">Seaguller</h1>
+                        <small class="card-head-right-writing">如果你自己都放弃自己了，还有谁会救你？</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card-middle">
+                扣扣~：1656299466<br/>
+                微信~：xy554322260
+            </div>
+            <hr id="hr-one"/>
+            <div id="icons">
+                <ul class="am-nav am-nav-pills">
+                    <li><a target="_blank" href="https://github.com/cn-stdio" class="card-icons"><i class="fa fa-github" title="活跃不起来滴小github~"></i></a></li>
+                    <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>
+                    <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>
+                    <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">
+                    </i></a></li>
+                    <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>
+                </ul>
+                <div class="card-weixin-divout">
+                    <div class="card-weixin-divin"></div>
+                    <img src="../static/img/weixin.gif" id="weixin-img"/>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -72,72 +89,50 @@
     <div class="main-right-down"></div>
     <!-- 主体内容 -->
     <div id="art-list">
+        <img src="../static/img/233.jpg" id="art-img"/>
+        <span class="am-icon-star am-icon-lg" id="am-icon-star-one"></span>
+        <div id="art-update-title">
+            嘤嘤嘤~博客小站终于开张啦！（兴奋的打滚ing...）
+        </div>
+        <span class="am-icon-star am-icon-lg" id="am-icon-star-two"></span>
 
-        <div class="container-before-icon">
-            <!--<span class="am-icon-star am-icon-lg"></span>
-            目前总计 10 篇日志。 (゜-゜)つロ 干杯~-->
+        <div id="art-text">
+            <div id="art-text-one">(゜-゜)つロ 干杯~<br/></div>
+            <div >在本人勤(lǎn)奋(duò)的努力下，<br/>本站以每天(梦里)更新数个功能的光速成功发布啦！(撒花撒花~)<br/></div>
+            <div >大家有虾米新的功能点子或者布局点子，欢迎来骚扰帅气的我！<br/></div>
+            <div >(虽然你说了我也不一定会改雾~)</div>
+            <div id="art-text-two">ԅ(¯﹃¯ԅ) <br/></div>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="VivaTimeline">
-                        <!--<dl>
-                            <dt>2018年10月</dt>
-                            <dd class="pos-right clearfix">
-                                <div class="circ"></div>
-                                <div class="time">10月21日</div>
-                                <div class="events">
-                                    <div class="events-header">Spring boot 初步学习记录</div>
-                                    <div class="events-body">
-                                        <span class="am-icon-calendar">
-                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
-                                        </span>
-                                        <span class="am-icon-folder">
-                                            <a href="/categories?category=面试">面试</a>
-                                        </span><br/>
-                                        <span class="am-icon-tags">
-                                            <a href="/tags?tag=面试">面试</a>，
-                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
-                                            <a href="/tags?tag=原创">原创</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dd class="pos-left clearfix">
-                                <div class="circ"></div>
-                                <div class="time">10月22日</div>
-                                <div class="events">
-                                    <div class="events-header">Spring boot 初步学习记录</div>
-                                    <div class="events-body">
-                                        <span class="am-icon-calendar">
-                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
-                                        </span>
-                                        <span class="am-icon-folder">
-                                            <a href="/categories?category=面试">面试</a>
-                                        </span><br/>
-                                        <span class="am-icon-tags">
-                                            <a href="/tags?tag=面试">面试</a>，
-                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
-                                            <a href="/tags?tag=原创">原创</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl></dl>-->
-                    </div>
-                </div>
+        <div id="art-title-update">
+            <span class="am-icon-modx"></span>
+            <div id="art-title-update-one">博客更新日志</div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-one" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2018年12月14日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>开始搭建博客网站</p>
+                </blockquote>
             </div>
         </div>
-
-        <nav class="article-pagination" role="navigation">
-            <!--<a class="next" href="#">下一页</a>
-            <a class="prev" href="/" style="margin-right: 570px;">上一页</a>-->
-        </nav>
-
+        <div class="art-text-update-all" id="art-text-update-two" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2018年12月19日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>首页与归档界面的前后台交互完成</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-three" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2018年12月23日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>修复了右边栏的BUG</p>
+                    <p>更新栏完成~</p>
+                </blockquote>
+            </div>
+        </div>
     </div>
 
     <div class="main-left">
@@ -175,7 +170,7 @@
 <script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
 <!-- 主页JS -->
 <script src="../static/js/main.js" type="text/javascript"></script>
-<script src="../static/js/archive.js" type="text/javascript"></script>
+<script src="../static/js/update.js" type="text/javascript"></script>
 <!-- 背景线条 -->
 <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
 

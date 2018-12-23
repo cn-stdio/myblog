@@ -28,27 +28,16 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Autowired
     private ArticleMapper articleMapper;
 
+    private long articleSize;
+
     /**
-     * 获得归档文章信息
-     * @param rows 每页显示行数
-     * @param pageNum 当前页数
-     * @return 对应JSON格式
+     * 对归档JSON中data的添加
+     * @param articles 文章列表
+     * @return 目标JSON数组
      */
-    @Override
-    public JSONObject getArchiveArticles(int rows, int pageNum) {
-        JSONObject returnArchive = new JSONObject();
-
-        returnArchive.put("code", 200);
-        returnArchive.put("msg", "success");
-
-        PageHelper.startPage(pageNum, rows);
-        List<Article> articles = articleMapper.queryAllArticles();
-        PageInfo<Article> pageInfo = new PageInfo<>(articles);
-
-        returnArchive.put("pages", pageInfo.getPages());
-        returnArchive.put("archiveSize", articles.size());
-
+    public JSONArray getArchiveDataJSON(List<Article> articles) {
         JSONArray datas = new JSONArray();
+
         articles.forEach(article -> {
             JSONObject data = new JSONObject();
 
@@ -67,7 +56,31 @@ public class ArchiveServiceImpl implements ArchiveService {
             datas.add(data);
         });
 
-        returnArchive.put("data", datas);
+        return datas;
+    }
+
+    /**
+     * 获得归档文章信息
+     * @param rows 每页显示行数
+     * @param pageNum 当前页数
+     * @return 对应JSON格式
+     */
+    @Override
+    public JSONObject getArchiveArticles(int rows, int pageNum) {
+        JSONObject returnArchive = new JSONObject();
+
+        returnArchive.put("code", 200);
+        returnArchive.put("msg", "success");
+
+        PageHelper.startPage(pageNum, rows);
+        List<Article> articles = articleMapper.queryAllArticles();
+        PageInfo<Article> pageInfo = new PageInfo<>(articles);
+
+        articleSize = pageInfo.getTotal();
+
+        returnArchive.put("pages", pageInfo.getPages());
+        returnArchive.put("articleSize", articleSize);
+        returnArchive.put("data", getArchiveDataJSON(articles));
 
         return returnArchive;
     }
@@ -100,6 +113,52 @@ public class ArchiveServiceImpl implements ArchiveService {
         times.forEach(time -> datas.add(time));
 
         returnArchive.put("data", datas);
+
+        return returnArchive;
+    }
+
+    /**
+     * 获得特定日期的归档文章
+     * @param rows 每页显示行数
+     * @param pageNum 当前页数
+     * @param date 特定日期
+     * @return 对应JSON格式
+     */
+    @Override
+    public JSONObject getArchiveArticleOfDate(int rows, int pageNum, String date) throws ParseException {
+
+        /* 对日期界限处理 */
+        char endMonthFirst = date.charAt(date.indexOf("月")-2);
+        char endMonthSecond = date.charAt(date.indexOf("月")-1);
+        String startMonth = String.valueOf(endMonthFirst) + String.valueOf(endMonthSecond);
+        String startYear = "2018-";
+        String endYear = "2018-";
+        String endMonth = String.valueOf(endMonthFirst) + String.valueOf(endMonthSecond);
+        if(endMonth.equals("12")) {
+            endMonth = "01";
+            endYear = "2019-";
+        } else if (endMonth.equals("09")) {
+            endMonth = "10";
+        } else {
+            endMonthSecond += 1;
+            endMonth = String.valueOf(endMonthFirst) + String.valueOf(endMonthSecond);
+        }
+
+        String startDate = startYear + startMonth +"-01 00:00:00";
+        String endDate = endYear + endMonth + "-01 00:00:00";
+
+        JSONObject returnArchive = new JSONObject();
+
+        returnArchive.put("code", 200);
+        returnArchive.put("msg", "success");
+
+        PageHelper.startPage(pageNum, rows);
+        List<Article> articles = articleMapper.queryArticlesOfDate(startDate, endDate);
+        PageInfo<Article> pageInfo = new PageInfo<>(articles);
+
+        returnArchive.put("pages", pageInfo.getPages());
+        returnArchive.put("articleSize", articleSize);
+        returnArchive.put("data", getArchiveDataJSON(articles));
 
         return returnArchive;
     }

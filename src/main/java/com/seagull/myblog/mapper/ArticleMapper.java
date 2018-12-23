@@ -30,6 +30,16 @@ public interface ArticleMapper {
     public List<Article> queryAllArticles();
 
     /**
+     * 按照特定日期区间查询文章
+     * @param startDate 起始日期
+     * @param endDate 终止日期
+     * @return
+     */
+    @ResultMap("article")
+    @Select("SELECT * FROM article WHERE create_time >= #{startDate} AND create_time < #{endDate} ORDER BY create_time DESC")
+    public List<Article> queryArticlesOfDate(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    /**
      * 查询所有文章的创建时间
      * @return
      */

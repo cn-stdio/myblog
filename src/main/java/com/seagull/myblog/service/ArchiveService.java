@@ -3,6 +3,8 @@ package com.seagull.myblog.service;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+
 /**
  * @author Seagull_gby
  * @date 2018/12/20 18:36
@@ -24,4 +26,13 @@ public interface ArchiveService {
      * @return 对应JSON
      */
     public JSONObject getArchiveDates();
+
+    /**
+     * 获得特定日期的归档文章
+     * @param rows 每页显示行数
+     * @param pageNum 当前页数
+     * @param date 特定日期
+     * @return 对应JSON格式
+     */
+    public JSONObject getArchiveArticleOfDate(int rows, int pageNum, String date) throws ParseException;
 }

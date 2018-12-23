@@ -37,4 +37,17 @@ public class TimeUtil {
 
         return s;
     }
+
+    /**
+     * 将 yyyy年MM月dd日 hh:mm:ss 格式的字符串转换为日期格式
+     * @param s 指定字符串
+     * @return
+     * @throws ParseException
+     */
+    public Date getFormatString(String s) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 hh:mm:ss");
+        Date date = format.parse(s);
+
+        return date;
+    }
 }
