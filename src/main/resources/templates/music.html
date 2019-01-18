@@ -9,9 +9,9 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
     <link href="../static/css/article.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../static/css/archive.css">
 
-    <link rel="stylesheet" type="text/css" href="../static/timeArchive/css/jquery.eeyellow.Timeline.css" />
+    <link rel="stylesheet" href="../static/music/APlayer.min.css">
+    <link type="text/css" href="../static/css/music.css" rel="stylesheet"/>
 </head>
 <body>
 <div id="main-class-text">
@@ -29,9 +29,9 @@
                                 <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
                             </a>
                         </li>
-                        <li id="li-archive" class="am-active"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                        <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
                         <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
-                        <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                        <li id="li-music" class="am-active" ><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
                         <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
                         <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
                         <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
@@ -49,22 +49,48 @@
     <div id="turn-head"></div>
     <!-- 小名片（随页面滚动的哦） -->
     <div class="main-right" id="main-right-div">
+
         <!-- 名片目录，点进文章的时候再加进去 -->
         <div id="right-catalog-div">
-            <ul class="right-catalog">
-                <li class="right-catalog-article right-catalog-style">日期归类</li>
+            <!--<ul class="right-catalog">
+                <li class="right-catalog-article right-catalog-style">文章目录</li>
                 <li class="right-catalog-user">作者信息</li>
-            </ul>
+            </ul>-->
         </div>
 
-        <!-- 下拉信息，点击时加入 -->
         <div id="main-right-text">
-            <ul class="am-list am-list-border" id="main-right-text-ul">
-                <!--<li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>
-                <li><a href="#">>> 2018年11月</a></li>-->
-            </ul>
+            <div class="card-head">
+                <div class="card-my-head">
+                    <div class="head-card-img-div">
+                        <div class="card-head-left-img">
+                            <img src="../static/img/header.jpg" id="head-card-img"/>
+                        </div>
+                    </div>
+                    <div class="card-head-right-word">
+                        <h1 id="head-card-right-h">Seaguller</h1>
+                        <small class="card-head-right-writing">如果你自己都放弃自己了，还有谁会救你？</small>
+                    </div>
+                </div>
+            </div>
+            <div class="card-middle">
+                扣扣~：1656299466<br/>
+                微信~：xy554322260
+            </div>
+            <hr id="hr-one"/>
+            <div id="icons">
+                <ul class="am-nav am-nav-pills">
+                    <li><a target="_blank" href="https://github.com/cn-stdio" class="card-icons"><i class="fa fa-github" title="活跃不起来滴小github~"></i></a></li>
+                    <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>
+                    <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>
+                    <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">
+                    </i></a></li>
+                    <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>
+                </ul>
+                <div class="card-weixin-divout">
+                    <div class="card-weixin-divin"></div>
+                    <img src="../static/img/weixin.gif" id="weixin-img"/>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -73,70 +99,100 @@
     <!-- 主体内容 -->
     <div id="art-list">
 
-        <div class="container-before-icon">
-            <!--<span class="am-icon-star am-icon-lg"></span>
-            目前总计 10 篇日志。 (゜-゜)つロ 干杯~-->
+        <div id="aplayer"></div>
+        <div class="music-title">
+            <span class="am-icon-music" style="margin-right: 20px;"></span>
+            一起来享受音乐吧~
+            <span class="am-icon-music" style="float: right;"></span>
         </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="VivaTimeline">
-                        <!--<dl>
-                            <dt>2018年10月</dt>
-                            <dd class="pos-right clearfix">
-                                <div class="circ"></div>
-                                <div class="time">10月21日</div>
-                                <div class="events">
-                                    <div class="events-header">Spring boot 初步学习记录</div>
-                                    <div class="events-body">
-                                        <span class="am-icon-calendar">
-                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
-                                        </span>
-                                        <span class="am-icon-folder">
-                                            <a href="/categories?category=面试">面试</a>
-                                        </span><br/>
-                                        <span class="am-icon-tags">
-                                            <a href="/tags?tag=面试">面试</a>，
-                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
-                                            <a href="/tags?tag=原创">原创</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dd class="pos-left clearfix">
-                                <div class="circ"></div>
-                                <div class="time">10月22日</div>
-                                <div class="events">
-                                    <div class="events-header">Spring boot 初步学习记录</div>
-                                    <div class="events-body">
-                                        <span class="am-icon-calendar">
-                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
-                                        </span>
-                                        <span class="am-icon-folder">
-                                            <a href="/categories?category=面试">面试</a>
-                                        </span><br/>
-                                        <span class="am-icon-tags">
-                                            <a href="/tags?tag=面试">面试</a>，
-                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
-                                            <a href="/tags?tag=原创">原创</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </dd>
-                        </dl>
-                        <dl></dl>-->
-                    </div>
-                </div>
-            </div>
+        <div class="music-table">
+            <table class="am-table am-table-striped am-table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:1.8%">序号</th>
+                        <th style="width:5%">歌曲</th>
+                        <th style="width:3%">歌手</th>
+                        <th style="width:3%">专辑</th>
+                        <th style="width:4%">时长</th>
+                        <th style="width:2%">试听</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="music-id-1">
+                        <td>1</td>
+                        <td>Lemon</td>
+                        <td>米津玄师</td>
+                        <td>Lemon</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;4:15</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(1)"></span>
+                        </td>
+                    </tr>
+                    <tr id="music-id-2">
+                        <td>2</td>
+                        <td>ヒッチコック</td>
+                        <td>ヨルシカ</td>
+                        <td>負け犬にアンコールはいらない</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;3:42</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(2)"></span>
+                        </td>
+                    </tr>
+                    <tr id="music-id-3">
+                        <td>3</td>
+                        <td>曾经我也想过一了百了</td>
+                        <td>中岛美嘉</td>
+                        <td>僕が死のうと思ったのは</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;6:22</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(3)"></span>
+                        </td>
+                    </tr>
+                    <tr id="music-id-4">
+                        <td>4</td>
+                        <td>打上花火</td>
+                        <td>米津玄师</td>
+                        <td>打上花火</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;4:49</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(4)"></span>
+                        </td>
+                    </tr>
+                    <tr id="music-id-5">
+                        <td>5</td>
+                        <td>PLANET</td>
+                        <td>ラムジ</td>
+                        <td>3ラムジ</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;4:03</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(5)"></span>
+                        </td>
+                    </tr>
+                    <tr id="music-id-6">
+                        <td>6</td>
+                        <td>她曾活过啊</td>
+                        <td>あいみょん</td>
+                        <td>生きていたんだよな</td>
+                        <td>
+                            <span class="am-icon-clock-o">&nbsp;&nbsp;3:14</span>
+                        </td>
+                        <td>
+                            <span class="am-icon-play music-play" onclick="play(6)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <nav class="article-pagination" role="navigation">
-            <!--<a class="next" href="#">下一页</a>
-            <a class="prev" href="/" style="margin-right: 570px;">上一页</a>-->
-        </nav>
 
     </div>
 
@@ -175,7 +231,8 @@
 <script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
 <!-- 主页JS -->
 <script src="../static/js/main.js" type="text/javascript"></script>
-<script src="../static/js/archive.js" type="text/javascript"></script>
+<script src="../static/music/APlayer.min.js"></script>
+<script src="../static/js/music.js" type="text/javascript"></script>
 <!-- 背景线条 -->
 <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
 

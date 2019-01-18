@@ -73,6 +73,7 @@ function pageTurn(p, dd) {
                         '                        </dl>';
                 });
                 oUl.html(str);
+                /*oUl.append("<dl></dl>");*/
                 var rUl = $(".VivaTimeline").children(":first");
                 str = "";
                 str += '<dt>'+ dd +'</dt>';

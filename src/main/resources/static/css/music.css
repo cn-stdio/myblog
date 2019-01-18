@@ -1,0 +1,51 @@
+#aplayer {
+    width: 440px;
+
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 15px;
+
+    z-index: 1;
+}
+
+.music-table {
+    position: absolute;
+    margin-top: 710px;
+    margin-left: 400px;
+    width: 715px;
+
+    z-index: 0;
+}
+
+.music-play {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+tr {
+    height: 50px;
+}
+
+.music-title {
+    position: absolute;
+    margin-top: 650px;
+    width: 360px;
+    text-align: center;
+    margin-left: 560px;
+    font-size: 30px;
+    font-family: "xionghaizi";
+
+    color: darkturquoise;
+}
+
+.aplayer-list {
+    overflow-y: auto !important;
+    height: 133px;
+}
+
+thead {
+    font-family: "xiaodanchun";
+    font-size: 20px;
+}
