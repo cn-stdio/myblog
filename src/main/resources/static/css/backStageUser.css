@@ -1,0 +1,19 @@
+.admin-sidebar {
+    height: 1000px !important;
+}
+
+.am-with-topbar-fixed-top {
+    padding-top: 40px !important;
+}
+
+.am-panel-bd {
+    font-family: "xiaodanchun";
+    font-size: 18px;
+}
+.admin-sidebar-list {
+    font-size: 18px;
+}
+
+#li-user {
+    display: none;
+}

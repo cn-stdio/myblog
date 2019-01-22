@@ -35,7 +35,7 @@ a:hover {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 15.3%;
+    height: 885%;
     width: 100%;
     background-size: 100%;
 }
@@ -402,6 +402,16 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     position: absolute;
     left: -14px;
     top: -12px;
+}
+
+#li-login {
+    position: absolute;
+    margin-left: 950px;
+    font-size: 23px;
+    font-family: "xiaodanchun";
+}
+#header-a-main-login {
+    color: lightblue;
 }
 
 

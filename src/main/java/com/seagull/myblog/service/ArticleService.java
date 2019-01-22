@@ -21,4 +21,11 @@ public interface ArticleService {
      */
     JSONObject getPageArticles(int rows, int pageNum);
 
+    /**
+     * 获得指定文章的内容
+     * @param articleId 文章Id
+     * @return 对应JSON格式数据
+     */
+    JSONObject getArticlesContent(long articleId);
+
 }

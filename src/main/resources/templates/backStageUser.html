@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/assets/css/admin.css">
+
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
+    <link href="../static/css/article.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../static/css/backStageUser.css">
+</head>
+<body>
+
+<!-- 标题栏 -->
+<div class="head-one">
+    <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+        <div class="am-container">
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <a id="header-text" href="/">Seaguller的小窝~</a>
+                    <li id="li-main">
+                        <a href="/" class="header-a-main" id="header-a-main-one">
+                            <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                        </a>
+                    </li>
+                    <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                    <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                    <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                    <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                    <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
+                    <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                    <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
+                    <li class="am-dropdown" id="li-user" data-am-dropdown>
+                        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                            <div id="li-header-user">Seaguller&nbsp;&nbsp;<span class="am-icon-caret-down"></span></div>
+                        </a>
+                        <ul class="am-dropdown-content">
+                            <li><a href="#">个人主页</a></li>
+                            <li><a href="#">反馈</a></li>
+                            <li class="am-divider"></li>
+                            <li><a href="#">退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar">
+        <ul class="am-list admin-sidebar-list">
+            <li><a href="admin-user.html"><span class="am-icon-newspaper-o"></span> 个人资料</a></li>
+            <li><a href="admin-comment.html"><span class="am-icon-comment-o"></span> 评论留言</a></li>
+            <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        </ul>
+
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-bookmark"></span> 喵呜</p>
+                <p>变成大人就会忘记烦恼了吗？</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- sidebar end -->
+
+    <!-- content start -->
+    <div class="admin-content"></div>
+    <!-- content end -->
+
+</div>
+
+<script src="../static/assets/js/jquery.min.js"></script>
+<script src="../static/assets/js/amazeui.min.js"></script>
+
+</body>
+</html>

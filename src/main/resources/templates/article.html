@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Seaguller的小窝~</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://dreamsky.github.io/main/blog/common/init.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
+    <link href="../static/css/article.css" rel="stylesheet"/>
+
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+    <link href="../static/css/articleShow.css" rel="stylesheet"/>
+</head>
+<body>
+<input id="articleId" type="hidden" th:value="${articleId}" />
+<div id="main-class-text">
+    <!-- 主页大图 -->
+    <div id="table-picture" style="background-image: url('../static/img/bk.jpg')"></div>
+    <!-- 标题栏 -->
+    <div class="head-one">
+        <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+            <div class="am-container">
+                <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                    <ul class="am-nav am-nav-pills am-topbar-nav">
+                        <a id="header-text" href="/">Seaguller的小窝~</a>
+                        <li id="li-main">
+                            <a href="/" class="header-a-main" id="header-a-main-one">
+                                <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                            </a>
+                        </li>
+                        <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                        <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                        <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                        <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
+                        <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                        <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- 文字喵 -->
+    <h1 id="headline" class="head-picture-font" >喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
+    <!-- 旋转小陀螺头像 -->
+    <div class="head-sculpture"><img src="../static/img/maoer.gif" class="header-img-one"/></div>
+    <!-- 指定页面跳转位置 -->
+    <div id="turn-head"></div>
+    <!-- 小名片（随页面滚动的哦） -->
+    <div class="main-right" id="main-right-div">
+
+        <!-- 名片目录，点进文章的时候再加进去 -->
+        <div id="right-catalog-div">
+            <ul class="right-catalog">
+                <li class="right-catalog-article right-catalog-style">文章目录</li>
+                <li class="right-catalog-user">作者信息</li>
+            </ul>
+        </div>
+
+        <div id="main-right-text">
+            <div id="main-right-article-catalog">
+                <ol id="catalog-h1"></ol>
+            </div>
+        </div>
+
+    </div>
+    <!-- 标签云（未完成） -->
+    <div class="main-right-down"></div>
+    <!-- 主体内容 -->
+    <div id="art-list">
+        <div class="main-middle" id="main-middle-article" style="top:690px;&quot;">
+            <div class="main-middle-article">
+                <div class="article-badge">
+                    <a href="#" class="badge-a">臭不要脸</a>
+                </div>
+                <h1 class="article-title">
+                    <a class="article-title-link" href="#">123123</a>
+                </h1>
+                <div class="article-meta">
+                    <span class="am-icon-calendar"></span>
+                    <span class="meta-text meta-calendar-text">2018年12月9日</span>
+                    <a class="am-icon-tags-aa" href="#">
+                        <span class="am-icon-tags"></span>
+                        <span class="meta-text meta-tags-text">后端</span>
+                    </a>
+                    <span class="am-icon-eye"></span>
+                    <span class="meta-text meta-eye-text">0</span>
+                </div>
+                <div class="article-content">
+                    <h1>a</h1>
+                    <h2>c</h2>
+                    <h2>d</h2>
+                    <h2>1</h2>
+                    <!--<h3>e</h3>
+                    <h3>f</h3>
+                    <h4>i</h4>
+                    <h5>k</h5>
+                    <h4>j</h4>
+                    <h5>aaaaa</h5>-->
+                    <h1>b</h1>
+                    <h2>g</h2>
+                    <h2>h</h2>
+                    <h2>4</h2>
+                    <p>asdasdasdasdsa殺殺殺</p>
+
+                </div>
+
+                <div id="article-share">
+                    <div class="social-share" data-initialized="true">
+                        分享到：
+                        <a href="#" class="social-share-icon icon-weibo"></a>
+                        <a href="#" class="social-share-icon icon-qq"></a>
+                        <a href="#" class="social-share-icon icon-wechat"></a>
+                        <a href="#" class="social-share-icon icon-qzone"></a>
+                    </div>
+                    <div class="article-button">
+                        <a class="article-btn" href="#">❤ 喜欢 ❤</a>
+                    </div>
+                    <hr/>
+                    <div class="article-page">
+                        <a id="article-page-prev" href="/nas/" rel="prev" title="从零开始的 NAS 生活">
+                            <i class="fa fa-chevron-left"></i> 从零开始的 NAS 生活
+                        </a>
+                        <a id="article-page-next" href="/nas/" rel="next" title="从零开始的 NAS 生活">
+                            从零开始的 NAS 生活 <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="article-comment">
+        <div id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
+        <div><a class="comment-btn" id="comment-btn">发表评论</a></div>
+
+        <div class="article-comment-title">
+            <span class="article-comment-word">评论</span>
+            <div class="article-comment-line"></div>
+        </div>
+
+        <div class="article-comment-list">
+            <ol class="article-comment-list-ol">
+                <li>
+                    <div>
+                        <div class="article-comment-list-left">
+                            <img class="article-comment-headimg" src="../static/img/header.jpg" />
+                        </div>
+                        <div class="article-comment-list-right">
+                            <span class="comment-right-name">Seaguller大魔王</span>
+                            <span class="comment-right-self">#1楼</span>
+                            <span class="comment-right-time">2018-10-20 09:12</span>
+                            <div class="comment-right-text">
+                                嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！
+                            </div>
+                            <div>
+                                <a class="comment-right-btn" id="comment-right-btn-1">回复</a>
+                            </div>
+                            <div class="comment-reply-squ" id="comment-reply-squ-1">
+                                <div class="comment-reply"></div>
+                                <div class="comment-reply-btn-div">
+                                    <a class="comment-reply-btn-left" id="comment-reply-btn-left-1">取消回复</a>
+                                    <a class="comment-reply-btn-right">发表评论</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-comment-list-reply">
+                        <ol class="article-comment-list-ol">
+                            <li>
+                                <div>
+                                    <div class="article-comment-list-left">
+                                        <img class="article-comment-headimg" src="../static/img/header.jpg" />
+                                    </div>
+                                    <div class="article-comment-list-right">
+                                        <span class="comment-right-name">Seaguller大魔王</span>
+                                        <span class="comment-right-time">2018-10-20 09:12</span>
+                                        <div class="comment-right-text">
+                                            <span class="comment-right-text-replyname">@Seaguller大魔王</span>
+                                            <span>嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！</span>
+                                        </div>
+                                        <div>
+                                            <a class="comment-right-btn" id="comment-right-btn-11">回复</a>
+                                        </div>
+                                        <div class="comment-reply-squ" id="comment-reply-squ-11">
+                                            <div class="comment-reply"></div>
+                                            <div class="comment-reply-btn-div">
+                                                <a class="comment-reply-btn-left"  id="comment-reply-btn-left-11">取消回复</a>
+                                                <a class="comment-reply-btn-right">发表评论</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div></div>
+                            </li>
+                        </ol>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="main-left">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p id="left-pp">你应该要学着做你自己</p>
+            <p>面对真实的自我</p>
+            <p>只要做到这一点</p>
+            <p>你就什么都不用惧怕</p>
+            <p id="left-pp-last">--- 《猫的报恩》</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right"></i>
+        <div class="main-left-last-text">
+            <div id="main-left-last-text-one">无论夜晚多么黑暗，</div>
+            <div id="main-left-last-text-two">黎明总会如约而至。</div>
+        </div>
+    </div>
+    <div class="waifu ">
+        <div class="waifu-tips" style="opacity:0"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<!-- 字体阴影特效 -->
+<script type="text/javascript" src="../static/js/shine.min.js"></script>
+<!-- 标题栏浮动隐藏JS -->
+<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
+<!-- 主页JS -->
+<script src="../static/js/main.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/pagedown/1.0/Markdown.Converter.min.js"></script>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/jquery.share.min.js"></script>
+<script src="../static/js/articleShow.js" type="text/javascript"></script>
+<!-- 背景线条 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
+
+<script type="text/javascript" src="../static/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="../static/live2d/js/waifu.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "../static/live2d/model/kesshouban/model.json");
+</script>
+</body>
+</html>

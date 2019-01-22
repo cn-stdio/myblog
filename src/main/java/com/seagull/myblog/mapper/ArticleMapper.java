@@ -45,4 +45,13 @@ public interface ArticleMapper {
      */
     @Select("SELECT create_time FROM article ORDER BY create_time DESC")
     public List<Date> queryAllCreateTime();
+
+    /**
+     * 按照文章id查询指定文章
+     * @param articleId 文章Id
+     * @return
+     */
+    @ResultMap("article")
+    @Select("SELECT * FROM article WHERE article_id = #{articleId}")
+    public Article queryArticleByArticleId(long articleId);
 }

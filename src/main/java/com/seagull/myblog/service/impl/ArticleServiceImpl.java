@@ -57,4 +57,57 @@ public class ArticleServiceImpl implements ArticleService {
 
         return returnArticles;
     }
+
+    /**
+     * 获得指定文章的内容
+     * @param articleId 文章Id
+     * @return 对应JSON格式数据
+     */
+    @Override
+    public JSONObject getArticlesContent(long articleId) {
+        JSONObject returnArticleContent = new JSONObject();
+
+        returnArticleContent.put("code", 200);
+        returnArticleContent.put("msg", "success");
+
+        List<Article> articles = articleMapper.queryAllArticles();
+        Article article = articleMapper.queryArticleByArticleId(articleId);
+
+        JSONObject data = new JSONObject();
+        data.put("title", article.getTitle());
+        data.put("content", article.getContent());
+        data.put("type", article.getType());
+        data.put("createTime", article.getCreateTime().getTime());
+        data.put("mainLabel", article.getMainLabel());
+        data.put("read", article.getAttribute().getRead());
+
+        for(int i=0; i<articles.size(); i++) {
+            if(articles.get(i).getArticleId() == articleId) {
+                if(i==0) {
+                    data.put("prevArticleId", "no");
+                    data.put("prevArticleTitle", "no");
+                    data.put("nextArticleId", articles.get(i+1).getArticleId());
+                    data.put("nextArticleTitle", articles.get(i+1).getTitle());
+                    break;
+                }
+                if(i==articles.size()-1) {
+                    data.put("nextArticleId", "no");
+                    data.put("nextArticleTitle", "no");
+                    data.put("prevArticleId", articles.get(i-1).getArticleId());
+                    data.put("prevArticleTitle", articles.get(i-1).getTitle());
+                    break;
+                }
+
+                data.put("prevArticleId", articles.get(i-1).getArticleId());
+                data.put("prevArticleTitle", articles.get(i-1).getTitle());
+                data.put("nextArticleId", articles.get(i+1).getArticleId());
+                data.put("nextArticleTitle", articles.get(i+1).getTitle());
+                break;
+            }
+        }
+
+        returnArticleContent.put("data", data);
+
+        return returnArticleContent;
+    }
 }

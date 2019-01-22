@@ -1,0 +1,311 @@
+#main-middle-article, .article-content {
+    height: auto;
+}
+.article-content, #main-right-article-catalog {
+    word-wrap: break-word;
+}
+
+hr {
+    width: 90%;
+    margin-left: 27px;
+}
+
+.social-share {
+    float: left;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-family: "xiaodanchun" !important;
+    font-size: 20px;
+}
+.article-btn {
+    background: lightpink;
+    font-size: 18px;
+    float: right;
+    margin-right: 80px;
+}
+.article-btn:hover {
+    background-color: lightsalmon;
+}
+#article-share {
+    margin-top: 35px;
+}
+
+.article-page {
+    margin-top: 15px;
+}
+.article-page a {
+    position: relative;
+    display: block;
+    line-height: 25px;
+    font-size: 15px;
+    color: #555;
+    border-bottom: none;
+}
+.article-page a:hover {
+    color: #222;
+    border-bottom: none;
+}
+#article-page-prev {
+    float: left;
+    margin-left: 50px;
+    padding: 20px 0 20px;
+}
+#article-page-next {
+    float: right;
+    margin-right: 70px;
+    padding: 20px 0 20px;
+}
+/*
+.article-tags {
+    float: right;
+    margin-right: 40px;
+    font-size: 13px;
+}*/
+
+.article-comment {
+    position: absolute;
+    width: 666px;
+    height: 140px;
+    left: 420px;
+    box-shadow: 0px 0px 10px 0.5px #4398ed;
+    border: 1px solid #4398ed;
+    padding: 15px 15px 5px;
+    border-radius: 7px;
+    background-color: transparent;
+}
+#comment-init-text {
+    font-family: "xiaodanchun";
+    font-size: 22px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+#comment-btn {
+    background: #97dffd;
+    color: #fff;
+    font-size: 18px;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+
+    margin-top: 95px;
+    margin-left: 530px;
+}
+#comment-btn:hover {
+    background-color: slateblue;
+    color: #fff;
+}
+
+.article-comment-title {
+    margin-top: 30px;
+}
+.article-comment-word {
+    margin-left: -18px;
+    font-size: 17px;
+    padding: 6px 15px 6px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top: 1px solid #4398ed;
+    border-left: 1px solid #4398ed;
+    border-right: 1px solid #4398ed;
+    color: #4398ed;
+}
+.article-comment-line {
+    left: 46px;
+    width: 96%;
+    border-bottom: 1px solid #4398ed;
+    margin-top: 3px;
+    position: relative;
+}
+
+.article-comment {
+    background: url(../img/comment.png)  right bottom no-repeat;
+}
+
+.article-comment-list {
+    margin-top: 40px;
+    margin-left: -43px;
+}
+.article-comment-list-ol {
+    list-style: none;
+}
+.article-comment-headimg {
+    top: 20px;
+    right: 10px;
+    border-radius: 50px;
+    border: none;
+    width: 60px;
+    height: 60px;
+}
+
+.article-comment-list-left {
+    float: left;
+}
+.article-comment-list-right {
+    margin-left: 70px;
+}
+.comment-right-name {
+    font-family: "xiaodanchun";
+    font-size: 20px;
+    color: skyblue;
+}
+.comment-right-self {
+    font-family: "xiaodanchun";
+    font-size: 20px;
+    margin-left: 35px;
+}
+.comment-right-text {
+    margin-top: 5px;
+    font-size: 16px;
+}
+.comment-right-time {
+    float: right;
+    margin-right: 15px;
+    font-family: "xiaodanchun";
+    font-size: 20px;
+    color: darkgrey;
+}
+.comment-right-btn {
+    background: #97dffd;
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+
+    margin-right: 10px;
+    margin-top: 8px;
+}
+.comment-right-btn:hover {
+    background-color: slateblue;
+    color: #fff;
+}
+.article-comment-list-reply {
+    margin-top: 18px;
+    margin-left: 37px;
+}
+.comment-right-text-replyname {
+    font-weight: bolder;
+    font-size: 15px;
+    margin-right: 8px;
+}
+
+.comment-reply {
+    width: 550px;
+    height: 140px;
+    left: 420px;
+    box-shadow: 0px 0px 10px 0.5px lightsalmon;
+    border: 1px solid lightsalmon;
+    padding: 15px 15px 5px;
+    border-radius: 7px;
+
+    margin-top: 20px;
+    background: url(../img/comment.png)  right bottom no-repeat;
+}
+.comment-reply-btn-div {
+    margin-top: 20px;
+}
+.comment-reply-btn-right {
+    background: pink;
+    color: #fff;
+    font-size: 18px;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+    margin-left: 256px;
+}
+.comment-reply-btn-right:hover {
+    background-color: sandybrown;
+    color: #fff;
+}
+.comment-reply-btn-left {
+    background: pink;
+    color: #fff;
+    font-size: 18px;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+    margin-left: 40px;
+}
+.comment-reply-btn-left:hover {
+    background-color: sandybrown;
+    color: #fff;
+}
+.comment-reply-squ {
+    display: none;
+}
+
+/* 文章目录级联序号 */
+#main-right-article-catalog li {
+    list-style: none;
+}
+#main-right-article-catalog li:before {
+    content: counters(item, ".", decimal)".";
+    counter-increment: item;
+    color: cornflowerblue;
+}
+#main-right-article-catalog ol {
+    counter-reset: item;
+}
+#main-right-article-catalog a {
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    transition-property: all;
+    color: cornflowerblue;
+    border-bottom-color: #ccc;
+}
+#main-right-article-catalog a:hover {
+    color: lightskyblue;
+    border-bottom-color: lightskyblue;
+}
+#main-right-article-catalog {
+    font-size: 17px;
+    font-family: "shaonv";
+
+    margin-top: 10px;
+}
+.article-catalog-active:before {
+    color: #fc6423 !important;
+}
+.article-catalog-active>a {
+    color: #fc6423 !important;
+}
+.article-catalog-active>a:hover {
+    color: #fc6423 !important;
+    border-bottom-color: #fc6423 !important;
+}
+
+#main-right-article-catalog {
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#card-weixin-divout-double {
+    top: 322px !important;
+}
+
