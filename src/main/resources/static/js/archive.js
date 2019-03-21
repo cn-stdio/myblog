@@ -53,16 +53,16 @@ function pageTurn(p, dd) {
                         '                                            <a href="/archives?archive=2018-12-20">'+ timeStampToDate(obj['createTime']) +'</a>\n' +
                         '                                        </span>\n' +
                         '                                        <span class="am-icon-folder">\n' +
-                        '                                            <a href="/categories?category=面试">'+ obj['type'] +'</a>\n' +
+                        '                                            <a href="/type/'+ obj['type'] +'">'+ obj['type'] +'</a>\n' +
                         '                                        </span><br/>\n' +
                         '                                        <span class="am-icon-tags">\n';
 
                     var lAttributeLabel = obj['attributeLabel'].length;
                     $.each(obj['attributeLabel'], function (index, obj) {
                         if(index == lAttributeLabel-1) {
-                            str += '<a href="/tags?tag=面试">'+ obj +'</a>\n';
+                            str += '<a href="/tag/'+ obj +'">'+ obj +'</a>\n';
                         } else {
-                            str += '<a href="/tags?tag=面试">'+ obj +'</a>，\n';
+                            str += '<a href="/tag/'+ obj +'">'+ obj +'</a>，\n';
                         }
                     });
 
@@ -86,10 +86,24 @@ function pageTurn(p, dd) {
                         str = "";
                         str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a>';
                         lUl.html(str);
+                    } else if (p == data['pages']-1) {
+                        str = "";
+                        str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
+                        lUl.html(str);
+
+                        /* 尾部footer定位 */
+                        var cw = $(".prev").offset().top;
+                        console.log(cw);
+                        $(".footer").css("top", cw+100);
                     } else if (p == data['pages']) {
                         str = "";
                         str += '<a class="prev" href="#turn-head" style="margin-right: 570px;" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
                         lUl.html(str);
+
+                        /* 尾部footer定位 */
+                        var cw = $(".prev").offset().top;
+                        console.log(cw);
+                        $(".footer").css("top", cw+100);
                     } else {
                         str = "";
                         str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';

@@ -1,6 +1,7 @@
 body {
     font-size: 14px;
     cursor: url(../cursor/rain.cur),url(../cursor/rain.gif),auto;
+
 }
 #header-text {
     position: absolute;
@@ -35,7 +36,7 @@ a:hover {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 885%;
+    height: 649.5px;
     width: 100%;
     background-size: 100%;
 }
@@ -414,6 +415,20 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     color: lightblue;
 }
 
+.footer {
+    padding: 15px 0 10px;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    line-height: 1.5;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 130px;
+
+    color: cornflowerblue;
+}
 
 
 

@@ -53,4 +53,21 @@ public class PageControl {
 
         return returnArticleContent;
     }
+
+    /**
+     * 文章喜欢数+1
+     * @param request 请求域
+     * @return JSON
+     */
+    @ResponseBody
+    @GetMapping("/likeArticle")
+    public JSONObject likeArticle(HttpServletRequest request) {
+        JSONObject returnLikeArticle = new JSONObject();
+
+        long articleId = Long.valueOf(request.getParameter("articleId"));
+
+        returnLikeArticle = articleService.updateArticleLike(articleId);
+
+        return returnLikeArticle;
+    }
 }

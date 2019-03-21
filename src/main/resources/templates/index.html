@@ -14,7 +14,7 @@
 <body>
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div id="table-picture" style="background-image: url('../static/img/bk.jpg')"></div>
+    <div id="table-picture" style="background-image: url('../static/img/bk-10.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
             <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -31,8 +31,8 @@
                             <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
                             <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
                             <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
-                            <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
-                            <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+                            <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
+                            <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
 
                             <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
                         </ul>
@@ -173,6 +173,15 @@
         <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
     </div>
 </div>
+<footer id="footer" class="footer">
+    <hr/>
+    <div>
+        <p>嘀嗒~ 嘀嗒~ 小博客自破壳起已经运行&nbsp;&nbsp;<span id="clock"></span>&nbsp;&nbsp;啦！</p>
+        <p>© 2018-2019 Seaguller - <i class="fa fa-heart throb" style="color:#d43f57"></i> 高博宇 版权所有</p>
+        <p>蜀ICP备18000229号</p>
+    </div>
+</footer>
+
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
     <!-- 字体阴影特效 -->
@@ -203,5 +212,40 @@
             $("#weixin-img").css("display", "none");
         });
     </script>
+    <script type="text/javascript">
+        /* 尾部定时 */
+        var int = self.setInterval("clock()", 1000);
+        function clock()
+        {
+            var nowDay = new Date();
+            var localDay = new Date("2019-03-17 00:00:00");
+            var time = parseInt((nowDay.getTime()-localDay.getTime())/1000);
+            /*
+                    var runTimeDate = new Date(parseInt(time));
+                    var runTime = runTimeDate.getDay() + "天" + runTimeDate.getHours() + "小时" + runTimeDate.getMinutes() + "分" + runTimeDate.getSeconds() + "秒";
+            */
+            var min = parseInt(time/60);
+            var hour = parseInt(time/60/60);
+            var day = parseInt(time/60/60/24);
+
+            var runTime = "0";
+            if(min == 0) {
+                runTime = time + "秒";
+            } else if(hour == 0) {
+                runTime = min + "分" + (time-min*60) + "秒";
+            } else if(day == 0) {
+                var mh = min-hour*60;
+                runTime = hour + "时" + mh + "分" + (time-hour*3600-mh*60) + "秒"
+            } else {
+                var hd = hour - day*24;
+                var mh = min - day*24*60 - hd*60;
+                runTime = day + "天" + hd + "时" + mh + "分" + (time-day*24*3600-hd*3600-mh*60) + "秒";
+            }
+
+            $("#clock").html(runTime);
+        }
+    </script>
+
 </body>
+
 </html>

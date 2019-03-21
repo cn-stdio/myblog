@@ -30,4 +30,5 @@ public class ArticleControl {
 
         return returnArticles;
     }
+
 }

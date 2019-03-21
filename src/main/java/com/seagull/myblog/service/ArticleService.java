@@ -28,4 +28,11 @@ public interface ArticleService {
      */
     JSONObject getArticlesContent(long articleId);
 
+    /**
+     * 文章喜欢数增加
+     * @param articleId 文章ID
+     * @return JSON
+     */
+    JSONObject updateArticleLike(long articleId);
+
 }

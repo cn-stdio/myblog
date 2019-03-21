@@ -1,0 +1,82 @@
+#friend-title {
+    position: absolute;
+    left: 645px;
+    top: 690px;
+    font-size: 30px;
+}
+    #friend-title-text {
+        font-size: 30px;
+        font-family: "xionghaizi";
+        color: hotpink;
+    }
+    #reddit-alien-first {
+        position: absolute;
+        left: -47px;
+        color: darkturquoise;
+    }
+    #reddit-alien-second {
+        position: absolute;
+        left: 280px;
+        color: darkturquoise;
+    }
+
+#friend-src {
+    position: absolute;
+    left: 450px;
+    top: 750px;
+    width: 650px;
+}
+    .friend-a {
+        padding: 0 10px 0 90px;
+        height: 90px;
+        color: #555;
+        border-bottom: 0;
+        text-decoration: none;
+        background-color: transparent;
+        display: block;
+        margin-left: 10px;
+    }
+    #friend-src ul {
+        list-style-type: none;
+        display: inline;
+        position: absolute;
+    }
+    #friend-src ul li {
+        float: left;
+        width: 50%;
+        position: relative;
+        transition: all .3s ease-out;
+        border-radius: 5px;
+        list-style: none;
+        height: 100px;
+    }
+    #friend-src ul li:hover {
+        background: rgba(230,244,250,.5);
+    }
+    .link-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        position: absolute;
+        top: 15px;
+        left: 25px;
+        cursor: pointer;
+        margin: 0;
+    }
+    .link-text {
+        margin-top: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        font-family: "xiaodanchun";
+    }
+    .link-text-introduce {
+        line-height: 24px;
+        margin-top: 6px;
+    }
+    .friend-a:hover {
+        border-bottom-color: #222;
+        color: #222;
+    }
+    .friend-a:focus {
+        color: #222;
+    }

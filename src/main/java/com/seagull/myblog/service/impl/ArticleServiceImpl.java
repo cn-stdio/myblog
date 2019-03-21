@@ -10,6 +10,8 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,12 +46,18 @@ public class ArticleServiceImpl implements ArticleService {
         JSONObject data = new JSONObject();
         JSONArray datas = new JSONArray();
         articles.forEach(article -> {
+            JSONArray returnJsonArray = new JSONArray();
+            List<String> labels = new ArrayList<>();
+            data.put("articleId", article.getArticleId());
             data.put("title", article.getTitle());
             data.put("createTime", article.getCreateTime().getTime());
             data.put("type", article.getType());
             data.put("summary", article.getSummary());
             data.put("read", article.getAttribute().getRead());
-            data.put("mainLabel", article.getMainLabel());
+            labels = Arrays.asList(article.getAttributeLabel().split(","));
+            returnJsonArray = JSONArray.fromObject(labels);
+            data.put("attributeLabel", returnJsonArray.toString());
+            data.put("attributeLabelCount", labels.size());
             datas.add(data);
         });
 
@@ -66,6 +74,8 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public JSONObject getArticlesContent(long articleId) {
         JSONObject returnArticleContent = new JSONObject();
+        JSONArray returnJsonArray = new JSONArray();
+        List<String> labels = new ArrayList<>();
 
         returnArticleContent.put("code", 200);
         returnArticleContent.put("msg", "success");
@@ -76,9 +86,14 @@ public class ArticleServiceImpl implements ArticleService {
         JSONObject data = new JSONObject();
         data.put("title", article.getTitle());
         data.put("content", article.getContent());
+        data.put("summary", article.getSummary());
         data.put("type", article.getType());
         data.put("createTime", article.getCreateTime().getTime());
-        data.put("mainLabel", article.getMainLabel());
+
+        labels = Arrays.asList(article.getAttributeLabel().split(","));
+        returnJsonArray = JSONArray.fromObject(labels);
+        data.put("attributeLabel", returnJsonArray.toString());
+        data.put("attributeLabelCount", labels.size());
         data.put("read", article.getAttribute().getRead());
 
         for(int i=0; i<articles.size(); i++) {
@@ -109,5 +124,28 @@ public class ArticleServiceImpl implements ArticleService {
         returnArticleContent.put("data", data);
 
         return returnArticleContent;
+    }
+
+    /**
+     * 文章喜欢数增加
+     * @param articleId 文章ID
+     * @return JSON
+     */
+    @Override
+    public JSONObject updateArticleLike(long articleId) {
+        JSONObject likeArticle = new JSONObject();
+
+        int flag = articleMapper.updateArticleLikeById(articleId);
+
+        if(flag == 0) {
+            likeArticle.put("code", 500);
+            likeArticle.put("msg", "false");
+
+            return likeArticle;
+        }
+
+        likeArticle.put("code", 200);
+        likeArticle.put("msg", "success");
+        return likeArticle;
     }
 }

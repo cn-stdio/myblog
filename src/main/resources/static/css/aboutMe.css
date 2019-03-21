@@ -1,0 +1,44 @@
+.aboutMe-list {
+    position: absolute;
+    top: 650px;
+    left: 500px;
+}
+    .aboutMe-title-text {
+        font-family: shaonv;
+        font-size: 40px;
+        color: aquamarine;
+        margin-left: -50px;
+        font-weight: bold;
+    }
+    .am-icon-hand-o-right {
+        position: absolute;
+        left: 80px;
+    }
+    .aboutMe-main-text {
+        font-family: "shaonv";
+        font-size: 18px;
+        width: 580px;
+        text-indent: 2em;
+        margin-left: -20px;
+    }
+    .aboutMe-main-img {
+        height: 300px;
+        margin-left: 85px;
+    }
+    .aboutMe-main-img2 {
+        height: 300px;
+        margin-left: 128px;
+        margin-top: -22px;
+    }
+    .aboutMe-main-img3 {
+        height: 250px;
+        margin-left: 115px;
+    }
+
+    .text-star {
+        position: absolute;
+        left: -80px;
+    }
+    .aboutMe-main-text-like {
+        color: lightskyblue;
+    }

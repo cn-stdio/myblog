@@ -40,6 +40,12 @@ window.onload= function() {
             oDiv.style = "";
         }
     }
+
+    /* 尾部footer定位 */
+    var cw = document.body.scrollHeight;
+    console.log(cw);
+    $(".footer").css("top", cw+50);
+
 };
 
 /* 鼠标点击出现颜文字 */
@@ -96,3 +102,5 @@ window.onload= function() {
         }
     }
 })();
+
+

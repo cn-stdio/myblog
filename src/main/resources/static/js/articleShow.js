@@ -31,7 +31,7 @@ function pageContent() {
                 str += '<div class="main-middle" id="main-middle-article" style="top:690px;&quot;">\n' +
                     '            <div class="main-middle-article">\n' +
                     '                <div class="article-badge">\n' +
-                    '                    <a class="badge-a">'+ data['data']['type'] +'</a>\n' +
+                    '                    <a href="/type/'+ data['data']['type'] +'" class="badge-a">'+ data['data']['type'] +'</a>\n' +
                     '                </div>\n' +
                     '                <h1 class="article-title">\n' +
                     '                    <a class="article-title-link">'+ data['data']['title'] +'</a>\n' +
@@ -39,10 +39,18 @@ function pageContent() {
                     '                <div class="article-meta">\n' +
                     '                    <span class="am-icon-calendar"></span>\n' +
                     '                    <span class="meta-text meta-calendar-text">'+ timeStampToDate(data['data']['createTime']) +'</span>\n' +
-                    '                    <a class="am-icon-tags-aa" >\n' +
-                    '                        <span class="am-icon-tags"></span>\n' +
-                    '                        <span class="meta-text meta-tags-text">'+ data['data']['mainLabel'] +'</span>\n' +
-                    '                    </a>\n' +
+                    '                    <span class="am-icon-tags"></span>\n' +
+                    '                    <span class="meta-text meta-tags-text">\n';
+
+                for (var i=0; i< data['data']['attributeLabelCount']; i++) {
+                    if (i !=  data['data']['attributeLabelCount']-1) {
+                        str+='<span><a class="am-icon-tags-aa" href="/tag/'+ data['data']['attributeLabel'][i] +'">'+  data['data']['attributeLabel'][i] +'</a>,</span>\n';
+                    } else {
+                        str+='<span><a class="am-icon-tags-aa" href="/tag/'+ data['data']['attributeLabel'][i] +'">'+  data['data']['attributeLabel'][i] +'</a></span>\n';
+                    }
+                }
+
+                str +=    '                    </span>\n' +
                     '                    <span class="am-icon-eye"></span>\n' +
                     '                    <span class="meta-text meta-eye-text">'+ data['data']['read'] +'</span>\n' +
                     '                </div>\n' +
@@ -50,7 +58,7 @@ function pageContent() {
                     '                </div>\n' +
                     '                \n' +
                     '                <div id="article-share">\n' +
-                    '                    <div class="social-share" data-initialized="true">\n' +
+                    '                    <div class="social-share">\n' +
                     '                        分享到：\n' +
                     '                        <a href="#" class="social-share-icon icon-weibo"></a>\n' +
                     '                        <a href="#" class="social-share-icon icon-qq"></a>\n' +
@@ -58,7 +66,7 @@ function pageContent() {
                     '                        <a href="#" class="social-share-icon icon-qzone"></a>\n' +
                     '                    </div>\n' +
                     '                    <div class="article-button">\n' +
-                    '                        <a class="article-btn" href="#">❤ 喜欢 ❤</a>\n' +
+                    '                        <a class="article-btn" href="/likeArticle">❤ 喜欢 ❤</a>\n' +
                     '                    </div>\n' +
                     '                    <hr/>\n' +
                     '                    <div class="article-page">\n' +
@@ -88,6 +96,21 @@ function pageContent() {
                     $("#article-page-next").empty();
                     $("#article-page-next").html('');
                 }
+
+                var $config = {
+                    url                 : window.location.href,// 网址，默认使用 window.location.href
+                    source              : '', // 来源（QQ空间会用到）, 默认读取head标签：<meta name="site" content="http://overtrue" />
+                    title               : data['data']['title'], // 标题，默认读取 document.title 或者 <meta name="title" content="share.js" />
+                    description         : data['data']['summary'], // 描述, 默认读取head标签：<meta name="description" content="PHP弱类型的实现原理分析" />
+                    image               : '', // 图片, 默认取网页中第一个img标签
+                    sites               : ['weibo', 'qq', 'wechat', 'qzone'], // 启用的站点
+                    disabled            : ['google', 'facebook', 'twitter'], // 禁用的站点
+                    wechatQrcodeTitle   : '微信扫一扫：分享', // 微信二维码提示文字
+                    wechatQrcodeHelper  : '<p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p>',
+                    target : '_blank', // 打开方式
+                    initialized: true // 不自动生成图标
+                };
+                $('.social-share').share($config);
 
             },
             error: function () {
@@ -373,11 +396,15 @@ function rep(num, flag) {
     var strRepId = "#comment-reply-squ-" + num;
 
     if(flag=="open") {
+        $(".comment-reply-squ").css("display", "none");
         $(strRepId).css("display", "block");
     } else if(flag=="close") {
         $(strRepId).css("display", "none");
     }
 }
+
+var footTall;
+var footFlag = 0;
 $(".comment-right-btn").click(function () {
     var strId = $(this).attr('id');
     var indx = strId.indexOf("-");
@@ -386,6 +413,17 @@ $(".comment-right-btn").click(function () {
     strId = strId.substring(indx);
 
     rep(strId, "open");
+
+    /* 尾部footer定位 */
+    if(footFlag == 0) {
+        footTall = $(".footer").css("top");
+        var cw = document.body.scrollHeight;
+        footFlag = 1;
+    } else {
+        var cw = footTall;
+    }
+    console.log(cw);
+    $(".footer").css("top", cw+50);
 });
 $(".comment-reply-btn-left").click(function () {
     var strId = $(this).attr('id');
@@ -396,5 +434,9 @@ $(".comment-reply-btn-left").click(function () {
     strId = strId.substring(indx);
 
     rep(strId, "close");
+
+    /* 尾部footer定位 */
+    $(".footer").css("top", footTall);
+    footFlag = 0;
 });
 

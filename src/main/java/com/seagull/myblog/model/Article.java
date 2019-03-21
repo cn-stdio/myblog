@@ -47,10 +47,6 @@ public class Article {
      */
     private Date updateTime;
     /**
-     * 文章主要标签
-     */
-    private String mainLabel;
-    /**
      * 文章属性标签
      */
     private String attributeLabel;

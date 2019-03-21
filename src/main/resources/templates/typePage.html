@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Seaguller的小窝~</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://dreamsky.github.io/main/blog/common/init.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
+    <link href="../static/css/article.css" rel="stylesheet"/>
+    <link href="../static/css/archive.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" type="text/css" href="../static/timeArchive/css/jquery.eeyellow.Timeline.css" />
+</head>
+<body>
+<input id="typeName" type="hidden" th:value="${type}" />
+<div id="main-class-text">
+    <!-- 主页大图 -->
+    <div id="table-picture" style="background-image: url('../static/img/bk-10.jpg')"></div>
+    <!-- 标题栏 -->
+    <div class="head-one">
+        <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+            <div class="am-container">
+                <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                    <ul class="am-nav am-nav-pills am-topbar-nav">
+                        <a id="header-text" href="/">Seaguller的小窝~</a>
+                        <li id="li-main">
+                            <a href="/" class="header-a-main" id="header-a-main-one">
+                                <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                            </a>
+                        </li>
+                        <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                        <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                        <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                        <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
+                        <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                        <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- 文字喵 -->
+    <h1 id="headline" class="head-picture-font" >喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
+    <!-- 旋转小陀螺头像 -->
+    <div class="head-sculpture"><img src="../static/img/maoer.gif" class="header-img-one"/></div>
+    <!-- 指定页面跳转位置 -->
+    <div id="turn-head"></div>
+    <!-- 小名片（随页面滚动的哦） -->
+    <div class="main-right" id="main-right-div">
+        <!-- 名片目录，点进文章的时候再加进去 -->
+        <div id="right-catalog-div">
+            <ul class="right-catalog">
+                <li class="right-catalog-article right-catalog-style">标签归类</li>
+                <li class="right-catalog-user">作者信息</li>
+            </ul>
+        </div>
+
+        <!-- 下拉信息，点击时加入 -->
+        <div id="main-right-text">
+            <ul class="am-list am-list-border" id="main-right-text-ul">
+                <!--<li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>
+                <li><a href="#">>> 2018年11月</a></li>-->
+            </ul>
+        </div>
+
+    </div>
+    <!-- 标签云（未完成） -->
+    <div class="main-right-down"></div>
+    <!-- 主体内容 -->
+    <div id="art-list">
+
+        <div class="container-before-icon">
+            <!--<span class="am-icon-star am-icon-lg"></span>
+            目前总计 10 篇日志。 (゜-゜)つロ 干杯~-->
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="VivaTimeline">
+                        <!--<dl>
+                            <dt>2018年10月</dt>
+                            <dd class="pos-right clearfix">
+                                <div class="circ"></div>
+                                <div class="time">10月21日</div>
+                                <div class="events">
+                                    <div class="events-header">Spring boot 初步学习记录</div>
+                                    <div class="events-body">
+                                        <span class="am-icon-calendar">
+                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
+                                        </span>
+                                        <span class="am-icon-folder">
+                                            <a href="/categories?category=面试">面试</a>
+                                        </span><br/>
+                                        <span class="am-icon-tags">
+                                            <a href="/tags?tag=面试">面试</a>，
+                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
+                                            <a href="/tags?tag=原创">原创</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dd class="pos-left clearfix">
+                                <div class="circ"></div>
+                                <div class="time">10月22日</div>
+                                <div class="events">
+                                    <div class="events-header">Spring boot 初步学习记录</div>
+                                    <div class="events-body">
+                                        <span class="am-icon-calendar">
+                                            <a href="/archives?archive=2018-12-20">2018-12-20</a>
+                                        </span>
+                                        <span class="am-icon-folder">
+                                            <a href="/categories?category=面试">面试</a>
+                                        </span><br/>
+                                        <span class="am-icon-tags">
+                                            <a href="/tags?tag=面试">面试</a>，
+                                            <a href="/tags?tag=HashMap">Hash1231231Map</a>，
+                                            <a href="/tags?tag=原创">原创</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl></dl>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="article-pagination" role="navigation">
+            <!--<a class="next" href="#">下一页</a>
+            <a class="prev" href="/" style="margin-right: 570px;">上一页</a>-->
+        </nav>
+
+    </div>
+
+    <div class="main-left">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p id="left-pp">你应该要学着做你自己</p>
+            <p>面对真实的自我</p>
+            <p>只要做到这一点</p>
+            <p>你就什么都不用惧怕</p>
+            <p id="left-pp-last">--- 《猫的报恩》</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right"></i>
+        <div class="main-left-last-text">
+            <div id="main-left-last-text-one">无论夜晚多么黑暗，</div>
+            <div id="main-left-last-text-two">黎明总会如约而至。</div>
+        </div>
+    </div>
+    <div class="waifu ">
+        <div class="waifu-tips" style="opacity:0"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    </div>
+</div>
+<footer id="footer" class="footer">
+    <hr/>
+    <div>
+        <p>嘀嗒~ 嘀嗒~ 小博客自破壳起已经运行&nbsp;&nbsp;<span id="clock"></span>&nbsp;&nbsp;啦！</p>
+        <p>© 2018-2019 Seaguller - <i class="fa fa-heart throb" style="color:#d43f57"></i> 高博宇 版权所有</p>
+        <p>蜀ICP备18000229号</p>
+    </div>
+</footer>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<!-- 字体阴影特效 -->
+<script type="text/javascript" src="../static/js/shine.min.js"></script>
+<!-- 标题栏浮动隐藏JS -->
+<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
+<!-- 主页JS -->
+<script src="../static/js/main.js" type="text/javascript"></script>
+<script src="../static/js/type.js" type="text/javascript"></script>
+<!-- 背景线条 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
+
+<script type="text/javascript" src="../static/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="../static/live2d/js/waifu.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "../static/live2d/model/kesshouban/model.json");
+</script>
+<script type="text/javascript">
+    /* 微信翻转 */
+    $(".fa-weixin").mouseover(function () {
+        $(".card-weixin-divout").css("display", "block");
+        $(".card-weixin-divin").css("display", "block");
+        $("#weixin-img").css("display", "block");
+    });
+    $(".fa-weixin").mouseout(function () {
+        $(".card-weixin-divout").css("display", "none");
+        $(".card-weixin-divin").css("display", "none");
+        $("#weixin-img").css("display", "none");
+    });
+</script>
+<script type="text/javascript">
+    /* 尾部定时 */
+    var int = self.setInterval("clock()", 1000);
+    function clock()
+    {
+        var nowDay = new Date();
+        var localDay = new Date("2019-03-17 00:00:00");
+        var time = parseInt((nowDay.getTime()-localDay.getTime())/1000);
+        /*
+                var runTimeDate = new Date(parseInt(time));
+                var runTime = runTimeDate.getDay() + "天" + runTimeDate.getHours() + "小时" + runTimeDate.getMinutes() + "分" + runTimeDate.getSeconds() + "秒";
+        */
+        var min = parseInt(time/60);
+        var hour = parseInt(time/60/60);
+        var day = parseInt(time/60/60/24);
+
+        var runTime = "0";
+        if(min == 0) {
+            runTime = time + "秒";
+        } else if(hour == 0) {
+            runTime = min + "分" + (time-min*60) + "秒";
+        } else if(day == 0) {
+            var mh = min-hour*60;
+            runTime = hour + "时" + mh + "分" + (time-hour*3600-mh*60) + "秒"
+        } else {
+            var hd = hour - day*24;
+            var mh = min - day*24*60 - hd*60;
+            runTime = day + "天" + hd + "时" + mh + "分" + (time-day*24*3600-hd*3600-mh*60) + "秒";
+        }
+
+        $("#clock").html(runTime);
+    }
+</script>
+
+</body>
+
+</html>

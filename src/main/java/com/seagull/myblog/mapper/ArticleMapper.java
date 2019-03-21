@@ -54,4 +54,30 @@ public interface ArticleMapper {
     @ResultMap("article")
     @Select("SELECT * FROM article WHERE article_id = #{articleId}")
     public Article queryArticleByArticleId(long articleId);
+
+    /**
+     * 查询包含特定标签的文章
+     * @param label 标签
+     * @return 文章列表
+     */
+    @ResultMap("article")
+    @Select("SELECT * FROM article WHERE POSITION(REPLACE(#{label},' ','') IN REPLACE(`attribute_label`,' ','')) ORDER BY create_time DESC")
+    public List<Article> queryArticlesOfLabel(String label);
+
+    /**
+     * 查询特定类别的文章
+     * @param type 类别
+     * @return 文章列表
+     */
+    @ResultMap("article")
+    @Select("SELECT * FROM article WHERE `type` LIKE #{type} ORDER BY create_time DESC")
+    public List<Article> queryArticlesOfType(String type);
+
+    /**
+     * 文章喜欢数+1
+     * @param articleId 文章ID
+     * @return 更新个数
+     */
+    @Update("UPDATE attribute_article SET `like` = `like` + 1 WHERE article_id = #{articleId}")
+    public int updateArticleLikeById(long articleId);
 }

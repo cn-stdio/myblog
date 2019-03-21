@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,21 @@ public class MyblogApplicationTests {
         List<Article> articles = articleMapper.queryArticlesOfDate(startDate, endDate);
 
         System.out.println(articles);
+    }
+
+    @Test
+    public void testTagSearch() {
+        List<Article> articles = new ArrayList<>();
+
+        articles = articleMapper.queryArticlesOfType("面经");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println(articles);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
     }
 
 }

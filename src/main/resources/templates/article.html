@@ -18,7 +18,7 @@
 <input id="articleId" type="hidden" th:value="${articleId}" />
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div id="table-picture" style="background-image: url('../static/img/bk.jpg')"></div>
+    <div id="table-picture" style="background-image: url('../static/img/bk-10.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
         <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -83,10 +83,12 @@
                 <div class="article-meta">
                     <span class="am-icon-calendar"></span>
                     <span class="meta-text meta-calendar-text">2018年12月9日</span>
-                    <a class="am-icon-tags-aa" href="#">
-                        <span class="am-icon-tags"></span>
-                        <span class="meta-text meta-tags-text">后端</span>
-                    </a>
+                    <span class="am-icon-tags"></span>
+                        <span class="meta-text meta-tags-text">
+                            <span><a class="am-icon-tags-aa" href="#">后端</a>,</span>
+                            <span><a class="am-icon-tags-aa" href="#">spring boot</a>,</span>
+                            <span><a class="am-icon-tags-aa" href="#">spring</a></span>
+                        </span>
                     <span class="am-icon-eye"></span>
                     <span class="meta-text meta-eye-text">0</span>
                 </div>
@@ -110,7 +112,7 @@
                 </div>
 
                 <div id="article-share">
-                    <div class="social-share" data-initialized="true">
+                    <div class="social-share">
                         分享到：
                         <a href="#" class="social-share-icon icon-weibo"></a>
                         <a href="#" class="social-share-icon icon-qq"></a>
@@ -122,11 +124,11 @@
                     </div>
                     <hr/>
                     <div class="article-page">
-                        <a id="article-page-prev" href="/nas/" rel="prev" title="从零开始的 NAS 生活">
-                            <i class="fa fa-chevron-left"></i> 从零开始的 NAS 生活
+                        <a id="article-page-prev" href="/nas/" rel="prev" title="耶">
+                            <i class="fa fa-chevron-left"></i> 耶
                         </a>
-                        <a id="article-page-next" href="/nas/" rel="next" title="从零开始的 NAS 生活">
-                            从零开始的 NAS 生活 <i class="fa fa-chevron-right"></i>
+                        <a id="article-page-next" href="/nas/" rel="next" title="耶">
+                            耶 <i class="fa fa-chevron-right"></i>
                         </a>
                     </div>
                 </div>
@@ -223,6 +225,14 @@
         <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
     </div>
 </div>
+<footer id="footer" class="footer">
+    <hr/>
+    <div>
+        <p>嘀嗒~ 嘀嗒~ 小博客自破壳起已经运行&nbsp;&nbsp;<span id="clock"></span>&nbsp;&nbsp;啦！</p>
+        <p>© 2018-2019 Seaguller - <i class="fa fa-heart throb" style="color:#d43f57"></i> 高博宇 版权所有</p>
+        <p>蜀ICP备18000229号</p>
+    </div>
+</footer>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 <!-- 字体阴影特效 -->
@@ -241,6 +251,40 @@
 <script type="text/javascript" src="../static/live2d/js/waifu.js"></script>
 <script type="text/javascript">
     loadlive2d("live2d", "../static/live2d/model/kesshouban/model.json");
+</script>
+<!-- 定时设置 -->
+<script type="text/javascript">
+    /* 尾部定时 */
+    var int = self.setInterval("clock()", 1000);
+    function clock()
+    {
+        var nowDay = new Date();
+        var localDay = new Date("2019-03-17 00:00:00");
+        var time = parseInt((nowDay.getTime()-localDay.getTime())/1000);
+/*
+        var runTimeDate = new Date(parseInt(time));
+        var runTime = runTimeDate.getDay() + "天" + runTimeDate.getHours() + "小时" + runTimeDate.getMinutes() + "分" + runTimeDate.getSeconds() + "秒";
+*/
+        var min = parseInt(time/60);
+        var hour = parseInt(time/60/60);
+        var day = parseInt(time/60/60/24);
+
+        var runTime = "0";
+        if(min == 0) {
+            runTime = time + "秒";
+        } else if(hour == 0) {
+            runTime = min + "分" + (time-min*60) + "秒";
+        } else if(day == 0) {
+            var mh = min-hour*60;
+            runTime = hour + "时" + mh + "分" + (time-hour*3600-mh*60) + "秒"
+        } else {
+            var hd = hour - day*24;
+            var mh = min - hd*60;
+            runTime = day + "天" + hd + "时" + mh + "分" + (time-day*24-hd*3600-mh*60) + "秒";
+        }
+
+        $("#clock").html(runTime);
+    }
 </script>
 </body>
 </html>
