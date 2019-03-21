@@ -1,0 +1,102 @@
+.register-title-line {
+    width: 980px;
+    height: 28px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 28px;
+    text-align: center;
+}
+.tit {
+    height: 56px;
+    line-height: 56px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 40px;
+    background: #fff;
+    text-align: center;
+    font-family: "shaonv";
+}
+#art-list {
+    position: absolute;
+    top: 700px;
+    left: 280px;
+}
+.am-form-field {
+    width: 400px !important;
+}
+.am-form fieldset {
+    margin-left: 180px;
+    margin-top: 40px;
+}
+.am-form-group-label {
+    font-size: 23px;
+    font-family: "xionghaizi";
+    font-weight: 200;
+}
+.am-form-group-sex {
+    font-size: 20px;
+}
+.group-getTest {
+    position: absolute;
+    top: 397px;
+    left: 600px
+}
+
+#msg_btn {
+    margin-left: 30px;
+}
+
+.am-btn-primary {
+    border-color: #97dffd !important;
+    border-radius: 5px;
+    margin-left: 135px;
+    margin-top: 30px;
+    height: 40px;
+    width: 120px;
+    font-size: 16px;
+}
+.am-btn-primary:hover {
+    border-color: slateblue !important;
+}
+
+#registerUpdateFormBtn {
+    width: 200px !important;
+    border-color: pink !important;
+    background: pink;
+    margin-left: 160px;
+}
+#registerUpdateFormBtn:hover {
+    background-color: slateblue;
+    border-color: slateblue !important;
+    color: #fff;
+}
+
+.icon-success {
+    position: absolute;
+    margin-top: -31px;
+    margin-left: 370px;
+    display: none;
+}
+
+.form-text-error {
+    color: #f45d90;
+    position: absolute;
+    transform: translate3d(100%,0,0);
+    margin-left: 300px;
+    font-size: 17px;
+    font-family: "shaonv";
+    margin-top: -32px;
+
+    display: none;
+}
+#form-sex-judge {
+    color: #f45d90;
+    position: absolute;
+    transform: translate3d(100%,0,0);
+    font-size: 17px;
+    font-family: "shaonv";
+    margin-left: -100px;
+    margin-top: -25px;
+
+    display: none;
+}

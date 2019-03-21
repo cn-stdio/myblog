@@ -430,6 +430,48 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     color: cornflowerblue;
 }
 
+.login-button-head {
+    position: absolute !important;
+    margin-left: 155px;
+}
+.login-button {
+    background-color: transparent;
+    border-radius: 50% !important;
+    border-color: lightskyblue;
 
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
+    padding: unset !important;
+    margin-top: 3px;
+}
+.login-icon {
+    color: lightskyblue;
+}
+.login-content {
+    min-width: auto !important;
+    left: -53px;
+}
+.login-content:after, .login-content:before {
+    left: 62px !important;
+}
+.login-content-a {
+    padding: 6px 40px !important;
+}
 
+.private-conversation {
+    height: 100px;
+}
+.private-conversation-two {
+    height: 30px;
+}
+.am-modal-hd {
+    font-family: "shaonv";
+    font-size: 20px;
+    color: lightskyblue;
+}
+.am-modal-bd {
+    font-family: "shaonv";
+    font-size: 17px;
+}
 

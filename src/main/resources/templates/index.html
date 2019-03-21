@@ -34,11 +34,40 @@
                             <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
                             <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
 
+<!--
                             <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
+-->
+
+                            <div class="am-btn-group login-button-head">
+                                <div class="am-dropdown" data-am-dropdown>
+                                    <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                                    <ul class="am-dropdown-content login-content">
+                                        <li><a href="#" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                                        <li><a href="#" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                        <li><a id="doc-prompt-toggle" class="login-content-a"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </ul>
                     </div>
                 </div>
             </header>
+    </div>
+    <!-- 反馈窗口 -->
+    <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">悄悄话</div>
+            <div class="am-modal-bd">
+                你有什么要悄悄告诉我滴吗！(`・ω・´)
+                <textarea class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <br/>
+                <textarea class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            </div>
+        </div>
     </div>
     <!-- 文字喵 -->
     <h1 id="headline" class="head-picture-font" >喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
@@ -244,6 +273,20 @@
 
             $("#clock").html(runTime);
         }
+    </script>
+
+    <!-- 反馈弹窗 -->
+    <script type="text/javascript">
+        $(function() {
+            $('#doc-prompt-toggle').on('click', function() {
+                $('#my-prompt').modal({
+                    relatedTarget: this,
+                    onConfirm: function(e) {
+                        alert('你输入的是：' + e.data || '')
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
