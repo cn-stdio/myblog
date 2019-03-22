@@ -54,52 +54,41 @@
             <span class="tit">客官请进</span>
         </div>
 
-        <form class="am-form">
-            <fieldset>
-                <div class="am-form-group" id="form-name">
-                    <label class="am-form-group-label" for="doc-ipt-name-1">昵称</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-name-1" placeholder="取一个好听的名字叭">
-                    <div class="form-text-error" id="form-text-error-name"></div>
-                    <span class="am-icon-check icon-success" id="icon-name-success"></span>
-                </div>
-
-                <div class="am-form-group" id="form-password">
-                    <label class="am-form-group-label" for="doc-ipt-pwd-1">密码</label>
-                    <input type="password" class="am-form-field am-round" id="doc-ipt-pwd-1" placeholder="保障加密措施哦（6-16个字符组成，区分大小写）">
-                    <div class="form-text-error" id="form-text-error-password"></div>
-                    <span class="am-icon-check icon-success" id="icon-password-success"></span>
-                </div>
-
-                <div class="am-form-group" id="form-phone">
-                    <label class="am-form-group-label" for="doc-ipt-phone-1">手机</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-phone-1" placeholder="请填写您的常用手机号">
+        <form class="am-form am-form-horizontal">
+            <div class="am-form-group" id="form-phone">
+                <label for="doc-ipt-3" class="am-u-sm-2 am-form-label am-form-group-label">手机</label>
+                <div class="am-u-sm-10">
+                    <input type="text" class="form-input-text am-round am-form-field" id="doc-ipt-3" placeholder="输入手机就可以进店了哟~">
                     <div class="form-text-error" id="form-text-error-phone"></div>
                     <span class="am-icon-check icon-success" id="icon-phone-success"></span>
                 </div>
+            </div>
 
-                <div class="am-form-group">
-                    <label class="am-form-group-label" for="doc-ipt-test-1">验证码</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-test-1" placeholder="输入您收到的验证码哦">
+            <div class="am-form-group"  id="form-password">
+                <label for="doc-ipt-pwd-2" class="am-u-sm-2 am-form-label am-form-group-label">密码</label>
+                <div class="am-u-sm-10">
+                    <input type="password" class="form-input-text am-round am-form-field" id="doc-ipt-pwd-2" placeholder="我不偷看！绝不！(/ω·\*)">
+                    <div class="form-text-error" id="form-text-error-password"></div>
+                    <span class="am-icon-check icon-success" id="icon-password-success"></span>
                 </div>
-                <div class="group-getTest">
-                    <button class="am-btn am-btn-secondary am-round" id="msg_btn" type="button" onclick="settime(this);">获取验证码</button>
+            </div>
+
+            <div class="am-form-group">
+                <div class="am-u-sm-offset-2 am-u-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 我记住你嘞！
+                        </label>
+                    </div>
                 </div>
+            </div>
 
-                <div class="radio_input am-form-group am-form-group-sex" style="margin: 0 0 10px auto">
-                    <label class="am-radio-inline">
-                        <input data-am-ucheck="" name="gender" type="radio" value="male" class="am-ucheck-radio" checked><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
-                        <span class="fa fa-male fa-lg"></span>
-                    </label>
-                    <label class="am-radio-inline" style="margin-left: 40px">
-                        <input data-am-ucheck="" name="gender" type="radio" value="female" class="am-ucheck-radio"><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
-                        <span class="fa fa-female fa-lg"></span>
-                    </label>
+            <div class="am-form-group">
+                <div class="am-u-sm-10 am-u-sm-offset-2">
+                    <button type="submit" id="loginFormBtn" class="article-button article-btn am-btn am-btn-default">进&nbsp;&nbsp;&nbsp;&nbsp;店</button>
+                    <input class="article-button article-btn am-btn am-btn-primary am-btn-sm am-fl no_submit" id="registerUpdateFormBtn" style="border-radius: 5px" type="button" value="登&nbsp;&nbsp;&nbsp;&nbsp;记">
                 </div>
-
-                <input class="article-button article-btn am-btn am-btn-primary am-btn-sm am-fl no_submit" id="registerFormBtn" style="border-radius: 5px" type="submit" value="注 册">
-                <input class="article-button article-btn am-btn am-btn-primary am-btn-sm am-fl no_submit" id="registerUpdateFormBtn" style="border-radius: 5px" type="button" value="已有账号，直接登录 >>">
-
-            </fieldset>
+            </div>
         </form>
     </div>
 

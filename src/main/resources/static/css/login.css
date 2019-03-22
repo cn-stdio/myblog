@@ -1,0 +1,90 @@
+.register-title-line {
+    width: 980px;
+    height: 28px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 28px;
+    text-align: center;
+}
+.tit {
+    height: 56px;
+    line-height: 56px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 40px;
+    background: #fff;
+    text-align: center;
+    font-family: "shaonv";
+}
+
+#art-list {
+    position: absolute;
+    top: 700px;
+    left: 280px;
+}
+.am-form-group-label {
+    font-size: 23px;
+    font-family: "xionghaizi";
+    font-weight: 200;
+    margin-top: -15px !important;
+}
+.am-form-group {
+    margin-left: 180px;
+    margin-top: 80px;
+    margin-bottom: -20px;
+}
+.form-input-text {
+    width: 350px !important;
+}
+.checkbox label {
+    font-size: 18px;
+    font-family: "shaonv";
+    color: lightskyblue;
+    margin-top: -30px;
+}
+#loginFormBtn {
+    border-color: #97dffd !important;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    font-size: 16px;
+
+    margin-top: -50px;
+}
+#loginFormBtn:hover {
+    border-color: slateblue !important;
+}
+
+.icon-success {
+    position: absolute;
+    margin-top: -31px;
+    margin-left: 320px;
+    display: none;
+}
+.form-text-error {
+    color: #f45d90;
+    position: absolute;
+    transform: translate3d(100%,0,0);
+    margin-left: 300px;
+    font-size: 17px;
+    font-family: "shaonv";
+    margin-top: -32px;
+
+    display: none;
+}
+
+#registerUpdateFormBtn {
+    height: 40px;
+    width: 120px;
+    border-color: pink !important;
+    background: pink;
+    font-size: 16px;
+    position: absolute;
+    margin-top: -31.5px;
+    margin-left: 105px;
+}
+#registerUpdateFormBtn:hover {
+    background-color: slateblue;
+    border-color: slateblue !important;
+    color: #fff;
+}
