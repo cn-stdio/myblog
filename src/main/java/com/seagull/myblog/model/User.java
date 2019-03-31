@@ -43,6 +43,11 @@ public class User {
     private String birthday;
 
     /**
+     * 手机号
+     */
+    private String phone;
+
+    /**
      * 头像URL
      */
     private String imageUrl;
@@ -55,5 +60,5 @@ public class User {
     /**
      * 最近登录日期
      */
-    private Date recent_login_date;
+    private Date recentLoginDate;
 }

@@ -2,6 +2,7 @@ package com.seagull.myblog.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.seagull.myblog.component.RandomNum;
 import com.seagull.myblog.mapper.ArticleMapper;
 import com.seagull.myblog.model.Article;
 import com.seagull.myblog.service.ArticleService;
@@ -24,6 +25,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleMapper articleMapper;
+
+    @Autowired
+    private RandomNum randomNum;
 
     /**
      * 获取数据库全部文章

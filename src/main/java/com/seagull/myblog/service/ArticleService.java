@@ -3,8 +3,6 @@ package com.seagull.myblog.service;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-
 /**
  * @author Seagull_gby
  * @date 2018/12/16 22:29
@@ -34,5 +32,4 @@ public interface ArticleService {
      * @return JSON
      */
     JSONObject updateArticleLike(long articleId);
-
 }

@@ -44,6 +44,7 @@
 
 #msg_btn {
     margin-left: 30px;
+    outline: none;
 }
 
 .am-btn-primary {

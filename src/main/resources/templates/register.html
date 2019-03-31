@@ -23,7 +23,7 @@
                 <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
                     <ul class="am-nav am-nav-pills am-topbar-nav">
                         <a id="header-text" href="/">Seaguller的小窝~</a>
-                        <li class="am-active" id="li-main">
+                        <li id="li-main">
                             <a href="/" class="header-a-main" id="header-a-main-one">
                                 <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
                             </a>
@@ -54,35 +54,37 @@
             <span class="tit">客官请进</span>
         </div>
 
-        <form class="am-form">
+        <form class="am-form"  method="post"  action="/registerSuccess" onsubmit="return toVaild()">
             <fieldset>
                 <div class="am-form-group" id="form-name">
                     <label class="am-form-group-label" for="doc-ipt-name-1">昵称</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-name-1" placeholder="取一个好听的名字叭">
+                    <input type="text" class="am-form-field am-round" id="doc-ipt-name-1" placeholder="取一个好听的名字叭" name="userName">
                     <div class="form-text-error" id="form-text-error-name"></div>
                     <span class="am-icon-check icon-success" id="icon-name-success"></span>
                 </div>
 
                 <div class="am-form-group" id="form-password">
                     <label class="am-form-group-label" for="doc-ipt-pwd-1">密码</label>
-                    <input type="password" class="am-form-field am-round" id="doc-ipt-pwd-1" placeholder="保障加密措施哦（6-16个字符组成，区分大小写）">
+                    <input type="password" class="am-form-field am-round" id="doc-ipt-pwd-1" placeholder="保障加密措施哦（6-16个字符组成，区分大小写）" name="password">
                     <div class="form-text-error" id="form-text-error-password"></div>
                     <span class="am-icon-check icon-success" id="icon-password-success"></span>
                 </div>
 
                 <div class="am-form-group" id="form-phone">
                     <label class="am-form-group-label" for="doc-ipt-phone-1">手机</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-phone-1" placeholder="请填写您的常用手机号">
+                    <input type="text" class="am-form-field am-round" id="doc-ipt-phone-1" placeholder="请填写您的常用手机号" name="phone">
                     <div class="form-text-error" id="form-text-error-phone"></div>
                     <span class="am-icon-check icon-success" id="icon-phone-success"></span>
                 </div>
 
-                <div class="am-form-group">
+                <div class="am-form-group" id="form-test">
                     <label class="am-form-group-label" for="doc-ipt-test-1">验证码</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-test-1" placeholder="输入您收到的验证码哦">
+                    <input type="text" class="am-form-field am-round" id="doc-ipt-test-1" placeholder="输入您收到的验证码哦" name="testCode">
+                    <div class="form-text-error" id="form-text-error-test"></div>
+                    <span class="am-icon-check icon-success" id="icon-test-success"></span>
                 </div>
                 <div class="group-getTest">
-                    <button class="am-btn am-btn-secondary am-round" id="msg_btn" type="button" onclick="settime(this);">获取验证码</button>
+                    <button class="am-btn am-btn-secondary am-round" id="msg_btn" type="button">获取验证码</button>
                 </div>
 
                 <div class="radio_input am-form-group am-form-group-sex" style="margin: 0 0 10px auto">
