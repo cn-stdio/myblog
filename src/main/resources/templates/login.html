@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
+    <!-- 从该页面发出的请求不会包含referer -->
+    <meta name="referrer" content="never">
     <title>Seaguller的小窝~</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
@@ -53,12 +56,14 @@
         <div class="register-title-line">
             <span class="tit">客官请进</span>
         </div>
-
-        <form class="am-form am-form-horizontal">
+        <div class="am-alert am-alert-warning error-alert" data-am-alert  th:if="${param.error}">
+            用户名或密码错误！
+        </div>
+        <form class="am-form am-form-horizontal" method="post" action="/loginCheck" onsubmit="return toVaild()" >
             <div class="am-form-group" id="form-phone">
                 <label for="doc-ipt-3" class="am-u-sm-2 am-form-label am-form-group-label">手机</label>
                 <div class="am-u-sm-10">
-                    <input type="text" class="form-input-text am-round am-form-field" id="doc-ipt-3" placeholder="输入手机就可以进店了哟~">
+                    <input type="text" class="form-input-text am-round am-form-field" id="doc-ipt-3" placeholder="输入手机就可以进店了哟~" name="username">
                     <div class="form-text-error" id="form-text-error-phone"></div>
                     <span class="am-icon-check icon-success" id="icon-phone-success"></span>
                 </div>
@@ -67,7 +72,7 @@
             <div class="am-form-group"  id="form-password">
                 <label for="doc-ipt-pwd-2" class="am-u-sm-2 am-form-label am-form-group-label">密码</label>
                 <div class="am-u-sm-10">
-                    <input type="password" class="form-input-text am-round am-form-field" id="doc-ipt-pwd-2" placeholder="我不偷看！绝不！(/ω·\*)">
+                    <input type="password" class="form-input-text am-round am-form-field" id="doc-ipt-pwd-2" placeholder="我不偷看！绝不！(/ω·\*)" name="password">
                     <div class="form-text-error" id="form-text-error-password"></div>
                     <span class="am-icon-check icon-success" id="icon-password-success"></span>
                 </div>

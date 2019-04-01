@@ -3,14 +3,16 @@ package com.seagull.myblog.service.impl;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.seagull.myblog.component.RandomNum;
-import com.seagull.myblog.mapper.RegisterMapper;
+import com.seagull.myblog.mapper.RoleMapper;
+import com.seagull.myblog.mapper.UserMapper;
+import com.seagull.myblog.model.User;
 import com.seagull.myblog.service.RegisterService;
 import com.seagull.myblog.service.redis.RedisService;
 import com.seagull.myblog.utils.AliyunClientUtil;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -21,6 +23,8 @@ import java.util.List;
 @Service
 public class RegisterServiceImpl implements RegisterService {
 
+    private static final int ROLE_USER = 2;
+
     @Autowired
     private RandomNum randomNum;
 
@@ -28,7 +32,10 @@ public class RegisterServiceImpl implements RegisterService {
     private RedisService redisService;
 
     @Autowired
-    private RegisterMapper registerMapper;
+    private UserMapper userMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Override
     public JSONObject sendPhoneCode(String phone) throws ClientException {
@@ -54,7 +61,7 @@ public class RegisterServiceImpl implements RegisterService {
         JSONObject nrc = new JSONObject();
         nrc.put("code", 200);
 
-        List<String> allNames = registerMapper.queryAllName();
+        List<String> allNames = userMapper.queryAllName();
         for (String n : allNames) {
             if(n.equals(name)) {
                 nrc.put("msg", "有人跟您的昵称重复了鸭~");
@@ -71,7 +78,7 @@ public class RegisterServiceImpl implements RegisterService {
         JSONObject prc = new JSONObject();
         prc.put("code", 200);
 
-        List<String> allPhones = registerMapper.queryAllPhone();
+        List<String> allPhones = userMapper.queryAllPhone();
         for (String p : allPhones) {
             if(p.equals(phone)) {
                 prc.put("msg", "竟然拿注册过的手机号糊弄我！哼！");
@@ -101,6 +108,25 @@ public class RegisterServiceImpl implements RegisterService {
 
         cc.put("msg", "success");
         return cc;
+    }
+
+    @Override
+    public void insertUser(User user) {
+        RandomNum randomNum = new RandomNum();
+
+        /* 用毫秒时间戳+三位随机数作为用户唯一ID存储 */
+        long nowTime = System.currentTimeMillis();
+        int random = randomNum.getThreeRandomNum();
+        String userId = String.valueOf(nowTime) + String.valueOf(random);
+        user.setId(userId);
+
+        /* 密码加密 */
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+
+        userMapper.insertUser(user);
+        roleMapper.insertUserRole(userId, ROLE_USER);
+
     }
 
 }

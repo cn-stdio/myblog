@@ -54,7 +54,7 @@
             <span class="tit">客官请进</span>
         </div>
 
-        <form class="am-form"  method="post"  action="/registerSuccess" onsubmit="return toVaild()">
+        <form class="am-form"  method="post"  action="/registerUser" onsubmit="return toVaild()">
             <fieldset>
                 <div class="am-form-group" id="form-name">
                     <label class="am-form-group-label" for="doc-ipt-name-1">昵称</label>
@@ -77,11 +77,11 @@
                     <span class="am-icon-check icon-success" id="icon-phone-success"></span>
                 </div>
 
-                <div class="am-form-group" id="form-test">
-                    <label class="am-form-group-label" for="doc-ipt-test-1">验证码</label>
-                    <input type="text" class="am-form-field am-round" id="doc-ipt-test-1" placeholder="输入您收到的验证码哦" name="testCode">
-                    <div class="form-text-error" id="form-text-error-test"></div>
-                    <span class="am-icon-check icon-success" id="icon-test-success"></span>
+                <div class="am-form-group" id="form-captcha">
+                    <label class="am-form-group-label" for="doc-ipt-captcha-1">验证码</label>
+                    <input type="text" class="am-form-field am-round" id="doc-ipt-captcha-1" placeholder="输入您收到的验证码哦" name="captcha">
+                    <div class="form-text-error" id="form-text-error-captcha"></div>
+                    <span class="am-icon-check icon-success" id="icon-captcha-success"></span>
                 </div>
                 <div class="group-getTest">
                     <button class="am-btn am-btn-secondary am-round" id="msg_btn" type="button">获取验证码</button>
@@ -90,11 +90,11 @@
                 <div class="radio_input am-form-group am-form-group-sex" style="margin: 0 0 10px auto">
                     <label class="am-radio-inline">
                         <input data-am-ucheck="" name="gender" type="radio" value="male" class="am-ucheck-radio" checked><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
-                        <span class="fa fa-male fa-lg"></span>
+                        <span class="fa fa-mars fa-lg"></span>
                     </label>
                     <label class="am-radio-inline" style="margin-left: 40px">
                         <input data-am-ucheck="" name="gender" type="radio" value="female" class="am-ucheck-radio"><span class="am-ucheck-icons"><i class="am-icon-unchecked"></i><i class="am-icon-checked"></i></span>
-                        <span class="fa fa-female fa-lg"></span>
+                        <span class="fa fa-venus fa-lg"></span>
                     </label>
                 </div>
 

@@ -11,10 +11,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class RandomNum {
 
+    /**
+     * 获取6位随机数
+     * @return
+     */
     public int getSixRandomNum() {
         int randomNum;
 
         randomNum = (int) ((Math.random()*9+1) * 100000);
+
+        return randomNum;
+    }
+
+    /**
+     * 获取3位随机数
+     * @return
+     */
+    public int getThreeRandomNum() {
+        int randomNum;
+
+        randomNum = (int) ((Math.random()*9+1) * 100);
 
         return randomNum;
     }

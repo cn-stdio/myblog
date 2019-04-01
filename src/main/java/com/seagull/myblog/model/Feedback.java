@@ -6,22 +6,22 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author Seagull_gby
- * @date 2019/3/21 20:59
- * Description: 权限实体类
+ * @date 2019/4/1 15:06
+ * Description: 反馈实体
  */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class Feedback {
 
     /**
-     * ID
+     * 反馈信息
      */
-    private int id;
+    private String msg;
 
     /**
-     * 权限名字
+     * 联系方式
      */
-    private String name;
+    private String contact;
 }

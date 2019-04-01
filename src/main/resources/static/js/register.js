@@ -15,12 +15,12 @@ function nameCheck(formText) {
         $("#form-text-error-name").css("display", "block");
 
         $("#icon-name-success").css("display", "none");
-    } else if (formText.length >= 15) {
+    } else if (formText.length > 10) {
         $("#form-name").removeClass();
         $("#form-name").addClass("am-form-group");
         $("#form-name").addClass("am-form-warning");
 
-        $("#form-text-error-name").html("您的名字好长好长鸭，请控制在15个字符内！");
+        $("#form-text-error-name").html("您的名字好长好长鸭，请控制在10个字符内！");
         $("#form-text-error-name").css("margin-left", "110px");
         $("#form-text-error-name").css("display", "block");
 
@@ -148,32 +148,32 @@ $("#doc-ipt-phone-1").blur(function() {
 });
 
 /* 验证码输入检测 */
-function testCheck(formText) {
+function captchaCheck(formText) {
     if (formText=="") {
-        $("#form-test").removeClass();
-        $("#form-test").addClass("am-form-group");
-        $("#form-test").addClass("am-form-warning");
+        $("#form-captcha").removeClass();
+        $("#form-captcha").addClass("am-form-group");
+        $("#form-captcha").addClass("am-form-warning");
 
-        $("#form-text-error-test").html("验证码都不写！空手套白狼吗！");
-        $("#form-text-error-test").css("margin-left", "-70px");
-        $("#form-text-error-test").css("margin-top", "10px");
-        $("#form-text-error-test").css("display", "block");
+        $("#form-text-error-captcha").html("验证码都不写！空手套白狼吗！");
+        $("#form-text-error-captcha").css("margin-left", "-70px");
+        $("#form-text-error-captcha").css("margin-top", "10px");
+        $("#form-text-error-captcha").css("display", "block");
 
-        $("#icon-test-success").css("display", "none");
+        $("#icon-captcha-success").css("display", "none");
     } else {
-        $("#form-test").removeClass();
-        $("#form-test").addClass("am-form-group");
-        $("#form-test").addClass("am-form-success");
+        $("#form-captcha").removeClass();
+        $("#form-captcha").addClass("am-form-group");
+        $("#form-captcha").addClass("am-form-success");
 
-        $("#form-text-error-test").html("");
-        $("#form-text-error-test").css("display", "none");
+        $("#form-text-error-captcha").html("");
+        $("#form-text-error-captcha").css("display", "none");
 
-        $("#icon-test-success").css("display", "block");
+        $("#icon-captcha-success").css("display", "block");
     }
 }
-$("#doc-ipt-test-1").blur(function () {
-   var formText = $("#doc-ipt-test-1").val();
-   testCheck(formText);
+$("#doc-ipt-captcha-1").blur(function () {
+   var formText = $("#doc-ipt-captcha-1").val();
+   captchaCheck(formText);
 });
 
 /* 验证码 */
@@ -273,8 +273,8 @@ function toVaild() {
     formText = $("#doc-ipt-phone-1").val();
     phoneCheck(formText);
 
-    formText = $("#doc-ipt-test-1").val();
-    testCheck(formText);
+    formText = $("#doc-ipt-captcha-1").val();
+    captchaCheck(formText);
 
     var flag = 0;
     var flagP = 0;
@@ -336,7 +336,7 @@ function toVaild() {
             }
         });
 
-    if($("#form-phone").hasClass("am-form-success") && $("#doc-ipt-test-1").val()!="") {
+    if($("#form-phone").hasClass("am-form-success") && $("#doc-ipt-captcha-1").val()!="") {
         $.ajax(
             {
                 type:"post",
@@ -345,22 +345,22 @@ function toVaild() {
                 async: false,
                 data:{
                     phone: $("#doc-ipt-phone-1").val(),
-                    captcha: $("#doc-ipt-test-1").val()
+                    captcha: $("#doc-ipt-captcha-1").val()
                 },
                 success:function(data){
                     if(data['msg']=="success") {
                         flagC = 1;
                     } else {
-                        $("#form-test").removeClass();
-                        $("#form-test").addClass("am-form-group");
-                        $("#form-test").addClass("am-form-warning");
+                        $("#form-captcha").removeClass();
+                        $("#form-captcha").addClass("am-form-group");
+                        $("#form-captcha").addClass("am-form-warning");
 
-                        $("#form-text-error-test").html(data['msg']);
-                        $("#form-text-error-test").css("margin-left", "-70px");
-                        $("#form-text-error-test").css("margin-top", "10px");
-                        $("#form-text-error-test").css("display", "block");
+                        $("#form-text-error-captcha").html(data['msg']);
+                        $("#form-text-error-captcha").css("margin-left", "-70px");
+                        $("#form-text-error-captcha").css("margin-top", "10px");
+                        $("#form-text-error-captcha").css("display", "block");
 
-                        $("#icon-test-success").css("display", "none");
+                        $("#icon-captcha-success").css("display", "none");
                     }
                 },
                 error:function(){
@@ -373,7 +373,7 @@ function toVaild() {
     if($("#form-name").hasClass("am-form-success") &&
        $("#form-password").hasClass("am-form-success") &&
        $("#form-phone").hasClass("am-form-success") &&
-       $("#form-test").hasClass("am-form-success") && flag == 1 && flagP == 1 && flagC == 1) {
+       $("#form-captcha").hasClass("am-form-success") && flag == 1 && flagP == 1 && flagC == 1) {
         return true;
     } else {
         return false;

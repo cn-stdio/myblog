@@ -206,10 +206,22 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 /*#main-middle-2 {
     top: 1045px;
 }*/
-.main-left {
+.main-left-double {
     position: absolute;
     left: 60px;
     top: 690px;
+    padding: 15px 0;
+    box-shadow: 0px 0px 10px 0.5px #aaa;
+    border: 1px solid #BFBFBF;
+    width: 315px;
+    height: 200px;
+    background: rgba(255,250,240,0.5);
+    text-align: center;
+}
+.main-left {
+    position: absolute;
+    left: 60px;
+    top: 920px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
@@ -437,7 +449,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 .login-button {
     background-color: transparent;
     border-radius: 50% !important;
-    border-color: lightskyblue;
+    border-color: rgba(255, 250, 240, 1);
 
     width: 35px;
     height: 35px;
@@ -446,7 +458,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     margin-top: 3px;
 }
 .login-icon {
-    color: lightskyblue;
+    color: rgba(255, 250, 240, 1);
 }
 .login-content {
     min-width: auto !important;
@@ -454,6 +466,10 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 }
 .login-content:after, .login-content:before {
     left: 62px !important;
+}
+.login-content-b:after, .login-content-b:before {
+    left: auto !important;
+    right: 10px;
 }
 .login-content-a {
     padding: 6px 40px !important;
@@ -474,4 +490,27 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     font-family: "shaonv";
     font-size: 17px;
 }
+
+#log-hr {
+    margin-top: 4px;
+    margin-bottom: 1px;
+}
+
+#login-sign-name {
+    border: none;
+    font-family: "shaonv";
+    color: lavender;
+    background-color: transparent;
+    height: 35px;
+    font-size: 17px;
+    margin-top: 3px;
+    margin-left: -60px;
+}
+#login-content-ul {
+    left: auto !important;
+    right: 0;
+    border: none;
+    margin-right: 3.5px;
+}
+
 

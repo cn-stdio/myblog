@@ -61,4 +61,9 @@ public class User {
      * 最近登录日期
      */
     private Date recentLoginDate;
+
+    /**
+     * 密码
+     */
+    private String password;
 }

@@ -1,6 +1,7 @@
 package com.seagull.myblog.service;
 
 import com.aliyuncs.exceptions.ClientException;
+import com.seagull.myblog.model.User;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,11 @@ public interface RegisterService {
      * @return JSON
      */
     JSONObject captchaCheck(String phone, int captcha);
+
+    /**
+     * 用户注册
+     * @param user 用户
+     */
+    void insertUser(User user);
 
 }

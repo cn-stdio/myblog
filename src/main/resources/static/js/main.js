@@ -103,4 +103,54 @@ window.onload= function() {
     }
 })();
 
+/* 登录成功后加入名称 */
+var username = "";
+$.ajax(
+    {
+        type:"get",
+        url:"/getUserName",
+        dataType:"json",
+        async:false,
+        success:function(data){
+            if(data['msg']=="success") {
+                console.log("已登录");
+                username = data['username'];
+            }
+        },
+        error:function(){
+            console.log("未登录");
+        }
+    });
+if(username != "") {
+    $("#login-user-name").html(username);
+}
+
+/* 悄悄话点击 */
+$("#feedback-submit").click(function () {
+    var feedback = $("#feedback-text").val();
+    var contact = $("#feedback-contact").val();
+    if(contact==""){
+        contact = "无";
+    }
+    $.ajax(
+        {
+            type:"post",
+            url:"/insertFeedback",
+            dataType:"json",
+            data:{
+                msg: feedback,
+                contact: contact
+            },
+            success:function(data){
+                if(data['msg']=="success") {
+                    alert("我已经听到啦，嘻嘻嘻~");
+                } else {
+                    alert("呜呜呜，悄悄话在中途丢失嘞...");
+                }
+            },
+            error:function(){
+                alert("呜呜呜，悄悄话在中途丢失嘞...");
+            }
+        });
+});
 

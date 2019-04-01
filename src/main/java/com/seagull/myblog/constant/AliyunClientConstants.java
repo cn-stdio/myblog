@@ -11,10 +11,10 @@ public class AliyunClientConstants {
     /**
      * 阿里云访问短信服务RAM用户密钥Access Key ID
      */
-    public static final String ACCESS_KEY_ID_RAM = "**************";
+    public static final String ACCESS_KEY_ID_RAM = "*************";
 
     /**
      * 阿里云访问短信服务RAM用户密钥Access Key Secret
      */
-    public static final String ACCESS_KEY_SECRET_RAM = "***************************";
+    public static final String ACCESS_KEY_SECRET_RAM = "***********************";
 }

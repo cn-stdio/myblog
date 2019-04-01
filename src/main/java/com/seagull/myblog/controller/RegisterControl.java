@@ -1,6 +1,7 @@
 package com.seagull.myblog.controller;
 
 import com.aliyuncs.exceptions.ClientException;
+import com.seagull.myblog.model.User;
 import com.seagull.myblog.service.RegisterService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,5 +96,30 @@ public class RegisterControl {
         c = registerService.captchaCheck(phone, captcha);
 
         return c;
+    }
+
+    /**
+     * 注册用户
+     * @param request 请求域
+     * @return JSON
+     */
+    @RequestMapping("/registerUser")
+    public String registerUser(HttpServletRequest request) {
+        User user = new User();
+
+        user.setUserName(request.getParameter("userName"));
+        user.setPassword(request.getParameter("password"));
+        user.setPhone(request.getParameter("phone"));
+
+        String sex = request.getParameter("gender");
+        if(sex.equals("male")) {
+            user.setGender(1);
+        } else {
+            user.setGender(0);
+        }
+
+        registerService.insertUser(user);
+
+        return "registerSuccess";
     }
 }

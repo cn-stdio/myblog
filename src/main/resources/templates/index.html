@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 网站主题 -->
+    <meta name="subject" content="Seaguller的博客网站">
+    <!-- 页面关键词 -->
+    <meta name="keywords" content="web, 后端, spring boot, spring, java, 博客, 学习, 程序员, 编程">
+    <!-- 页面描述内容 -->
+    <meta name="description" content="Seaguller的博客小站，一个web前后端程序猿的栖身之所~">
+    <!-- 移动端优化 -->
+    <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>Seaguller的小窝~</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
@@ -33,22 +43,33 @@
                             <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
                             <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
                             <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
-
-<!--
-                            <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
--->
-
-                            <div class="am-btn-group login-button-head">
-                                <div class="am-dropdown" data-am-dropdown>
-                                    <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
-                                    <ul class="am-dropdown-content login-content">
-                                        <li><a href="#" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
-                                        <li><a href="#" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                        <li><a id="doc-prompt-toggle" class="login-content-a"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </ul>
+                        <div class="am-btn-group login-button-head"  th:unless="${#httpServletRequest.remoteUser}">
+                            <div class="am-dropdown" data-am-dropdown>
+                                <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                                <ul class="am-dropdown-content login-content">
+                                    <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                                    <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                            <div class="am-dropdown" data-am-dropdown id="login-sign-drop">
+                                <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name">
+                                    <span id="login-user-name"></span>
+                                    <span class="am-icon-caret-down"></span>
+                                </button>
+                                <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
+                                    <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                                    <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                    <hr id="log-hr"/>
+                                    <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -59,14 +80,16 @@
             <div class="am-modal-hd">悄悄话</div>
             <div class="am-modal-bd">
                 你有什么要悄悄告诉我滴吗！(`・ω・´)
-                <textarea class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <textarea id="feedback-text" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
                 <br/>
-                <textarea class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+                <textarea id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
             </div>
             <div class="am-modal-footer">
+                <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
                 <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-                <span class="am-modal-btn" data-am-modal-confirm>提交</span>
             </div>
+
+
         </div>
     </div>
     <!-- 文字喵 -->
@@ -182,6 +205,15 @@
         </div>
     </div>-->
 
+    <div class="main-left-double">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p>你一直说自己没努力</p>
+            <p>那你努力100%试一下啊</p>
+            <p>你的天空你不想飞一下吗？</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right; margin-right: 10px; margin-top: 10px"></i>
+    </div>
     <div class="main-left">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
@@ -278,12 +310,10 @@
     <!-- 反馈弹窗 -->
     <script type="text/javascript">
         $(function() {
-            $('#doc-prompt-toggle').on('click', function() {
+            $('.doc-prompt-toggle').on('click', function() {
+                $("#feedback-text").val("");
                 $('#my-prompt').modal({
-                    relatedTarget: this,
-                    onConfirm: function(e) {
-                        alert('你输入的是：' + e.data || '')
-                    }
+                    relatedTarget: this
                 });
             });
         });

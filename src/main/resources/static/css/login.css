@@ -88,3 +88,22 @@
     border-color: slateblue !important;
     color: #fff;
 }
+
+.am-btn-default:focus {
+    background-color: #97dffd;
+    border: none;
+}
+
+.error-alert {
+    background-color: rgba(255,106,106,0.3);
+    border-color: transparent;
+    color: #F0FFFF;
+    font-family: "shaonv";
+    font-size: 17px;
+    text-align: center;
+    width: 400px;
+    height: 40px;
+    line-height: initial;
+    margin-left: 30%;
+    margin-bottom: -50px;
+}
