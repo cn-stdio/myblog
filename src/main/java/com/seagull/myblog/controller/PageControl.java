@@ -3,6 +3,8 @@ package com.seagull.myblog.controller;
 import com.seagull.myblog.service.ArticleService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 /**
  * @author Seagull_gby
@@ -59,15 +62,34 @@ public class PageControl {
      * @param request 请求域
      * @return JSON
      */
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @ResponseBody
-    @GetMapping("/likeArticle")
-    public JSONObject likeArticle(HttpServletRequest request) {
+    @RequestMapping("/likeArticle")
+    public JSONObject likeArticle(@AuthenticationPrincipal Principal principal, HttpServletRequest request) {
         JSONObject returnLikeArticle = new JSONObject();
 
         long articleId = Long.valueOf(request.getParameter("articleId"));
 
-        returnLikeArticle = articleService.updateArticleLike(articleId);
+        returnLikeArticle = articleService.updateArticleLike(articleId, principal.getName());
 
         return returnLikeArticle;
+    }
+
+    /**
+     * 文章阅读量+1
+     * @param request 请求域
+     * @return JSON
+     */
+    @ResponseBody
+    @RequestMapping("/readArticle")
+    public JSONObject readArticle(HttpServletRequest request) {
+        JSONObject returnReadArticle = new JSONObject();
+
+        long articleId = Long.valueOf(request.getParameter("articleId"));
+        String ip = request.getParameter("ip");
+
+        returnReadArticle = articleService.updateArticleRead(ip, articleId);
+
+        return returnReadArticle;
     }
 }

@@ -3,9 +3,12 @@ package com.seagull.myblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.seagull.myblog.component.RandomNum;
+import com.seagull.myblog.mapper.ArticleAttributeMapper;
 import com.seagull.myblog.mapper.ArticleMapper;
+import com.seagull.myblog.mapper.UserMapper;
 import com.seagull.myblog.model.Article;
 import com.seagull.myblog.service.ArticleService;
+import com.seagull.myblog.service.redis.RedisService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Seagull_gby
@@ -27,7 +32,17 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleMapper articleMapper;
 
     @Autowired
+    private ArticleAttributeMapper articleAttributeMapper;
+
+    @Autowired
     private RandomNum randomNum;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private RedisService redisService;
+
 
     /**
      * 获取数据库全部文章
@@ -99,6 +114,7 @@ public class ArticleServiceImpl implements ArticleService {
         data.put("attributeLabel", returnJsonArray.toString());
         data.put("attributeLabelCount", labels.size());
         data.put("read", article.getAttribute().getRead());
+        data.put("like", article.getAttribute().getLike());
 
         for(int i=0; i<articles.size(); i++) {
             if(articles.get(i).getArticleId() == articleId) {
@@ -136,20 +152,61 @@ public class ArticleServiceImpl implements ArticleService {
      * @return JSON
      */
     @Override
-    public JSONObject updateArticleLike(long articleId) {
+    public JSONObject updateArticleLike(long articleId, String userId) {
         JSONObject likeArticle = new JSONObject();
+        likeArticle.put("code", 200);
 
-        int flag = articleMapper.updateArticleLikeById(articleId);
-
-        if(flag == 0) {
-            likeArticle.put("code", 500);
-            likeArticle.put("msg", "false");
+        int count = userMapper.queryUserLikeOfArticle(userId, articleId);
+        if(count == 0) {
+            userMapper.insertUserLikeOfArticle(userId, articleId);
+        } else {
+            likeArticle.put("msg", "您已经点过赞了哟~");
 
             return likeArticle;
         }
 
-        likeArticle.put("code", 200);
+        articleAttributeMapper.updateArticleLikeById(articleId);
+
         likeArticle.put("msg", "success");
         return likeArticle;
+    }
+
+    @Override
+    public JSONObject updateArticleRead(String ip, long articleId) {
+        JSONObject readArticle = new JSONObject();
+        long nowTime = System.currentTimeMillis();
+        readArticle.put("code", 200);
+
+        Set articles = redisService.members(ip);
+        AtomicInteger count = new AtomicInteger(0);
+        if(!articles.isEmpty()) {
+            articles.forEach(article -> {
+                if(Long.valueOf(String.valueOf(article)) == articleId) {
+                    count.getAndIncrement();
+                    return;
+                }
+            });
+        } else {
+            redisService.sadd(ip, articleId);
+            redisService.expire(ip, 7200);
+            articleAttributeMapper.updateArticleReadById(articleId);
+
+            System.out.println();
+            System.out.println();
+            System.out.println(articles);
+            System.out.println();
+            System.out.println();
+        }
+        if(count.get() == 0 && !articles.isEmpty()) {
+            redisService.sadd(ip, articleId);
+            articleAttributeMapper.updateArticleReadById(articleId);
+        } else {
+            readArticle.put("msg", "您在2小时内已经阅读过这篇文章嘞，直接访问接口可不是个好孩纸~");
+
+            return readArticle;
+        }
+
+        readArticle.put("msg", "success");
+        return readArticle;
     }
 }

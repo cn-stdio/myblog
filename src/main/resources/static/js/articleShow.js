@@ -11,6 +11,47 @@ function stepArticle(articleId) {
     window.location.href = "/article/" + articleId;
 }
 
+/* 文章阅读量实现 */
+function readArticle(ip) {
+    $.ajax(
+        {
+            type:"post",
+            url:"/readArticle",
+            dataType:"json",
+            async: false,
+            data:{
+                articleId: $("#articleId").val(),
+                ip: ip
+            },
+            success:function(data){
+                if (data['msg']=="success") {
+                    console.log("阅读量增加成功！");
+                }
+            },
+            error:function(){
+                console.log("阅读量增加失败！");
+            }
+        });
+}
+$.ajax(
+    {
+        type:"get",
+        url:"/checkArticleRead",
+        dataType:"json",
+        async: false,
+        data:{
+            articleId: $("#articleId").val()
+        },
+        success:function(data){
+            if (data['msg']=="nonExist") {
+                readArticle(data['ip']);
+            }
+        },
+        error:function(){
+            console.log("阅读量检查失败！");
+        }
+    });
+
 function pageContent() {
     $.ajax(
         {
@@ -66,7 +107,7 @@ function pageContent() {
                     '                        <a href="#" class="social-share-icon icon-qzone"></a>\n' +
                     '                    </div>\n' +
                     '                    <div class="article-button">\n' +
-                    '                        <a class="article-btn" href="/likeArticle">❤ 喜欢 ❤</a>\n' +
+                    '                        <button class="article-btn" id="article-like" style="border: none;"><span>❤ 喜欢  </span><span id="article-like-span">'+ data['data']['like'] +'</span></button>\n' +
                     '                    </div>\n' +
                     '                    <hr/>\n' +
                     '                    <div class="article-page">\n' +
@@ -440,3 +481,58 @@ $(".comment-reply-btn-left").click(function () {
     footFlag = 0;
 });
 
+/* 文章点赞实现 */
+var loginCheck=0;
+$.ajax(
+    {
+        type:"get",
+        url:"/checkArticleLike",
+        dataType:"json",
+        async: false,
+        data:{
+          articleId: $("#articleId").val()
+        },
+        success:function(data){
+            if(data['msg']=="exist") {
+                $("#article-like").attr("disabled", "disabled");
+                $("#article-like").css("background", "lightsalmon");
+            } else if (data['msg']=="nonExist") {
+                $("#article-like").removeAttr("disabled");
+                $("#article-like").css("background", "lightpink");
+            } else if (data['msg']=="noLogin") {
+                loginCheck = 1;
+            }
+        },
+        error:function(){
+            console.log("请求失败");
+        }
+    });
+$("#article-like").click(function () {
+    if(loginCheck==1) {
+        window.location.href = "/login";
+    } else {
+        $.ajax(
+            {
+                type:"post",
+                url:"/likeArticle",
+                dataType:"json",
+                async: false,
+                data:{
+                    articleId: $("#articleId").val()
+                },
+                success:function(data){
+                    if(data['msg']=="success") {
+                        var likeCount = parseInt($("#article-like-span").html()) + 1;
+                        $("#article-like-span").html(likeCount);
+                        $("#article-like").attr("disabled", "disabled");
+                        $("#article-like").css("background", "lightsalmon");
+                    } else {
+                        alert("呜呜呜，你点的赞在中途悄悄跑掉嘞...");
+                    }
+                },
+                error:function(){
+                    console.log("请求失败");
+                }
+            });
+    }
+});

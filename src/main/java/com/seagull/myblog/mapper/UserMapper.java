@@ -60,4 +60,21 @@ public interface UserMapper {
     @Select("SELECT user_name FROM user WHERE id LIKE #{userId}")
     public String queryNameById(String userId);
 
+    /**
+     * 查询指定用户是否点赞某文章
+     * @param userId 用户ID
+     * @param articleId 文章ID
+     * @return 是（1）否（0）
+     */
+    @Select("SELECT COUNT(*) FROM user_article_like WHERE user_id LIKE #{userId} AND article_id=#{articleId}")
+    public int queryUserLikeOfArticle(@Param("userId") String userId, @Param("articleId") long articleId);
+
+    /**
+     * 插入指定用户点赞文章信息
+     * @param userId 用户ID
+     * @param articleId 文章ID
+     * @return 插入条数
+     */
+    @Insert("INSERT INTO user_article_like VALUES(#{userId}, #{articleId})")
+    public int insertUserLikeOfArticle(@Param("userId") String userId, @Param("articleId") long articleId);
 }

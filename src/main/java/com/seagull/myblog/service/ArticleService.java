@@ -29,7 +29,16 @@ public interface ArticleService {
     /**
      * 文章喜欢数增加
      * @param articleId 文章ID
+     * @param userId 用户ID
      * @return JSON
      */
-    JSONObject updateArticleLike(long articleId);
+    JSONObject updateArticleLike(long articleId, String userId);
+
+    /**
+     * 文章阅读量增加
+     * @param ip 用户IP
+     * @param articleId 文章ID
+     * @return JSON
+     */
+    JSONObject updateArticleRead(String ip, long articleId);
 }

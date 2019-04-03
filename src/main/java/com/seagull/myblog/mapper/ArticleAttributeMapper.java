@@ -3,6 +3,7 @@ package com.seagull.myblog.mapper;
 import com.seagull.myblog.model.Attribute;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,4 +22,20 @@ public interface ArticleAttributeMapper {
      */
     @Select("SELECT * FROM attribute_article WHERE article_id = #{articleId}")
     public Attribute queryAllAttributeArticle(long articleId);
+
+    /**
+     * 文章喜欢数+1
+     * @param articleId 文章ID
+     * @return 更新个数
+     */
+    @Update("UPDATE attribute_article SET `like` = `like` + 1 WHERE article_id = #{articleId}")
+    public int updateArticleLikeById(long articleId);
+
+    /**
+     * 文章阅读数+1
+     * @param articleId 文章ID
+     * @return 阅读个数
+     */
+    @Update("UPDATE attribute_article SET `read` = `read` + 1 WHERE article_id = #{articleId}")
+    public int updateArticleReadById(long articleId);
 }

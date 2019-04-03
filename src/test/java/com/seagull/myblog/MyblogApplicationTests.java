@@ -122,10 +122,11 @@ public class MyblogApplicationTests {
 /*
         redisService.setAndTimeOut("redis", "yayaya", 20);
 */
+        redisService.expire("10.3.1.92", 30);
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println(redisService.hasKey("redis"));
+        System.out.println();
         System.out.println();
         System.out.println();
     }

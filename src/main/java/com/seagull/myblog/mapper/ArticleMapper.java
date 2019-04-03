@@ -72,12 +72,4 @@ public interface ArticleMapper {
     @ResultMap("article")
     @Select("SELECT * FROM article WHERE `type` LIKE #{type} ORDER BY create_time DESC")
     public List<Article> queryArticlesOfType(String type);
-
-    /**
-     * 文章喜欢数+1
-     * @param articleId 文章ID
-     * @return 更新个数
-     */
-    @Update("UPDATE attribute_article SET `like` = `like` + 1 WHERE article_id = #{articleId}")
-    public int updateArticleLikeById(long articleId);
 }
