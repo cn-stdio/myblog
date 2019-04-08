@@ -34,8 +34,16 @@ public interface ArticleAttributeMapper {
     /**
      * 文章阅读数+1
      * @param articleId 文章ID
-     * @return 阅读个数
+     * @return 更新个数
      */
     @Update("UPDATE attribute_article SET `read` = `read` + 1 WHERE article_id = #{articleId}")
     public int updateArticleReadById(long articleId);
+
+    /**
+     * 文章评论数+1
+     * @param articleId 文章Id
+     * @return 更新个数
+     */
+    @Update("UPDATE attribute_article SET `comment` = `comment` + 1 WHERE article_id = #{articleId}")
+    public int updateArticleCommentById(long articleId);
 }

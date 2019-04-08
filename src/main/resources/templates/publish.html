@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="content"></div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script>
+<script>
+    $.get('./Static/md/index.md', function(response, status, xhr){
+        $("#content").html(marked(response));
+    });
+</script>
+</body>
+</html>

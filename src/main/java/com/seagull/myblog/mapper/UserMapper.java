@@ -31,6 +31,14 @@ public interface UserMapper {
     public User queryUserByPhone(String phone);
 
     /**
+     * 根据ID得到user
+     * @param userId 用户ID
+     * @return
+     */
+    @Select("SELECT * FROM user WHERE id = #{userId}")
+    public User queryUserById(String userId);
+
+    /**
      * 插入用户
      * @param user 用户
      * @return 插入条数
@@ -77,4 +85,28 @@ public interface UserMapper {
      */
     @Insert("INSERT INTO user_article_like VALUES(#{userId}, #{articleId})")
     public int insertUserLikeOfArticle(@Param("userId") String userId, @Param("articleId") long articleId);
+
+    /**
+     * 根据名字得到user的Url
+     * @param name
+     * @return
+     */
+    @Select("SELECT image_url FROM user WHERE user_name = #{name}")
+    public String queryImageByUserName(String name);
+
+    /**
+     * 根据ID得到user的Url
+     * @param userId 用户ID
+     * @return
+     */
+    @Select("SELECT image_url FROM user WHERE id = #{userId}")
+    public String queryImageById(String userId);
+
+    /**
+     * 根据用户名称得到唯一ID
+     * @param userName
+     * @return
+     */
+    @Select("SELECT id FROM user WHERE user_name = #{userName}")
+    public String queryIdByName(String userName);
 }

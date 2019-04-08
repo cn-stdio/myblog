@@ -95,7 +95,11 @@
                 <div class="article-content">
                     <h1>a</h1>
                     <h2>c</h2>
+                    <h3>aaa</h3>
+                    <h3>bbb</h3>
                     <h2>d</h2>
+                    <h3>ccc</h3>
+                    <h3>ddd</h3>
                     <h2>1</h2>
                     <!--<h3>e</h3>
                     <h3>f</h3>
@@ -105,7 +109,11 @@
                     <h5>aaaaa</h5>-->
                     <h1>b</h1>
                     <h2>g</h2>
+                    <h3>飒飒大师</h3>
+                    <h3>bbbb</h3>
                     <h2>h</h2>
+                    <h3>cccc</h3>
+                    <h3>dddd</h3>
                     <h2>4</h2>
                     <p>asdasdasdasdsa殺殺殺</p>
 
@@ -136,7 +144,8 @@
         </div>
     </div>
     <div class="article-comment">
-        <div id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
+        <div th:unless="${#httpServletRequest.remoteUser}" id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
+        <textarea th:if="${#httpServletRequest.remoteUser}" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
         <div><a class="comment-btn" id="comment-btn">发表评论</a></div>
 
         <div class="article-comment-title">
@@ -145,8 +154,9 @@
         </div>
 
         <div class="article-comment-list">
-            <ol class="article-comment-list-ol">
-                <li>
+            <div class="article-comment-nonpeople">目前还没有人发表看法呢(｡ŏ_ŏ)~</div>
+            <ol class="article-comment-list-ol" id="article-comment-list-ol-one">
+                <li id="article-comment-list-li">
                     <div>
                         <div class="article-comment-list-left">
                             <img class="article-comment-headimg" src="../static/img/header.jpg" />
@@ -159,8 +169,11 @@
                                 嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！
                             </div>
                             <div>
-                                <a class="comment-right-btn" id="comment-right-btn-1">回复</a>
+                                <span><a class="comment-right-btn" id="comment-right-btn-1">回复</a></span>
+                                <span class="comment-reply-like-heart"></span>
+                                <span class="comment-reply-like-text" id="comment-reply-like-text-1">15</span>
                             </div>
+
                             <div class="comment-reply-squ" id="comment-reply-squ-1">
                                 <div class="comment-reply"></div>
                                 <div class="comment-reply-btn-div">
@@ -185,13 +198,15 @@
                                             <span>嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！嘤嘤嘤，大坏蛋！</span>
                                         </div>
                                         <div>
-                                            <a class="comment-right-btn" id="comment-right-btn-11">回复</a>
+                                            <span><a class="comment-right-btn" id="comment-right-btn-11">回复</a></span>
+                                            <span class="comment-reply-like-heart" style="margin-right: 410px !important;"></span>
+                                            <span class="comment-reply-like-text" id="comment-reply-like-text-11">15</span>
                                         </div>
                                         <div class="comment-reply-squ" id="comment-reply-squ-11">
-                                            <div class="comment-reply"></div>
+                                            <textarea class="am-modal-prompt-input private-conversation comment-reply" id="comment-reply-text" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
                                             <div class="comment-reply-btn-div">
-                                                <a class="comment-reply-btn-left"  id="comment-reply-btn-left-11">取消回复</a>
-                                                <a class="comment-reply-btn-right">发表评论</a>
+                                                <span><a class="comment-reply-btn-left"  id="comment-reply-btn-left-11">取消回复</a></span>
+                                                <span><a class="comment-reply-btn-right">发表评论</a></span>
                                             </div>
                                         </div>
                                     </div>

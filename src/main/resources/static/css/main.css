@@ -513,4 +513,24 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     margin-right: 3.5px;
 }
 
+#login-button-circle {
+    background-color: transparent;
+    border-radius: 50% !important;
+    border-color: rgba(255, 250, 240, 1);
+
+    width: 35px;
+    height: 35px;
+    font-size: 17px;
+    padding: unset !important;
+    margin-top: 3px;
+    margin-left: 50px;
+}
+#login-button-circle:hover {
+    color: lavender;
+}
+#login-button-circle:focus {
+    color: lavender;
+    outline: none;
+}
+
 

@@ -1,0 +1,28 @@
+.message-list {
+    position: absolute;
+    top: 650px;
+    left: 500px;
+}
+#message-title-img {
+    width: 600px;
+    margin-left: -35px;
+}
+#message-title-text {
+    font-family: "xiaodanchun";
+    font-size: 20px;
+    margin-left: -50px;
+    color: dimgray;
+    margin-top: 50px;
+}
+.message-title-text-about {
+    margin-top: 10px;
+}
+
+.article-comment {
+    top: 1270px;
+}
+
+.article-comment-line {
+    left: 63px !important;
+    width: 92% !important;
+}

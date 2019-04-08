@@ -229,7 +229,7 @@ hr {
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
     line-height: 2;
-    margin-left: 256px;
+    margin-left: 290px;
 }
 .comment-reply-btn-right:hover {
     background-color: sandybrown;
@@ -284,8 +284,6 @@ hr {
 }
 #main-right-article-catalog {
     font-size: 17px;
-    font-family: "shaonv";
-
     margin-top: 10px;
 }
 .article-catalog-active:before {
@@ -309,3 +307,68 @@ hr {
     top: 322px !important;
 }
 
+.article-comment-nonpeople {
+    font-family: "xionghaizi";
+    color: darkgray;
+    font-size: 20px;
+    margin-left: 240px;
+    display: none;
+}
+
+#comment-text {
+    resize: none;
+    width: 642px;
+    height: 126px;
+    font-family: "xiaodanchun";
+    font-size: 22px;
+    margin-left: -5px;
+    margin-top: -6px;
+    background-color: transparent;
+    border: none;
+}
+
+.comment-reply-like-heart{
+    display: block;
+    width:55px;
+    height: 55px;
+    background-image: url(../img/heart.png);
+    background-repeat: no-repeat;
+    background-size: 2900%;
+    float: right;
+    margin-right: 475px;
+    margin-top: -38.5px;
+    cursor: pointer;
+}
+.comment-reply-like-heart2{
+    animation: mymoveOK .8s linear;
+    animation-fill-mode: forwards;
+    animation-timing-function: steps(28);
+}
+@keyframes mymoveOK{
+    from{background-position: left;}
+    to{background-position: right;}
+}
+.comment-reply-like-text {
+    font-family: "xiaodanchun";
+    font-size: 21px;
+    position: relative;
+    float: left;
+    margin-left: 92px;
+    margin-top: -46px;
+}
+
+.clear {
+    clear: both;
+}
+
+#article-comment-list-li {
+    margin-bottom: 35px;
+}
+
+.comment-reply-text {
+    resize: none;
+    font-family: "xiaodanchun";
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+}

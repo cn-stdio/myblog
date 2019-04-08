@@ -154,3 +154,7 @@ $("#feedback-submit").click(function () {
         });
 });
 
+/* 写博客点击 */
+$("#login-button-circle").click(function () {
+   window.location.href = "/publish";
+});
