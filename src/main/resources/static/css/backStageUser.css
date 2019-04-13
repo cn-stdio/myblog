@@ -1,19 +1,362 @@
-.admin-sidebar {
-    height: 1000px !important;
+html, body {
+    background: #e9ecf3;
 }
 
-.am-with-topbar-fixed-top {
-    padding-top: 40px !important;
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.am-panel-bd {
+.tpl-left-nav {
+    width: 235px;
+    float: left;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+
+    margin-left: 160px;
+    margin-top: 15px;
+}
+.tpl-left-nav-content {
+    background-color: #36c6d3;
+    border-radius: 1000px;
+    color: #fff!important;
+    padding: 0px 8px!important;
+    float: right;
+    position: relative;
+    font-style: normal;
+    font-family: "微软雅黑";
+    top: 10px!important;
+    font-size: 12px!important;
+}
+.tpl-left-nav-list {
+    width: 235px;
+}
+.tpl-left-nav-item {}
+
+.tpl-left-nav-item .nav-link {
+    display: block;
+    position: relative;
+    margin: 1px 0 0;
+    border: 0;
+    padding: 12px 15px;
+    padding-top: 6px;
+    text-decoration: none;
+    color: #485a6a;
+    font-size: 14px;
+}
+
+.tpl-left-nav-item .nav-link span,
+.tpl-left-nav-sub-menu a span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #485a6a;
+}
+
+.tpl-left-nav-item .nav-link i,
+.tpl-left-nav-sub-menu a i {
+    font-size: 20px;
+    position: relative;
+    text-shadow: none;
+    font-weight: 300;
+    top: 2px;
+    margin-left: 1px;
+    margin-right: 6px;
+    color: #a7bdcd;
+}
+
+.tpl-left-nav-item .nav-link:hover {
+    background: #f2f6f9;
+    color: #5b9bd1;
+    border-left: 3px solid #5C9ACF!important;
+    margin-left: -3px;
+    padding-left: 15px;
+}
+
+.tpl-left-nav-item .nav-link:hover i,
+.tpl-left-nav-sub-menu a:hover i {
+    color: #5b9bd1;
+}
+
+.tpl-left-nav-item .nav-link:hover span,
+.tpl-left-nav-sub-menu a:hover span {
+    color: #5b9bd1;
+}
+
+.tpl-left-nav-item .nav-link.active {
+    border-left: 3px solid #5C9ACF!important;
+    background: #f2f6f9;
+    margin-left: -3px;
+    padding-left: 15px;
+}
+
+.tpl-left-nav-item .nav-link.active span,
+.tpl-left-nav-item .nav-link.active i {
+    color: #5b9bd1;
+}
+.tpl-badge-danger {
+    background-color: rgb(54, 198, 211) !important;
+}
+
+.tpl-right {
+    width: 900px;
+    height: 1000px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
+    position: absolute;
+    left: 430px;
+}
+
+.user-head, .user-name,
+.user-phone, .user-real-name,
+.user-sex, .user-birthday,
+.user-email, .user-introduce,
+.user-captcha, .user-new-password,
+.user-new-password-confirm {
+    margin-top: 15px;
+    margin-left: 50px;
+}
+.user-head-text, .user-name-text,
+.user-phone-text, .user-real-name-text,
+.user-sex-text, .user-birthday-text,
+.user-email-text, .user-introduce-text,
+.user-captcha-text, .user-new-password-text,
+.user-new-password-confirm-text {
+    font-size: 25px;
     font-family: "xiaodanchun";
-    font-size: 18px;
+    color: skyblue;
+    margin-left: 10px;
 }
-.admin-sidebar-list {
-    font-size: 18px;
+#user-head-img {
+    border-radius: 50px;
+    border: none;
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+}
+.user-head-button, .user-captcha-button, .user-phone-button {
+    position: absolute;
+    margin-left: 240px;
+    margin-top: -60px;
+}
+.user-head-btn, .user-captcha-btn, .user-phone-btn {
+    border: 1px solid skyblue;
+    color: skyblue;
+    font-size: 17px;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+
+    background-color: transparent;
+}
+.user-head-btn:hover, .user-captcha-btn:hover, .user-phone-btn:hover {
+    background-color: skyblue;
+    color: white;
+}
+.user-head-btn:focus, .user-captcha-btn:focus, .user-phone-btn:focus {
+    color: skyblue;
+    outline: none;
+}
+.user-captcha-button {
+    margin-left: 450px;
+}
+.user-phone-button {
+    margin-top: -33px;
+    margin-left: 476px;
 }
 
-#li-user {
+.user-name, .user-phone,
+.user-real-name, .user-sex,
+.user-birthday, .user-email,
+.user-introduce, .user-captcha,
+.user-new-password, .user-new-password-confirm {
+    margin-top: 30px;
+}
+.user-name-input, .user-real-name-input,
+.user-birthday-input, .user-email-input,
+.user-captcha-input, .user-new-password-input,
+.user-new-password-confirm-input {
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+
+    margin-left: 190px;
+    margin-top: -60px;
+}
+.user-introduce-input {
+    padding: 5px 10px;
+    font-size: 15px;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+    background-color: hsla(0,0%,71%,.1);
+    margin-left: 190px;
+    margin-top: -30px;
+    resize: none;
+    width: 400px;
+    height: 120px;
+}
+.user-phone-number, .user-sex-label {
+    font-size: 17px;
+    margin-left: 230px !important;
+    margin-top: -32px !important;
+}
+
+#user-personal-profile, #user-next-step, #user-confirm {
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 5px 6px 14px rgba(255,192,203,0.5);
+    transition-property: box-shadow,background-color,-webkit-box-shadow;
+    transition-duration: .2s;
+    background-color: pink;
+    color: white;
+    font-weight: 600;
+    padding: 10px 30px;
+    line-height: 1;
+
+    margin-left: 400px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+#user-personal-profile:hover, #user-next-step:hover, #user-confirm:hover {
+    background-color: pink;
+    box-shadow: 4px 6px 24px 0 pink;
+    text-decoration: none;
+    color: white;
+}
+#user-personal-profile:visited, #user-next-step:visited, #user-confirm:visited {
+    color: white;
+}
+
+.user-private-error, .user-new-password-error, .user-new-password-confirm-error {
+    color: #f45d90;
+    position: absolute;
+    transform: translate3d(100%,0,0);
+    margin-left: 300px;
+    font-size: 17px;
+    font-family: "shaonv";
+    margin-top: -52px;
+
     display: none;
+}
+
+.notice-box {
+    display: none;
+    position: fixed;
+    bottom: 56px;
+    left: 50%;
+    transform: translateX(-55%);
+    padding: 16px 40px;
+    border-radius: 4px;
+    background: rgba(255,250,205,0.9);
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.33);
+    line-height: 24px;
+    font-size: 16px;
+    color: lightcoral;
+    z-index: 9999;
+}
+
+.user-reply {
+    font-size: 30px;
+    font-family: "xiaodanchun";
+    color: skyblue;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+#user-reply-img {
+    position: absolute;
+    margin-top: -63px;
+    margin-left: 150px;
+}
+.user-reply-list {
+    margin-left: 50px;
+}
+.user-reply-title {
+    font-size: 18px;
+    color: deepskyblue;
+}
+.user-reply-time {
+    font-size: 18px;
+    color: #a7baaa;
+    float: right;
+    margin-right: 100px;
+}
+.user-reply-content {
+    font-size: 17px;
+    color: #999;
+    margin-top: 16px;
+}
+
+.user-next {
+    float: right;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 5px 6px 14px rgba(52.94%, 80.78%, 95.16%, 0.5);
+    transition-property: box-shadow,background-color,-webkit-box-shadow;
+    transition-duration: .2s;
+    background-color: #97dffd;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 30px;
+    line-height: 1;
+
+    margin-top: 15px;
+    margin-right: 130px;
+    font-size: 18px;
+}
+.user-next:hover {
+    background-color: #97dffd;
+    box-shadow: 4px 6px 24px 0 #97dffd;
+    text-decoration: none;
+    color: white;
+}
+.user-next:visited {
+    color: white;
+}
+
+.user-prev {
+    float: left;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 5px 6px 14px rgba(255,192,203,0.5);
+    transition-property: box-shadow,background-color,-webkit-box-shadow;
+    transition-duration: .2s;
+    background-color: pink;
+    color: white;
+    font-weight: 600;
+    padding: 10px 30px;
+    line-height: 1;
+
+    margin-top: 15px;
+    margin-left: 90px;
+    font-size: 18px;
+}
+.user-prev:hover {
+    background-color: pink;
+    box-shadow: 4px 6px 24px 0 pink;
+    text-decoration: none;
+    color: white;
+}
+.user-prev:visited {
+    color: white;
 }

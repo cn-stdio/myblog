@@ -15,7 +15,7 @@
     <title>Seaguller的小窝~</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://dreamsky.github.io/main/blog/common/init.css">
+    <link rel="stylesheet" href="https://dreamsky.github.io/main/blog/common/init.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
     <link href="../static/css/article.css" rel="stylesheet"/>
@@ -168,7 +168,7 @@
         </div>
         <div class="article-comment">
             <div th:unless="${#httpServletRequest.remoteUser}" id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
-            <textarea th:if="${#httpServletRequest.remoteUser}" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
+            <textarea th:if="${#httpServletRequest.remoteUser}" maxlength="500" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
             <div><a class="comment-btn" id="comment-btn">发表评论</a></div>
             <div class="article-comment-title">
                 <span class="article-comment-word">留言板</span>

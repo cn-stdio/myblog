@@ -7,8 +7,10 @@ import com.seagull.myblog.mapper.ArticleAttributeMapper;
 import com.seagull.myblog.mapper.ArticleMapper;
 import com.seagull.myblog.mapper.UserMapper;
 import com.seagull.myblog.model.Article;
+import com.seagull.myblog.model.Attribute;
 import com.seagull.myblog.service.ArticleService;
 import com.seagull.myblog.service.redis.RedisService;
+import com.seagull.myblog.utils.InterceptionArticleUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +72,7 @@ public class ArticleServiceImpl implements ArticleService {
             data.put("articleId", article.getArticleId());
             data.put("title", article.getTitle());
             data.put("createTime", article.getCreateTime().getTime());
+            data.put("classify", article.getClassify());
             data.put("type", article.getType());
             data.put("summary", article.getSummary());
             data.put("read", article.getAttribute().getRead());
@@ -106,6 +109,7 @@ public class ArticleServiceImpl implements ArticleService {
         data.put("title", article.getTitle());
         data.put("content", article.getContent());
         data.put("summary", article.getSummary());
+        data.put("classify", article.getClassify());
         data.put("type", article.getType());
         data.put("createTime", article.getCreateTime().getTime());
 
@@ -190,12 +194,6 @@ public class ArticleServiceImpl implements ArticleService {
             redisService.sadd(ip, articleId);
             redisService.expire(ip, 7200);
             articleAttributeMapper.updateArticleReadById(articleId);
-
-            System.out.println();
-            System.out.println();
-            System.out.println(articles);
-            System.out.println();
-            System.out.println();
         }
         if(count.get() == 0 && !articles.isEmpty()) {
             redisService.sadd(ip, articleId);
@@ -208,5 +206,23 @@ public class ArticleServiceImpl implements ArticleService {
 
         readArticle.put("msg", "success");
         return readArticle;
+    }
+
+    @Override
+    public void insertArticle(Article article, String contentHtml) {
+        Attribute attribute = new Attribute();
+
+        // 用当前时间的时间戳设置专属文章ID
+        long dateString = System.currentTimeMillis();
+        article.setArticleId(dateString);
+        attribute.setArticleId(dateString);
+
+        // 对文章摘要的截取，截取内容为30个字符（中文也算1个字符）
+        InterceptionArticleUtil interceptionArticleUtil = new InterceptionArticleUtil();
+        String summary = interceptionArticleUtil.interceptionArticle(contentHtml);
+        article.setSummary(summary);
+
+        articleMapper.insertArticle(article);
+        articleAttributeMapper.insertArticleAttribute(attribute);
     }
 }

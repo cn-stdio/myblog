@@ -126,17 +126,19 @@ public class ArchiveServiceImpl implements ArchiveService {
      */
     @Override
     public JSONObject getArchiveArticleOfDate(int rows, int pageNum, String date) throws ParseException {
+        String year = date.substring(0, 4);
 
         /* 对日期界限处理 */
         char endMonthFirst = date.charAt(date.indexOf("月")-2);
         char endMonthSecond = date.charAt(date.indexOf("月")-1);
         String startMonth = String.valueOf(endMonthFirst) + String.valueOf(endMonthSecond);
-        String startYear = "2018-";
-        String endYear = "2018-";
+        String startYear = year + "-";
+        String endYear = year + "-";
         String endMonth = String.valueOf(endMonthFirst) + String.valueOf(endMonthSecond);
         if(endMonth.equals("12")) {
             endMonth = "01";
-            endYear = "2019-";
+            int endYearInt = Integer.parseInt(year) + 1;
+            endYear = endYearInt + "-";
         } else if (endMonth.equals("09")) {
             endMonth = "10";
         } else {

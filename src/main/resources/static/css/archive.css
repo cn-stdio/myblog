@@ -117,3 +117,13 @@
 .prev:visited {
     color: white;
 }
+
+#main-right-text {
+    height: auto;
+    max-height: 361px;
+    overflow-y: auto;
+}
+
+#events-body-create-time {
+    cursor: auto;
+}

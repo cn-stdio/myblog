@@ -42,6 +42,7 @@ window.onload= function() {
     }
 
     /* 尾部footer定位 */
+    $(".footer").css("top", 0);
     var cw = document.body.scrollHeight;
     console.log(cw);
     $(".footer").css("top", cw+50);

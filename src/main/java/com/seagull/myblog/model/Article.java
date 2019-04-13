@@ -62,7 +62,12 @@ public class Article {
     private Attribute attribute;
 
     /**
-     * 文章类型
+     * 文章分类
      */
     private String type;
+
+    /**
+     * 文章类型
+     */
+    private String classify;
 }

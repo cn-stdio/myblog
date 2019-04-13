@@ -17,9 +17,10 @@ public interface RegisterService {
     /**
      * 发送手机验证码
      * @param phone 手机号码
+     * @param type 服务类型（1为注册，2为修改密码）
      * @return JSON
      */
-    JSONObject sendPhoneCode(String phone) throws ClientException;
+    JSONObject sendPhoneCode(String phone, int type) throws ClientException;
 
     /**
      * 昵称注册重复检查

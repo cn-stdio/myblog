@@ -372,3 +372,7 @@ hr {
     background-color: transparent;
     border: none;
 }
+
+#article-like {
+    outline: none;
+}

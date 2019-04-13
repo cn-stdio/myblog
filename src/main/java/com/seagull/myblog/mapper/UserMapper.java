@@ -4,6 +4,7 @@ import com.seagull.myblog.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,7 +44,7 @@ public interface UserMapper {
      * @param user 用户
      * @return 插入条数
      */
-    @Insert("INSERT INTO user(id, gender, user_name, phone, password) VALUES(#{id}, #{gender}, #{userName}, #{phone}, #{password})")
+    @Insert("INSERT INTO user(id, gender, user_name, phone, password, image_url) VALUES(#{id}, #{gender}, #{userName}, #{phone}, #{password}, #{imageUrl})")
     public int insertUser(User user);
 
     /**
@@ -109,4 +110,38 @@ public interface UserMapper {
      */
     @Select("SELECT id FROM user WHERE user_name = #{userName}")
     public String queryIdByName(String userName);
+
+    /**
+     * 更新用户最近登录时间
+     * @param id 用户ID
+     * @return 更新条数
+     */
+    @Update("UPDATE user SET recent_login_date = #{recentLoginDate} WHERE id = #{id}")
+    public int updateRecentLoginDate(@Param("id") String id, @Param("recentLoginDate") Date recentLoginDate);
+
+    /**
+     * 更新用户信息
+     * @param user 用户信息
+     * @return 更新条数
+     */
+    @Update("UPDATE user SET gender = #{gender}, user_name = #{userName}, email = #{email}, birthday = #{birthday}, name = #{name}, introduce = #{introduce}, image_url = #{imageUrl} WHERE id = #{id}")
+    public int updateUser(User user);
+
+    /**
+     * 更新用户头像
+     * @param id 用户ID
+     * @param imageUrl 用户头像URL
+     * @return 更新条数
+     */
+    @Update("UPDATE user SET image_url = #{imageUrl} WHERE id = #{id}")
+    public int updateUserImg(@Param("id") String id, @Param("imageUrl") String imageUrl);
+
+    /**
+     * 更新用户密码
+     * @param id 用户ID
+     * @param password 新密码
+     * @return 更新条数
+     */
+    @Update("UPDATE user SET password = #{password} WHERE id = #{id}")
+    public int updatePassword(@Param("id") String id, @Param("password") String password);
 }

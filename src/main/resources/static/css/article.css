@@ -133,14 +133,13 @@
     color: #fff;
 }
 .article-content {
-    width: 610px;
+    width: 560px;
     height:90px;
     margin-top: 50px;
     margin-bottom: 10px;
-    margin-left: 50px;
+    margin-left: 80px;
     font-size: 15px;
     text-align: left;
-    text-indent: 2em;
 }
 .article-pagination {
     padding-bottom: 2.125rem;

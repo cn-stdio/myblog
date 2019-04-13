@@ -533,4 +533,11 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     outline: none;
 }
 
+#article-meta-type {
+    border-radius: 5px;
+    background-color: lightskyblue;
+    margin-right: 20px;
+    margin-left: -40px;
+}
+
 

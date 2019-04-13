@@ -66,4 +66,14 @@ public class User {
      * 密码
      */
     private String password;
+
+    /**
+     * 真实姓名
+     */
+    private String name;
+
+    /**
+     * 个人介绍
+     */
+    private String introduce;
 }

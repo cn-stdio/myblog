@@ -6,7 +6,7 @@
     <title>Seaguller的小窝~</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="http://dreamsky.github.io/main/blog/common/init.css">
+    <link rel="stylesheet" href="https://dreamsky.github.io/main/blog/common/init.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
     <link href="../static/css/article.css" rel="stylesheet"/>
@@ -93,7 +93,10 @@
                     <span class="meta-text meta-eye-text">0</span>
                 </div>
                 <div class="article-content">
-                    <h1>a</h1>
+                    <div id="wordsView">
+                        <textarea style="display:none;" name="editormd-markdown-doc" id="article-content-text"></textarea>
+                    </div>
+                    <!--<h1>a</h1>
                     <h2>c</h2>
                     <h3>aaa</h3>
                     <h3>bbb</h3>
@@ -101,12 +104,12 @@
                     <h3>ccc</h3>
                     <h3>ddd</h3>
                     <h2>1</h2>
-                    <!--<h3>e</h3>
+                    &lt;!&ndash;<h3>e</h3>
                     <h3>f</h3>
                     <h4>i</h4>
                     <h5>k</h5>
                     <h4>j</h4>
-                    <h5>aaaaa</h5>-->
+                    <h5>aaaaa</h5>&ndash;&gt;
                     <h1>b</h1>
                     <h2>g</h2>
                     <h3>飒飒大师</h3>
@@ -115,7 +118,7 @@
                     <h3>cccc</h3>
                     <h3>dddd</h3>
                     <h2>4</h2>
-                    <p>asdasdasdasdsa殺殺殺</p>
+                    <p>asdasdasdasdsa殺殺殺</p>-->
 
                 </div>
 
@@ -145,7 +148,7 @@
     </div>
     <div class="article-comment">
         <div th:unless="${#httpServletRequest.remoteUser}" id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
-        <textarea th:if="${#httpServletRequest.remoteUser}" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
+        <textarea th:if="${#httpServletRequest.remoteUser}"  maxlength="500" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
         <div><a class="comment-btn" id="comment-btn">发表评论</a></div>
 
         <div class="article-comment-title">
@@ -250,6 +253,15 @@
 </footer>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<!-- markdown -->
+<script src="https://lib.baomitu.com/underscore.js/1.9.1/underscore-min.js"></script>
+<script src="https://lib.baomitu.com/modernizr/2010.07.06dev/modernizr.min.js"></script>
+<script src="../static/markdown/editormd.min.js"></script>
+<script src="../static/markdown/lib/marked.min.js"></script>
+<script src="https://lib.baomitu.com/prettify/r298/prettify.min.js"></script>
+<script src="https://lib.baomitu.com/raphael/2.2.7/raphael.min.js"></script>
+<script src="https://lib.baomitu.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<script src="https://lib.baomitu.com/flowchart/1.11.3/flowchart.min.js"></script>
 <!-- 字体阴影特效 -->
 <script type="text/javascript" src="../static/js/shine.min.js"></script>
 <!-- 标题栏浮动隐藏JS -->

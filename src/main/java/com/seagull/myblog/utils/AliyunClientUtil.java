@@ -1,7 +1,7 @@
 package com.seagull.myblog.utils;
 
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.OSSObject;
+import com.aliyun.oss.model.GetObjectRequest;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 import com.aliyuncs.DefaultAcsClient;
@@ -15,7 +15,6 @@ import com.aliyuncs.profile.IClientProfile;
 import com.seagull.myblog.constant.AliyunClientConstants;
 import net.sf.json.JSONObject;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -49,13 +48,24 @@ public class AliyunClientUtil {
     private static String BACKET_NAME = "seaguller";
 
     /**
+     * 阿里云短信服务修改密码模板CODE
+     */
+    private static String SAFETY_PHONE_TEMPLATE = "SMS_163431859";
+
+    /**
+     * 阿里云短信服务注册模板CODE
+     */
+    private static String REGISTER_PHONE_TEMPLATE = "SMS_161592275";
+
+    /**
      * 阿里云短信单发服务
      * @param phone 电话号码
      * @param code 验证码
+     * @param type 模板选择（1为注册，2为修改密码）
      * @return 目标JSON
      * @throws ClientException
      */
-    public static SendSmsResponse sendSms(String phone, int code) throws ClientException {
+    public static SendSmsResponse sendSms(String phone, int code, int type) throws ClientException {
         /* 设置超时时间 */
         System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
         System.setProperty("sun.net.client.defaultReadTimeout", "10000");
@@ -78,8 +88,11 @@ public class AliyunClientUtil {
         request.setMethod(MethodType.POST);
         request.setPhoneNumbers(phone);
         request.setSignName("Seaguller");
-        request.setTemplateCode("SMS_161592275");
-
+        if(type == 1) {
+            request.setTemplateCode(REGISTER_PHONE_TEMPLATE);
+        } else {
+            request.setTemplateCode(SAFETY_PHONE_TEMPLATE);
+        }
         JSONObject smsJSON = new JSONObject();
         smsJSON.put("code", code);
         request.setTemplateParam(String.valueOf(smsJSON));
@@ -103,25 +116,15 @@ public class AliyunClientUtil {
     }
 
     /**
-     * 创建模拟文件夹
-     * @param ossClient oss连接
-     * @param bucketName 存储空间
-     * @param folder   模拟文件夹名如"qj_nanjing/"
-     * @return  文件夹名
+     * 根据key删除OSS服务器上的文件
+     * @param bucketName  存储空间
+     * @param folder  模拟文件夹名 如"seaguller/"
+     * @param key 文件夹下的文件名 如："cake.jpg"
      */
-    public  static String createFolder(OSSClient ossClient,String bucketName,String folder){
-        //文件夹名
-        final String keySuffixWithSlash = folder;
-        //判断文件夹是否存在，不存在则创建
-        if(!ossClient.doesObjectExist(bucketName, keySuffixWithSlash)){
-            //创建文件夹
-            ossClient.putObject(bucketName, keySuffixWithSlash, new ByteArrayInputStream(new byte[0]));
-            //得到文件夹名
-            OSSObject object = ossClient.getObject(bucketName, keySuffixWithSlash);
-            String fileDir=object.getKey();
-            return fileDir;
-        }
-        return keySuffixWithSlash;
+    public static void deleteFile(String bucketName, String folder, String key){
+        OSSClient ossClient = AliyunClientUtil.getOSSClient();
+        ossClient.deleteObject(bucketName, folder + key);
+        ossClient.shutdown();
     }
 
     /**
@@ -165,13 +168,13 @@ public class AliyunClientUtil {
 
     /**
      * 上传图片至OSS
-     * @param ossClient  oss连接
      * @param file 上传文件（文件全路径如：D:\\image\\cake.jpg）
      * @param bucketName  存储空间
-     * @param folder 模拟文件夹名 如"qj_nanjing/"
+     * @param folder 模拟文件夹名 如"seaguller/"
      * @return String 返回的唯一MD5数字签名
      */
-    public static String uploadObjectOSS(OSSClient ossClient, File file, String bucketName, String folder) {
+    public static String uploadObjectOSS(File file, String bucketName, String folder) {
+        OSSClient ossClient = AliyunClientUtil.getOSSClient();
         String resultStr = null;
         try {
             //以输入流的形式上传文件
@@ -202,6 +205,34 @@ public class AliyunClientUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        ossClient.shutdown();
         return resultStr;
     }
+
+    /**
+     * 下载文件
+     * @param bucketName 存储空间
+     * @param fileName 文件路径名
+     */
+    public static void downloadFile(String bucketName, String fileName) {
+        OSSClient ossClient = AliyunClientUtil.getOSSClient();
+
+        ossClient.getObject(new GetObjectRequest(bucketName, fileName), new File("D:\\picture\\faceJudge.jpg"));
+        ossClient.shutdown();
+    }
+
+    /**
+     * 返回外网访问URL
+     * @param bucket 存储空间名
+     * @param folderName 文件夹名
+     * @param fileName 文件名
+     * @return URL
+     */
+    public static String getUrl(String bucket, String folderName, String fileName) {
+        String url = "https://" + bucket + "."+ ENDPOINT +"/" + folderName + "/" + fileName;
+
+        return url;
+    }
+
 }

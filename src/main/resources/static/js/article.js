@@ -34,6 +34,7 @@ function pageTurn(p) {
                     str+='<h1 class="article-title">';
                     str+='<a class="article-title-link" href="/article/'+ obj['articleId'] +'">' + obj['title'] + '</a></h1>';
                     str+='<div class="article-meta">';
+                    str+='<span class="am-badge am-badge-success" id="article-meta-type">'+ obj['classify'] +'</span>';
                     str+='<span class="am-icon-calendar"></span><span class="meta-text meta-calendar-text">'+ timeStampToDate(obj['createTime']) +'</span>';
                     str+='<span class="am-icon-tags"></span>';
                     str+='<span class="meta-text meta-tags-text">\n';
@@ -57,6 +58,11 @@ function pageTurn(p) {
                         str = "";
                         str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p+1) +')">下一页</a></nav>';
                         oUl.children("div:last-child").append(str);
+
+                        if(data['pages']==2) {
+                            /* 尾部footer定位 */
+                            $(".footer").css("top", $(".next").offset().top+100);
+                        }
                     } else if (p == data['pages']-1) {
                         str = "";
                         str += '<nav class="article-pagination" role="navigation"><a class="next" href="#turn-head" onclick="pageTurn(' + (p+1) +')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn('+ (p-1) +')">上一页</a></nav>';
@@ -75,7 +81,12 @@ function pageTurn(p) {
                         /* 尾部footer定位 */
                         var cw = $(".prev").offset().top;
                         console.log(cw);
-                        $(".footer").css("top", cw+100);
+
+                        if(cw>=1380) {
+                            $(".footer").css("top", cw+100);
+                        } else {
+                            $(".footer").css("top", 1380);
+                        }
 
                     } else {
                         str = "";

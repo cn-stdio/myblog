@@ -64,7 +64,7 @@ function getComment() {
                             '                            </div>\n' +
                             '\n' +
                             '                            <div class="comment-reply-squ" id="comment-reply-squ-'+ obj['selfId'] +'">\n' +
-                            '                                <textarea class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
+                            '                                <textarea maxlength="500" class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
                             '                                <div class="comment-reply-btn-div">\n' +
                             '                                    <a class="comment-reply-btn-left" id="comment-reply-btn-left-'+ obj['selfId'] +'">取消回复</a>\n' +
                             '                                    <a class="comment-reply-btn-right">发表评论</a>\n' +
@@ -94,7 +94,7 @@ function getComment() {
                                 '                                            <span class="comment-reply-like-text" id="comment-reply-like-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'">'+ obj2['like'] +'</span>\n' +
                                 '                                        </div>\n' +
                                 '                                        <div class="comment-reply-squ" id="comment-reply-squ-'+ obj['selfId'] + '-' + obj2['selfId'] +'">\n' +
-                                '                                            <textarea class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
+                                '                                            <textarea maxlength="500" class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
                                 '                                            <div class="comment-reply-btn-div">\n' +
                                 '                                                <a class="comment-reply-btn-left"  id="comment-reply-btn-left-'+ obj['selfId'] + '-' + obj2['selfId'] +'">取消回复</a>\n' +
                                 '                                                <a class="comment-reply-btn-right" style="float: right; margin-left: 0 !important;">发表评论</a>\n' +

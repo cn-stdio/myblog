@@ -47,6 +47,13 @@ public interface ArticleMapper {
     public List<Date> queryAllCreateTime();
 
     /**
+     * 查询最后文章的创建时间
+     * @return
+     */
+    @Select("SELECT MAX(create_time) FROM article")
+    public Date queryLastCreateTime();
+
+    /**
      * 按照文章id查询指定文章
      * @param articleId 文章Id
      * @return
@@ -72,4 +79,12 @@ public interface ArticleMapper {
     @ResultMap("article")
     @Select("SELECT * FROM article WHERE `type` LIKE #{type} ORDER BY create_time DESC")
     public List<Article> queryArticlesOfType(String type);
+
+    /**
+     * 插入文章
+     * @param article
+     * @return 返回插入文章数量
+     */
+    @Insert("INSERT INTO article(article_id, title, author, content, attribute_label, summary, type, classify) VALUES(#{articleId}, #{title}, #{author}, #{content}, #{attributeLabel}, #{summary}, #{type}, #{classify})")
+    public int insertArticle(Article article);
 }

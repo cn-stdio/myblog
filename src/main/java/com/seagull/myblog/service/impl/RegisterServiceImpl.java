@@ -38,13 +38,14 @@ public class RegisterServiceImpl implements RegisterService {
     private RoleMapper roleMapper;
 
     @Override
-    public JSONObject sendPhoneCode(String phone) throws ClientException {
+    public JSONObject sendPhoneCode(String phone, int type) throws ClientException {
         JSONObject spc = new JSONObject();
 
         int sixRandow = randomNum.getSixRandomNum();
         redisService.setAndTimeOut(phone, sixRandow, 180);
 
-        SendSmsResponse sendSmsResponse = AliyunClientUtil.sendSms(phone, sixRandow);
+        SendSmsResponse sendSmsResponse = AliyunClientUtil.sendSms(phone, sixRandow, type);
+
         if(sendSmsResponse.getCode() != null && sendSmsResponse.getCode().equals("OK")) {
             spc.put("code", 200);
             spc.put("msg", "success");

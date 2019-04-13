@@ -78,6 +78,7 @@ function pageContent() {
                     '                    <a class="article-title-link">'+ data['data']['title'] +'</a>\n' +
                     '                </h1>\n' +
                     '                <div class="article-meta">\n' +
+                    '                <span class="am-badge am-badge-success" id="article-meta-type">'+ data['data']['classify'] +'</span>\n' +
                     '                    <span class="am-icon-calendar"></span>\n' +
                     '                    <span class="meta-text meta-calendar-text">'+ timeStampToDate(data['data']['createTime']) +'</span>\n' +
                     '                    <span class="am-icon-tags"></span>\n' +
@@ -96,6 +97,9 @@ function pageContent() {
                     '                    <span class="meta-text meta-eye-text">'+ data['data']['read'] +'</span>\n' +
                     '                </div>\n' +
                     '                <div class="article-content">\n' +
+                    '<div id="wordsView">\n' +
+                    '                        <textarea style="display:none;" name="editormd-markdown-doc" id="article-content-text"></textarea>\n' +
+                    '                    </div>' +
                     '                </div>\n' +
                     '                \n' +
                     '                <div id="article-share">\n' +
@@ -125,9 +129,16 @@ function pageContent() {
                 rUl.html(str);
 
                 var content = data['data']['content'];
-                var converter = new Markdown.Converter();
-                var htmlContent = converter.makeHtml(content);
-                $(".article-content").html(htmlContent);
+                $("#article-content-text").text(content);
+                var wordsView;
+                wordsView = editormd.markdownToHTML("wordsView", {
+                    htmlDecode: "true", // you can filter tags decode
+                    emoji: true,
+                    taskList: true,
+                    tex: true,
+                    flowChart: true,
+                    sequenceDiagram: true
+                });
 
                 if(data['data']['prevArticleId']=="no") {
                     $("#article-page-prev").empty();
@@ -161,40 +172,10 @@ function pageContent() {
 }
 pageContent();
 
-/*function pageLog() {
-    $.ajax(
-        {
-            type: "post",
-            url: "/getArticleCatalog",
-            dataType: "json",
-
-            success: function (data) {
-                var rUl = $("#main-right-text");
-                var str = "";
-
-                rUl.html('');
-
-                var content = data['data']['content'];
-                var converter = new Markdown.Converter();
-                var htmlContent = converter.makeHtml(content);
-                /!*$(".article-content").html(htmlContent);*!/
-
-                $.each(data['data'], function (index, obj) {
-                });
-                rUl.html(str);
-
-            },
-            error: function () {
-                alert("请求失败");
-            }
-        });
-}
-pageLog();*/
-
 var catalogFlag;
 /* 给所有h标签加id */
 $(".article-content :header").each(function () {
-    $(this).attr('id', $(this).html());
+    $(this).attr('id', $(this).children(":first").attr("name"));
 });
 
 /* 文章目录 */
@@ -539,7 +520,7 @@ function getComment() {
                             '                            </div>\n' +
                             '\n' +
                             '                            <div class="comment-reply-squ" id="comment-reply-squ-'+ obj['selfId'] +'">\n' +
-                            '                                <textarea class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
+                            '                                <textarea maxlength="500" class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
                             '                                <div class="comment-reply-btn-div">\n' +
                             '                                    <a class="comment-reply-btn-left" id="comment-reply-btn-left-'+ obj['selfId'] +'">取消回复</a>\n' +
                             '                                    <a class="comment-reply-btn-right">发表评论</a>\n' +
@@ -569,7 +550,7 @@ function getComment() {
                                 '                                            <span class="comment-reply-like-text" id="comment-reply-like-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'">'+ obj2['like'] +'</span>\n' +
                                 '                                        </div>\n' +
                                 '                                        <div class="comment-reply-squ" id="comment-reply-squ-'+ obj['selfId'] + '-' + obj2['selfId'] +'">\n' +
-                                '                                            <textarea class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
+                                '                                            <textarea maxlength="500" class="am-modal-prompt-input private-conversation comment-reply comment-reply-text" id="comment-reply-text-'+ obj['selfId'] + '-' + obj2['selfId'] +'" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
                                 '                                            <div class="comment-reply-btn-div">\n' +
                                 '                                                <a class="comment-reply-btn-left"  id="comment-reply-btn-left-'+ obj['selfId'] + '-' + obj2['selfId'] +'">取消回复</a>\n' +
                                 '                                                <a class="comment-reply-btn-right" style="float: right; margin-left: 0 !important;">发表评论</a>\n' +
@@ -638,7 +619,9 @@ $("#comment-btn").click(function () {
                         content: $("#comment-text").val()
                     },
                     success:function(data){
-                        if(data['msg']=="success") {
+                        if(data['msg']=="noLogin") {
+                            window.location.href = "/login";
+                        }else if(data['msg']=="success") {
                             $(".article-comment-nonpeople").css("display", "none");
                             getComment();
 
@@ -733,7 +716,9 @@ $(".article-comment-list-ol").on("click", ".comment-reply-like-heart", function(
                         selfId: selfId
                     },
                     success:function(data){
-                        if(data['msg']=="success") {
+                        if(data['msg']=="noLogin") {
+                            window.location.href = "/login";
+                        }else if(data['msg']=="success") {
                             thisComment.addClass("comment-reply-like-heart2");
                             var commentLikeCount = parseInt(thisComment.next().html()) + 1;
                             thisComment.next().html(commentLikeCount);
@@ -782,7 +767,9 @@ $(".article-comment-list-ol").on("click", ".comment-reply-btn-right", function (
                     content: $("#comment-reply-text-" + answerNameReplyFloor).val()
                 },
                 success:function(data){
-                    if(data['msg']=="success") {
+                    if(data['msg']=="noLogin") {
+                        window.location.href = "/login";
+                    }else if(data['msg']=="success") {
                         $("#comment-reply-text-" + answerNameReplyFloor).val("");
                         getComment();
 

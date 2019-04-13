@@ -34,9 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 所有用户均可访问的资源
                 .antMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "**/favicon.ico").permitAll()
-                // ROLE_USER的权限才能访问的资源
-                .antMatchers("/user").hasRole("USER")
-                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest()./*authenticated()*/permitAll()
                 .and()
                 .formLogin()

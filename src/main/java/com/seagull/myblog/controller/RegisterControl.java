@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class RegisterControl {
+
+    private static final String DEFAULT_BOY_IMG = "http://seaguller.oss-cn-beijing.aliyuncs.com/headImg/default/boy.jpg";
+    private static final String DEFAULT_GIRL_IMG = "http://seaguller.oss-cn-beijing.aliyuncs.com/headImg/default/girl.jpg";
 
     @Autowired
     private RegisterService registerService;
@@ -42,11 +46,15 @@ public class RegisterControl {
      */
     @ResponseBody
     @RequestMapping("/sendIdentifyCode")
-    public JSONObject sendIdentifyCode(HttpServletRequest request) throws ClientException {
+    public JSONObject sendIdentifyCode(HttpServletRequest request, @RequestParam(value="type", required=false, defaultValue = "register") String type) throws ClientException {
         JSONObject sic = new JSONObject();
 
         String phone = request.getParameter("phone");
-        sic = registerService.sendPhoneCode(phone);
+        if(type.equals("safety")) {
+            sic = registerService.sendPhoneCode(phone, 2);
+        } else {
+            sic = registerService.sendPhoneCode(phone, 1);
+        }
 
         return sic;
     }
@@ -114,8 +122,10 @@ public class RegisterControl {
         String sex = request.getParameter("gender");
         if(sex.equals("male")) {
             user.setGender(1);
+            user.setImageUrl(DEFAULT_BOY_IMG);
         } else {
             user.setGender(0);
+            user.setImageUrl(DEFAULT_GIRL_IMG);
         }
 
         registerService.insertUser(user);

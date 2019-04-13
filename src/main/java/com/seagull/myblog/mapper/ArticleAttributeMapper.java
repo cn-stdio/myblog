@@ -1,6 +1,7 @@
 package com.seagull.myblog.mapper;
 
 import com.seagull.myblog.model.Attribute;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -46,4 +47,12 @@ public interface ArticleAttributeMapper {
      */
     @Update("UPDATE attribute_article SET `comment` = `comment` + 1 WHERE article_id = #{articleId}")
     public int updateArticleCommentById(long articleId);
+
+    /**
+     * 插入文章属性
+     * @param attribute
+     * @return 插入几条数据
+     */
+    @Insert("INSERT INTO attribute_article(article_id) VALUES(#{articleId})")
+    public int insertArticleAttribute(Attribute attribute);
 }

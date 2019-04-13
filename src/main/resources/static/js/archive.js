@@ -34,6 +34,7 @@ function pageTurn(p, dd) {
                 iUl.html(str);
 
                 str = "";
+                var lastCreateTime=0;
                 $.each(data['data'], function (index, obj) {
                     var date= new Date(parseInt(obj['createTime']));
 
@@ -50,7 +51,7 @@ function pageTurn(p, dd) {
                         '                                    <div class="events-header">'+ obj['title'] +'</div>\n' +
                         '                                    <div class="events-body">\n' +
                         '                                        <span class="am-icon-calendar">\n' +
-                        '                                            <a href="/archives?archive=2018-12-20">'+ timeStampToDate(obj['createTime']) +'</a>\n' +
+                        '                                            <a id="events-body-create-time">'+ timeStampToDate(obj['createTime']) +'</a>\n' +
                         '                                        </span>\n' +
                         '                                        <span class="am-icon-folder">\n' +
                         '                                            <a href="/type/'+ obj['type'] +'">'+ obj['type'] +'</a>\n' +
@@ -71,9 +72,16 @@ function pageTurn(p, dd) {
                         '                                </div>\n' +
                         '                            </dd>\n' +
                         '                        </dl>';
+
+                    if(parseInt(obj['createTime']) >= lastCreateTime) {
+                        lastCreateTime = new Date(parseInt(obj['createTime']));
+                    }
                 });
                 oUl.html(str);
                 /*oUl.append("<dl></dl>");*/
+                if(dd.length<=5) {
+                    dd = lastCreateTime.getFullYear() + "年";
+                }
                 var rUl = $(".VivaTimeline").children(":first");
                 str = "";
                 str += '<dt>'+ dd +'</dt>';
@@ -81,11 +89,15 @@ function pageTurn(p, dd) {
 
                 var lUl = $(".article-pagination");
                 lUl.html("");
+
                 if (data['pages'] >= 2) {
                     if (p == 1) {
                         str = "";
                         str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a>';
                         lUl.html(str);
+
+                        /* 尾部footer定位 */
+                        $(".footer").css("top", $(".next").offset().top+100);
                     } else if (p == data['pages']-1) {
                         str = "";
                         str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
@@ -103,11 +115,26 @@ function pageTurn(p, dd) {
                         /* 尾部footer定位 */
                         var cw = $(".prev").offset().top;
                         console.log(cw);
-                        $(".footer").css("top", cw+100);
+
+                        if(cw>=1380) {
+                            $(".footer").css("top", cw+100);
+                        } else {
+                            $(".footer").css("top", 1380);
+                        }
                     } else {
                         str = "";
                         str += '<a class="next" href="#turn-head" onclick="pageTurn(' + (p + 1) + ',\'' + dd + '\')">下一页</a><a class="prev" href="#turn-head" onclick="pageTurn(' + (p - 1) + ',\'' + dd + '\')">上一页</a>';
                         lUl.html(str);
+                    }
+                } else {
+                    /* 尾部footer定位 */
+                    $(".footer").css("top", 0);
+                    var cw = $(".article-pagination").offset().top;
+                    console.log(cw);
+                    if(cw>=1380) {
+                        $(".footer").css("top", cw+100);
+                    } else {
+                        $(".footer").css("top", 1380);
                     }
                 }
             },
@@ -116,7 +143,8 @@ function pageTurn(p, dd) {
             }
         });
 }
-pageTurn(page, '2018年');
+var articleLastDate = new Date(parseInt($("#articleTime").val()));
+pageTurn(page, articleLastDate.getFullYear() + "年");
 
 function pageDate() {
     $.ajax(

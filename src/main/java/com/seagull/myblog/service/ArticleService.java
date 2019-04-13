@@ -1,5 +1,6 @@
 package com.seagull.myblog.service;
 
+import com.seagull.myblog.model.Article;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +42,11 @@ public interface ArticleService {
      * @return JSON
      */
     JSONObject updateArticleRead(String ip, long articleId);
+
+    /**
+     * 插入文章
+     * @param article 文章实体
+     * @param contentHtml 内容html格式（便于生成摘要）
+     */
+    void insertArticle(Article article, String contentHtml);
 }
