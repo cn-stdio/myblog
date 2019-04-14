@@ -10,7 +10,7 @@ import com.seagull.myblog.model.Article;
 import com.seagull.myblog.model.Attribute;
 import com.seagull.myblog.service.ArticleService;
 import com.seagull.myblog.service.redis.RedisService;
-import com.seagull.myblog.utils.InterceptionArticleUtil;
+import com.seagull.myblog.utils.InterceptionUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,8 +217,8 @@ public class ArticleServiceImpl implements ArticleService {
         article.setArticleId(dateString);
         attribute.setArticleId(dateString);
 
-        // 对文章摘要的截取，截取内容为30个字符（中文也算1个字符）
-        InterceptionArticleUtil interceptionArticleUtil = new InterceptionArticleUtil();
+        // 对文章摘要的截取，截取内容为80个字符（中文也算1个字符）
+        InterceptionUtil interceptionArticleUtil = new InterceptionUtil();
         String summary = interceptionArticleUtil.interceptionArticle(contentHtml);
         article.setSummary(summary);
 

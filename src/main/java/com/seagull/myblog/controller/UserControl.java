@@ -172,7 +172,6 @@ public class UserControl {
             int rows = Integer.valueOf(request.getParameter("rows"));
             int pageNum = Integer.valueOf(request.getParameter("pageNum"));
             informationService.getUserRepliedInformation(principal.getName(), informationJson, rows, pageNum);
-            informationJson.put("msg", "success");
         }
 
         return informationJson;

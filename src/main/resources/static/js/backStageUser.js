@@ -406,6 +406,7 @@ $("#user-menu-introduce").click(function () {
         '                <a id="user-personal-profile">更新</a>\n' +
         '            </div>';
     $(".tpl-right").css("height", "1000px");
+    $("#user-paper-white").css("margin-top", 1015);
     $(".tpl-right").html(introduceHtml);
     getUserInformation();
 });
@@ -434,6 +435,7 @@ $("#user-menu-password").click(function () {
        '            </div>';
 
     $(".tpl-right").css("height", "280px");
+    $("#user-paper-white").css("margin-top", 0);
     $(".tpl-right").html(passwordHtml);
 });
 
@@ -537,6 +539,7 @@ $(".tpl-right").on('click', "#user-next-step", function () {
 
                         $(".tpl-right").html(keyHtml);
                         $(".tpl-right").css("height", "370px");
+                        $("#user-paper-white").css("margin-top", 0);
                     } else {
                         $("#notice-box-text").html(data['msg']);
                         $(".notice-box").css("color", "lightcoral");
@@ -662,13 +665,22 @@ function getUserReplied(pageNum) {
             success:function(data){
                 if(data['msg']=="noLogin") {
                     window.location.href = "/login";
+                } else if(data['msg']=="noReply") {
+                    $(".user-reply-list").html("");
+                    $("#user-reply-none").css("display", "block");
+                    $(".tpl-right").css("height", 250);
+                    $("#user-paper-white").css("margin-top", 0);
                 } else {
+                    $("#user-reply-none").css("display", "none");
+                    $(".tpl-right").css("height", 820);
+                    $("#user-paper-white").css("margin-top", 804);
+
                     var replyStr = '';
                     $.each(data['data'], function (index, obj) {
                         replyStr += '<div>\n' +
                             '                    <div>\n' +
                             '                        <span>⭐</span>\n' +
-                            '                        <span><a class="user-reply-title">'+ obj['title'] +'</a></span>\n' +
+                            '                        <span><a class="user-reply-title" href="/article/'+ obj['articleId'] +'">'+ obj['title'] +'</a></span>\n' +
                             '                        <span class="user-reply-time">'+ obj['time'] +'</span>\n' +
                             '                    </div>\n' +
                             '                    <div class="user-reply-content">\n' +
@@ -676,10 +688,65 @@ function getUserReplied(pageNum) {
                             '                        <span style="color:black;margin-right: 5px;">@'+ obj['answerName'] +'</span>\n' +
                             '                        <span>'+ obj['content'] +'</span>\n' +
                             '                    </div>\n' +
-                            '                </div>';
+                            '                </div>' +
+                            '<hr style="margin-left: -20px;width: 93%;"/>';
                     });
 
                     $(".user-reply-list").html(replyStr);
+
+                    var replyPage = Math.ceil(data['replyNum'] / 6);
+
+                    if(replyPage == 1) {
+                        $(".user-prev").css("display", "none");
+                        $(".user-next").css("display", "none");
+
+                        if(data['replyNum'] == 1) {
+                            $(".tpl-right").css("height", 300);
+                            $("#user-paper-white").css("margin-top", 0);
+                        } else if(data['replyNum'] == 5) {
+                            $(".tpl-right").css("height", 300 + (data['replyNum']-1)*104);
+                            $("#user-paper-white").css("margin-top", 700);
+                        } else if(data['replyNum'] == 6) {
+                            $(".tpl-right").css("height", 300 + (data['replyNum']-1)*104);
+                            $("#user-paper-white").css("margin-top", 804);
+                        } else {
+                            $(".tpl-right").css("height", 300 + (data['replyNum']-1)*104);
+                            $("#user-paper-white").css("margin-top", 0);
+                        }
+                    } else {
+                        var pageTurn = "";
+
+                        if(pageNum == 1) {
+                            pageTurn +=
+                                '                <a href="#" class="user-prev" style="display: none;">上一页</a>\n' +
+                                '                <a href="#" class="user-next" style="display: block;" onclick="getUserReplied('+ (pageNum+1) +')">下一页</a>\n';
+                        } else if(pageNum == replyPage) {
+                            pageTurn +=
+                                '                <a href="#" class="user-prev" style="display: block;" onclick="getUserReplied('+ (pageNum-1) +')">上一页</a>\n' +
+                                '                <a href="#" class="user-next" style="display: none;">下一页</a>\n';
+
+                            var replyLastNum = data['replyNum'] % 6;
+                            if(replyLastNum == 1) {
+                                $(".tpl-right").css("height", 300);
+                                $("#user-paper-white").css("margin-top", 0);
+                            } else if(replyLastNum == 5) {
+                                $(".tpl-right").css("height", 300 + (replyLastNum-1)*104);
+                                $("#user-paper-white").css("margin-top", 700);
+                            } else if(replyLastNum == 6) {
+                                $(".tpl-right").css("height", 300 + (replyLastNum-1)*104);
+                                $("#user-paper-white").css("margin-top", 804);
+                            } else {
+                                $(".tpl-right").css("height", 300 + (replyLastNum-1)*104);
+                                $("#user-paper-white").css("margin-top", 0);
+                            }
+                        } else {
+                            pageTurn +=
+                                '                <a href="#" class="user-prev" style="display: block;" onclick="getUserReplied('+ (pageNum-1) +')">上一页</a>\n' +
+                                '                <a href="#" class="user-next" style="display: block;" onclick="getUserReplied('+ (pageNum+1) +')">下一页</a>\n';
+                        }
+
+                        $("#user-reply-turn").html(pageTurn);
+                    }
                 }
             },
             error:function(){
@@ -693,6 +760,18 @@ $("#user-menu-reply").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
     $("#user-menu-reply-count").css("display", "none");
+
+    var replyInitHtml = '<div>\n' +
+        '                <div class="user-reply">回复鸭</div>\n' +
+        '                <img id="user-reply-img" src="../static/img/replyImg.gif"/>\n' +
+        '                <hr/>\n' +
+        '            </div>\n' +
+        '            <div class="user-reply-list">\n' +
+        '                \n' +
+        '            </div>\n' +
+        '            <div id="user-reply-none">目前麻油任何人回复您的评论鸭~</div>\n' +
+        '<div id="user-reply-turn"></div>';
+    $(".tpl-right").html(replyInitHtml);
 
     getUserReplied(1);
 });

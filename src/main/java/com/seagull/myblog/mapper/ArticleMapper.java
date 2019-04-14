@@ -63,6 +63,14 @@ public interface ArticleMapper {
     public Article queryArticleByArticleId(long articleId);
 
     /**
+     * 按照文章id查询指定文章标题
+     * @param articleId 文章Id
+     * @return
+     */
+    @Select("SELECT title FROM article WHERE article_id = #{articleId}")
+    public String queryTitleByArticleId(long articleId);
+
+    /**
      * 查询包含特定标签的文章
      * @param label 标签
      * @return 文章列表

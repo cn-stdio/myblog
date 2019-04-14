@@ -360,3 +360,13 @@ ul, li {
 .user-prev:visited {
     color: white;
 }
+
+#user-reply-none {
+    font-size: 23px;
+    color: #999;
+    font-family: "xionghaizi";
+    margin-top: 30px;
+    margin-left: 290px;
+
+    display: none;
+}
