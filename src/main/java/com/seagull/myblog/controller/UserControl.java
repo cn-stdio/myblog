@@ -1,6 +1,9 @@
 package com.seagull.myblog.controller;
 
+import com.seagull.myblog.mapper.InformationMapper;
+import com.seagull.myblog.mapper.UserMapper;
 import com.seagull.myblog.model.User;
+import com.seagull.myblog.service.FeedbackService;
 import com.seagull.myblog.service.InformationService;
 import com.seagull.myblog.service.UserService;
 import net.sf.json.JSONObject;
@@ -32,6 +35,15 @@ public class UserControl {
 
     @Autowired
     private InformationService informationService;
+
+    @Autowired
+    private InformationMapper informationMapper;
+
+    @Autowired
+    private FeedbackService feedbackService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/user")
@@ -175,5 +187,76 @@ public class UserControl {
         }
 
         return informationJson;
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @ResponseBody
+    @RequestMapping("/getUserReplyNum")
+    public JSONObject getUserReplyNum(@AuthenticationPrincipal Principal principal) {
+        JSONObject rn = new JSONObject();
+        rn.put("code", 200);
+
+        if(principal==null) {
+            rn.put("msg", "noLogin");
+        } else {
+            int replyNum = informationMapper.queryReplyInformationCount(principal.getName());
+            rn.put("msg", "success");
+            rn.put("replyNum", replyNum);
+        }
+
+        return rn;
+    }
+
+    /**
+     * 昵称检查（个人中心）
+     * @param request 请求域
+     * @param principal 用户
+     * @return JSON
+     */
+    @ResponseBody
+    @RequestMapping("/user/nameCheck")
+    public JSONObject nameCheckOfUser(HttpServletRequest request, @AuthenticationPrincipal Principal principal) {
+        JSONObject nc = new JSONObject();
+        nc.put("code", 200);
+
+        String name = request.getParameter("name");
+
+        if(principal==null) {
+            nc.put("msg", "noLogin");
+        } else {
+            int count = userMapper.queryRepeatNameCount(name, principal.getName());
+            if(count==0) {
+                nc.put("msg", "none");
+            } else {
+                nc.put("msg", "有人跟您的昵称重复了哟~");
+            }
+        }
+
+
+        return nc;
+    }
+
+    /**
+     * 插入悄悄话（个人中心）
+     * @param request 请求域
+     * @param principal 用户
+     * @return JSON
+     */
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
+    @ResponseBody
+    @RequestMapping("/user/insertFeedback")
+    public JSONObject insertFeedback(HttpServletRequest request, @AuthenticationPrincipal Principal principal) {
+        JSONObject ifb = new JSONObject();
+
+        if(principal==null) {
+            ifb.put("code", 200);
+            ifb.put("msg", "noLogin");
+
+            return ifb;
+        } else {
+            ifb = feedbackService.insertFeedback(request.getParameter("msg"), principal.getName());
+        }
+
+        return ifb;
     }
 }

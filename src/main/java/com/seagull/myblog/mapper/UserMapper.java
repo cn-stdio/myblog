@@ -55,6 +55,15 @@ public interface UserMapper {
     public List<String> queryAllName();
 
     /**
+     * 查询除某用户外与其他用户是否重名
+     * @param name 用户昵称
+     * @param id 本身用户ID
+     * @return 数量
+     */
+    @Select("SELECT COUNT(*) FROM user WHERE user_name = #{name} AND id != #{id}")
+    public int queryRepeatNameCount(@Param("name") String name, @Param("id") String id);
+
+    /**
      * 获得用户表所有的手机号
      * @return 手机号集合
      */

@@ -19,4 +19,12 @@ public interface FeedbackService {
      * @return JSON
      */
     public JSONObject insertFeedback(String msg, String contact);
+
+    /**
+     * 查询所有反馈记录
+     * @param pageNum  当前页数
+     * @param rows  一页大小
+     * @return JSON
+     */
+    public JSONObject getFeedback(int pageNum, int rows);
 }

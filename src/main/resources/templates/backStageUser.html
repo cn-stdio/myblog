@@ -111,7 +111,7 @@
                         </a>
                     </li>
                     <li class="tpl-left-nav-item">
-                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list" id="user-menu-talk">
                             <i class="am-icon-heart-o"></i>
                             <span>&nbsp;悄悄话</span>
                         </a>
@@ -181,94 +181,14 @@
         </div>
         <!--<div class="tpl-right">
             <div>
-                <div class="user-reply">回复鸭</div>
-                <img id="user-reply-img" src="../static/img/replyImg.gif"/>
-                <hr/>
+                <span><img src="../static/img/talk/t-1.jpg" class="user-talk-img"/></span>
+                <span><img src="../static/img/talk/t-2.jpg" class="user-talk-img"/></span>
+                <span><img src="../static/img/talk/t-3.jpg" class="user-talk-img"/></span>
             </div>
-            <div class="user-reply-list">
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-                <div>
-                    <div>
-                        <span>⭐</span>
-                        <span><a class="user-reply-title">哈哈哈</a></span>
-                        <span class="user-reply-time">2018-04-10</span>
-                    </div>
-                    <div class="user-reply-content">
-                        <span style="margin-right: 5px;">Seaguller:</span>
-                        <span style="color:black;margin-right: 5px;">@Seaguller</span>
-                        <span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊...</span>
-                    </div>
-                </div>
-                <hr style="margin-left: -20px;width: 93%;"/>
-            </div>
-            <div id="user-reply-none">目前麻油任何人回复您的评论鸭~</div>
-            <div>
-                <a class="user-prev">上一页</a>
-                <a class="user-next">下一页</a>
+            <div id="user-talk-title">❤  我知道你有很多话想偷偷对我说啦，嘻嘻嘻，叭要着急，慢慢来鸭~</div>
+            <div id="user-talk-div">
+                <textarea maxlength="500" id="user-talk-text" class="am-modal-prompt-input" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
+                <div><a id="user-talk-btn">冲鸭~</a></div>
             </div>
         </div>-->
     </div>

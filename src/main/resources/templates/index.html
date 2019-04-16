@@ -50,7 +50,7 @@
                                 <ul class="am-dropdown-content login-content">
                                     <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
                                     <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -63,8 +63,8 @@
                                 </button>
                                 <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
                                     <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
-                                    <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                    <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                    <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
                                     <hr id="log-hr"/>
                                     <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
                                 </ul>
@@ -78,12 +78,12 @@
     <!-- 反馈窗口 -->
     <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">
-            <div class="am-modal-hd">悄悄话</div>
+            <div class="am-modal-hd">反馈</div>
             <div class="am-modal-bd">
                 你有什么要悄悄告诉我滴吗！(`・ω・´)
-                <textarea id="feedback-text" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <textarea maxlength="1000" id="feedback-text" style="resize:none;" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
                 <br/>
-                <textarea id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+                <textarea maxlength="50" style="resize:none;" id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>

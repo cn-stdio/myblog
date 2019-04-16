@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://dreamsky.github.io/main/blog/common/init.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/css/article.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="../static/css/backStageUser.css">
+    <link rel="stylesheet" href="../static/css/admin.css">
+
+</head>
+<body>
+<!-- 标题栏 -->
+<div class="head-one">
+    <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+        <div class="am-container">
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <a id="header-text" href="/">Seaguller的小窝~</a>
+                    <li class="am-active" id="li-main">
+                        <a href="/" class="header-a-main" id="header-a-main-one">
+                            <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                        </a>
+                    </li>
+                    <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                    <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                    <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                    <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                    <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                    <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+                </ul>
+                <div class="am-btn-group login-button-head"  th:unless="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                        <ul class="am-dropdown-content login-content">
+                            <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                            <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown id="login-sign-drop">
+                        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name">
+                            <span id="login-user-name"></span>
+                            <span class="am-icon-caret-down"></span>
+                        </button>
+                        <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
+                            <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                            <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                            <hr id="log-hr"/>
+                            <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                        </ul>
+                    </div>
+                    <button class="am-btn" id="login-button-circle" sec:authorize="hasAnyRole('ROLE_ADMIN')"><span id="login-button-write">写</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<!-- 反馈窗口 -->
+<div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">悄悄话</div>
+        <div class="am-modal-bd">
+            你有什么要悄悄告诉我滴吗！(`・ω・´)
+            <textarea id="feedback-text" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+            <br/>
+            <textarea id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- 主体 -->
+<div>
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a class="nav-link active" id="admin-menu-article">
+                        <i class="am-icon-gears"></i>
+                        <span>&nbsp;文章管理</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
+                    <a class="nav-link tpl-left-nav-link-list" id="admin-menu-reply">
+                        <i class="am-icon-comments-o"></i>
+                        <span>&nbsp;&nbsp;反馈消息</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger" id="admin-menu-feedback-count">
+                            12
+                        </i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-right">
+        <div class="admin-title-div"></div>
+        <div class="admin-list"></div>
+        <div id="user-reply-none">目前您没有写任何文章鸭~</div>
+        <div id="admin-turn"></div>
+    </div>
+</div>
+
+<!-- 警告框 -->
+<div class="notice-box" >
+    <i class="am-icon-exclamation-circle"></i>
+    <span id="notice-box-text">有信息麻油按规则填写鸭~</span>
+</div>
+
+<!-- 页面拉伸 -->
+<div id="user-paper-white" style="margin-top: 1015px; height: 150px;"></div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="../static/js/admin.js" type="text/javascript"></script>
+<!-- 反馈弹窗 -->
+<script type="text/javascript">
+    $(function() {
+        $('.doc-prompt-toggle').on('click', function() {
+            $("#feedback-text").val("");
+            $('#my-prompt').modal({
+                relatedTarget: this
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -22,16 +22,4 @@ public class RandomNum {
 
         return randomNum;
     }
-
-    /**
-     * 获取3位随机数
-     * @return
-     */
-    public int getThreeRandomNum() {
-        int randomNum;
-
-        randomNum = (int) ((Math.random()*9+1) * 100);
-
-        return randomNum;
-    }
 }

@@ -1,0 +1,66 @@
+.admin-title {
+    font-size: 30px;
+    font-family: "xiaodanchun";
+    color: skyblue;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.admin-list {
+    margin-left: 50px;
+}
+.admin-article-title {
+    font-size: 18px;
+    color: deepskyblue;
+}
+.admin-article-content {
+    font-size: 17px;
+    color: #999;
+    margin-top: 3px;
+    width: 760px;
+}
+.admin-article-bottom {
+    font-size: 16px;
+    color: gray;
+    margin-top: 10px;
+}
+.admin-article-split {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.admin-article-count {
+    color: #3399ea;
+}
+.admin-article-button {
+    float: right;
+    margin-right: 100px;
+
+    border: 1px solid skyblue;
+    color: skyblue;
+    padding: 1px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+    transition-property: background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    line-height: 2;
+
+    background-color: transparent;
+}
+.admin-article-button:hover {
+    background-color: skyblue;
+    color: white;
+}
+.admin-article-button:focus {
+    color: skyblue;
+    outline: none;
+}
+
+.admin-contact-a:hover {
+    color: deepskyblue;
+    cursor: auto;
+}

@@ -38,7 +38,7 @@ public interface ArticleCommentMapper {
      * @param articleId 目标文章Id
      * @return
      */
-    @Select("SELECT * FROM reviews_article WHERE article_id = #{articleId} ORDER BY comment_date ASC")
+    @Select("SELECT * FROM reviews_article WHERE article_id = #{articleId} ORDER BY id ASC")
     public List<Comment> queryCommentsByArticleId(long articleId);
 
     /**

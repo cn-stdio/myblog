@@ -42,7 +42,7 @@ public class InformationServiceImpl implements InformationService {
 
         PageHelper.startPage(pageNum, rows);
         List<ReplyInformation> informations = new ArrayList<>();
-        informations = informationMapper.queryAllReplyInfomation(userId);
+        informations = informationMapper.queryAllReplyInformationById(userId);
         PageInfo<ReplyInformation> pageInfo = new PageInfo<>(informations);
 
         if(informations.isEmpty()) {
@@ -53,7 +53,11 @@ public class InformationServiceImpl implements InformationService {
         informations.forEach(information -> {
             JSONObject dataUnit = new JSONObject();
 
-            dataUnit.put("title", articleMapper.queryTitleByArticleId(information.getArticleId()));
+            if(information.getArticleId() == 0) {
+                dataUnit.put("title", "留言板");
+            } else {
+                dataUnit.put("title", articleMapper.queryTitleByArticleId(information.getArticleId()));
+            }
             dataUnit.put("articleId", information.getArticleId());
 
             try {
@@ -65,6 +69,8 @@ public class InformationServiceImpl implements InformationService {
             dataUnit.put("respondentName", userMapper.queryNameById(information.getRespondentId()));
             dataUnit.put("answerName", userMapper.queryNameById(userId));
             dataUnit.put("content", information.getContent());
+            dataUnit.put("state", information.getState());
+            informationMapper.updateReplyInformationStateById(userId, information.getId());
 
             data.add(dataUnit);
         });

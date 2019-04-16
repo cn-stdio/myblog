@@ -25,6 +25,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -119,13 +120,9 @@ public class MyblogApplicationTests {
      */
     @Test
     public void getString() {
-/*
-        redisService.setAndTimeOut("redis", "yayaya", 20);
-*/
-        redisService.expire("10.3.1.92", 30);
         System.out.println();
         System.out.println();
-        System.out.println();
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
         System.out.println();
         System.out.println();
         System.out.println();

@@ -75,7 +75,7 @@ if(username != "") {
     $("#login-user-name").html(username);
 }
 
-/* 悄悄话点击 */
+/* 反馈点击 */
 $("#feedback-submit").click(function () {
     var feedback = $("#feedback-text").val();
     var contact = $("#feedback-contact").val();
@@ -107,6 +107,29 @@ $("#feedback-submit").click(function () {
 /* 写博客点击 */
 $("#login-button-circle").click(function () {
     window.location.href = "/publish";
+});
+
+/* 获得评论回复量 */
+$.ajax({
+    type:"post",
+    url:"/getUserReplyNum",
+    dataType:"json",
+    async:false,
+    success:function(data){
+        if(data['msg']=="noLogin") {
+            window.location.href = "/login";
+        } else {
+            if(data['replyNum']==0) {
+                $("#user-menu-reply-count").css("display", "none");
+            } else {
+                $("#user-menu-reply-count").html(data['replyNum']);
+                $("#user-menu-reply-count").css("display", "block");
+            }
+        }
+    },
+    error:function(){
+        console.log("获取回复信息失败！");
+    }
 });
 
 /* 获得当前用户个人信息 */
@@ -198,12 +221,6 @@ function nameCheck(formText) {
         $("#user-name-error").css("margin-left", "300px");
         $("#user-name-error").css("display", "block");
 
-    } else if (formText == userName) {
-        $(".user-name-input").addClass("am-form-warning");
-
-        $("#user-name-error").html("不能跟原先名字一样哟~");
-        $("#user-name-error").css("margin-left", "290px");
-        $("#user-name-error").css("display", "block");
     } else if (formText.length > 10) {
         $(".user-name-input").addClass("am-form-warning");
 
@@ -263,16 +280,29 @@ $(".tpl-right").on("click", "#user-personal-profile", function () {
         $.ajax(
             {
                 type:"post",
-                url:"/nameCheck",
+                url:"/user/nameCheck",
                 dataType:"json",
                 async: false,
                 data:{
                     name: name
                 },
                 success:function(data){
-                    if(data['msg']=="success") {
+                    if(data['msg']=="noLogin") {
+                        window.location.href = "/login";
+                    } else if(data['msg']=="none") {
                         nameFlag = 1;
+
+                        $(".user-name-input").removeClass("am-form-warning");
+
+                        $("#user-name-error").html("");
+                        $("#user-name-error").css("display", "none");
                     } else {
+                        $(".user-name-input").addClass("am-form-warning");
+
+                        $("#user-name-error").html(data['msg']);
+                        $("#user-name-error").css("margin-left", "290px");
+                        $("#user-name-error").css("display", "block");
+
                         $("#notice-box-text").html(data['msg']);
                         $(".notice-box").css("color", "lightcoral");
                         $(".notice-box").css("display", "block");
@@ -437,6 +467,14 @@ $("#user-menu-password").click(function () {
     $(".tpl-right").css("height", "280px");
     $("#user-paper-white").css("margin-top", 0);
     $(".tpl-right").html(passwordHtml);
+});
+
+/* 手机号更换点击 */
+$(".tpl-right").on('click', '.user-phone-btn', function () {
+    $("#notice-box-text").html("大懒猪这个功能还没做，嘻嘻嘻(o´・ω・`)σ)Д`)");
+    $(".notice-box").css("color", "mediumslateblue");
+    $(".notice-box").css("display", "block");
+    $(".notice-box").delay(3000).hide(0);
 });
 
 /* 验证码 */
@@ -678,9 +716,19 @@ function getUserReplied(pageNum) {
                     var replyStr = '';
                     $.each(data['data'], function (index, obj) {
                         replyStr += '<div>\n' +
-                            '                    <div>\n' +
-                            '                        <span>⭐</span>\n' +
-                            '                        <span><a class="user-reply-title" href="/article/'+ obj['articleId'] +'">'+ obj['title'] +'</a></span>\n' +
+                            '                    <div>\n';
+                        if(obj['state']==1) {
+                            replyStr += '<span style="font-weight: bold; color: #999;">已读&nbsp;&nbsp;</span>';
+                        } else {
+                            replyStr += '<span>⭐&nbsp;&nbsp;</span>';
+                        }
+
+                        if(obj['articleId']==0) {
+                            replyStr += '<span><a class="user-reply-title" href="/messageBoard">'+ obj['title'] +'</a></span>';
+                        } else {
+                            replyStr += '<span><a class="user-reply-title" href="/article/'+ obj['articleId'] +'">'+ obj['title'] +'</a></span>';
+                        }
+                        replyStr +=
                             '                        <span class="user-reply-time">'+ obj['time'] +'</span>\n' +
                             '                    </div>\n' +
                             '                    <div class="user-reply-content">\n' +
@@ -774,4 +822,60 @@ $("#user-menu-reply").click(function () {
     $(".tpl-right").html(replyInitHtml);
 
     getUserReplied(1);
+});
+
+/* 悄悄话点击 */
+$("#user-menu-talk").click(function () {
+    $(".nav-link").removeClass("active");
+    $(this).addClass("active");
+
+    var talkHtml = '<div>\n' +
+        '                <span><img src="../static/img/talk/t-1.jpg" class="user-talk-img"/></span>\n' +
+        '                <span><img src="../static/img/talk/t-2.jpg" class="user-talk-img"/></span>\n' +
+        '                <span><img src="../static/img/talk/t-3.jpg" class="user-talk-img"/></span>\n' +
+        '            </div>\n' +
+        '            <div id="user-talk-title">❤  我知道你有很多话想偷偷对我说啦，嘻嘻嘻，叭要着急，慢慢来鸭~</div>\n' +
+        '            <div id="user-talk-div">\n' +
+        '                <textarea maxlength="500" id="user-talk-text" class="am-modal-prompt-input" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>\n' +
+        '                <div><a id="user-talk-btn">冲鸭~</a></div>\n' +
+        '            </div>';
+
+    $(".tpl-right").html(talkHtml);
+    $(".tpl-right").css("height", 600);
+    $("#user-paper-white").css("margin-top", 0);
+});
+/* 悄悄话发布 */
+$(".tpl-right").on('click', '#user-talk-btn', function () {
+    if($("#user-talk-text").val()=="") {
+        $("#notice-box-text").html("你神马都麻油写鸭！");
+        $(".notice-box").css("color", "lightcoral");
+        $(".notice-box").css("display", "block");
+        $(".notice-box").delay(3000).hide(0);
+    } else {
+        $.ajax(
+            {
+                type:"post",
+                url:"/user/insertFeedback",
+                dataType:"json",
+                async: false,
+                data:{
+                    msg: $("#user-talk-text").val()
+                },
+                success:function(data){
+                    if(data['msg']=="noLogin") {
+                        window.location.href = "/login";
+                    } else {
+                        $("#user-talk-text").val("");
+
+                        $("#notice-box-text").html("我已经收到你的悄悄话啦！");
+                        $(".notice-box").css("color", "limegreen");
+                        $(".notice-box").css("display", "block");
+                        $(".notice-box").delay(3000).hide(0);
+                    }
+                },
+                error:function(){
+                    console.log("请求失败");
+                }
+            });
+    }
 });

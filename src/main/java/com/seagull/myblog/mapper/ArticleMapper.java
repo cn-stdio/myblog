@@ -26,8 +26,17 @@ public interface ArticleMapper {
             @Result(property = "articleId", column = "article_id")
     }
     )
-    @Select("SELECT * FROM article ORDER BY create_time DESC")
+    @Select("SELECT * FROM article ORDER BY id DESC")
     public List<Article> queryAllArticles();
+
+    /**
+     * 获取用户所有文章列表
+     * @param userId 用户ID
+     * @return 文章列表
+     */
+    @ResultMap("article")
+    @Select("SELECT * FROM article WHERE author = #{userId} ORDER BY id DESC")
+    public List<Article> queryAllArticlesByUserId(String userId);
 
     /**
      * 按照特定日期区间查询文章
@@ -36,7 +45,7 @@ public interface ArticleMapper {
      * @return
      */
     @ResultMap("article")
-    @Select("SELECT * FROM article WHERE create_time >= #{startDate} AND create_time < #{endDate} ORDER BY create_time DESC")
+    @Select("SELECT * FROM article WHERE create_time >= #{startDate} AND create_time < #{endDate} ORDER BY id DESC")
     public List<Article> queryArticlesOfDate(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
     /**
@@ -76,7 +85,7 @@ public interface ArticleMapper {
      * @return 文章列表
      */
     @ResultMap("article")
-    @Select("SELECT * FROM article WHERE POSITION(REPLACE(#{label},' ','') IN REPLACE(`attribute_label`,' ','')) ORDER BY create_time DESC")
+    @Select("SELECT * FROM article WHERE POSITION(REPLACE(#{label},' ','') IN REPLACE(`attribute_label`,' ','')) ORDER BY id DESC")
     public List<Article> queryArticlesOfLabel(String label);
 
     /**
@@ -85,7 +94,7 @@ public interface ArticleMapper {
      * @return 文章列表
      */
     @ResultMap("article")
-    @Select("SELECT * FROM article WHERE `type` LIKE #{type} ORDER BY create_time DESC")
+    @Select("SELECT * FROM article WHERE `type` LIKE #{type} ORDER BY id DESC")
     public List<Article> queryArticlesOfType(String type);
 
     /**
@@ -95,4 +104,12 @@ public interface ArticleMapper {
      */
     @Insert("INSERT INTO article(article_id, title, author, content, attribute_label, summary, type, classify) VALUES(#{articleId}, #{title}, #{author}, #{content}, #{attributeLabel}, #{summary}, #{type}, #{classify})")
     public int insertArticle(Article article);
+
+    /**
+     * 更新文章
+     * @param article 文章
+     * @return 更新数量
+     */
+    @Update("UPDATE article SET title=#{title}, content=#{content}, attribute_label=#{attributeLabel}, summary=#{summary}, type=#{type}, classify=#{classify} WHERE article_id=#{articleId}")
+    public int updateArticle(Article article);
 }

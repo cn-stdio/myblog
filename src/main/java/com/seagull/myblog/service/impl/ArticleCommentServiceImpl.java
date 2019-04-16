@@ -1,12 +1,11 @@
 package com.seagull.myblog.service.impl;
 
-import com.seagull.myblog.mapper.ArticleAttributeMapper;
-import com.seagull.myblog.mapper.ArticleCommentMapper;
-import com.seagull.myblog.mapper.ArticleMapper;
-import com.seagull.myblog.mapper.UserMapper;
+import com.seagull.myblog.mapper.*;
 import com.seagull.myblog.model.Comment;
+import com.seagull.myblog.model.ReplyInformation;
 import com.seagull.myblog.model.UserCommentLikeRecord;
 import com.seagull.myblog.service.ArticleCommentService;
+import com.seagull.myblog.utils.InterceptionUtil;
 import com.seagull.myblog.utils.TimeUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -14,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -39,6 +35,9 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
 
     @Autowired
     private ArticleAttributeMapper articleAttributeMapper;
+
+    @Autowired
+    private InformationMapper informationMapper;
 
     /**
      * 返回文章评论实现
@@ -135,7 +134,7 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
     @Override
     public void insertComment(Comment comment) {
         if(comment.getArticleId()==0) {
-            comment.setOriginalAuthor("1554087772607972");
+            comment.setOriginalAuthor(userMapper.queryIdByName("Seaguller"));
         } else {
             comment.setOriginalAuthor(articleMapper.queryArticleByArticleId(comment.getArticleId()).getAuthor());
         }
@@ -149,6 +148,15 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
         }
 
         articleCommentMapper.insertArticleCommen(comment);
+
+        InterceptionUtil interceptionUtil = new InterceptionUtil();
+        ReplyInformation information = new ReplyInformation();
+        information.setArticleId(comment.getArticleId());
+        information.setRespondentId(comment.getRespondentName());
+        information.setAnswerId(comment.getAnswerName());
+        information.setContent(interceptionUtil.interceptionReply(comment.getCommentContent()));
+        information.setReplyTime(new Date());
+        informationMapper.insertReplyInformation(information);
     }
 
     /**

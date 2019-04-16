@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Seagull_gby
@@ -113,12 +114,8 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public void insertUser(User user) {
-        RandomNum randomNum = new RandomNum();
-
-        /* 用毫秒时间戳+三位随机数作为用户唯一ID存储 */
-        long nowTime = System.currentTimeMillis();
-        int random = randomNum.getThreeRandomNum();
-        String userId = String.valueOf(nowTime) + String.valueOf(random);
+        /* 用UUID作为用户唯一ID存储 */
+        String userId = UUID.randomUUID().toString().replace("-", "");
         user.setId(userId);
 
         /* 密码加密 */

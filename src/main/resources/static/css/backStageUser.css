@@ -213,7 +213,7 @@ ul, li {
     margin-top: -32px !important;
 }
 
-#user-personal-profile, #user-next-step, #user-confirm {
+#user-personal-profile, #user-next-step, #user-confirm, #user-talk-btn {
     display: inline-block;
     text-align: center;
     border-radius: 3px;
@@ -232,13 +232,13 @@ ul, li {
     margin-top: 15px;
     font-size: 18px;
 }
-#user-personal-profile:hover, #user-next-step:hover, #user-confirm:hover {
+#user-personal-profile:hover, #user-next-step:hover, #user-confirm:hover, #user-talk-btn:hover {
     background-color: pink;
     box-shadow: 4px 6px 24px 0 pink;
     text-decoration: none;
     color: white;
 }
-#user-personal-profile:visited, #user-next-step:visited, #user-confirm:visited {
+#user-personal-profile:visited, #user-next-step:visited, #user-confirm:visited, #user-talk-btn:visited {
     color: white;
 }
 
@@ -369,4 +369,44 @@ ul, li {
     margin-left: 290px;
 
     display: none;
+}
+
+.user-talk-img {
+    width: 270px;
+    margin-left: 20px;
+}
+#user-talk-title {
+    font-size: 23px;
+    color: pink;
+    font-family: "shaonv";
+    margin-left: 30px;
+}
+#user-talk-div {
+    position: absolute;
+    width: 600px;
+    height: 140px;
+    left: 150px;
+    box-shadow: 0px 0px 10px 0.5px pink;
+    border: 1px solid pink;
+    padding: 15px 15px 5px;
+    border-radius: 7px;
+    background: url(../img/comment.png) right bottom no-repeat;
+
+    margin-top: 50px;
+}
+#user-talk-text {
+    resize: none;
+    width: 576px;
+    height: 126px;
+    font-family: "xiaodanchun";
+    font-size: 22px;
+    margin-left: -5px;
+    margin-top: -6px;
+    background-color: transparent;
+    border: none;
+}
+#user-talk-btn {
+    background-color: pink;
+    margin-top: 30px;
+    margin-left: 240px;
 }

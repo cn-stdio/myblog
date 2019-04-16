@@ -49,4 +49,11 @@ public interface ArticleService {
      * @param contentHtml 内容html格式（便于生成摘要）
      */
     void insertArticle(Article article, String contentHtml);
+
+    /**
+     * 更新文章
+     * @param article 文章实体
+     * @param contentHtml 内容html格式（便于生成摘要）
+     */
+    void updateArticle(Article article, String contentHtml);
 }

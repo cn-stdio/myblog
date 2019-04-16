@@ -37,9 +37,6 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleAttributeMapper articleAttributeMapper;
 
     @Autowired
-    private RandomNum randomNum;
-
-    @Autowired
     private UserMapper userMapper;
 
     @Autowired
@@ -224,5 +221,16 @@ public class ArticleServiceImpl implements ArticleService {
 
         articleMapper.insertArticle(article);
         articleAttributeMapper.insertArticleAttribute(attribute);
+    }
+
+    @Override
+    public void updateArticle(Article article, String contentHtml) {
+
+        // 对文章摘要的截取，截取内容为80个字符（中文也算1个字符）
+        InterceptionUtil interceptionArticleUtil = new InterceptionUtil();
+        String summary = interceptionArticleUtil.interceptionArticle(contentHtml);
+        article.setSummary(summary);
+
+        articleMapper.updateArticle(article);
     }
 }

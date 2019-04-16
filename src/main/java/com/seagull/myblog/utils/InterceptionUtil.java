@@ -19,9 +19,8 @@ public class InterceptionUtil {
         articleContent = moveTagUtil.removeTag(articleContent);
 
         if(articleContent.length() >= 80) {
-            articleContent = articleContent.substring(0, 80);
+            articleContent = articleContent.substring(0, 80) + "...";
         }
-        articleContent = articleContent + "...";
 
         return articleContent;
     }
@@ -34,10 +33,8 @@ public class InterceptionUtil {
     public String interceptionReply(String reply) {
 
         if(reply.length() >= 31) {
-            reply = reply.substring(0, 31);
+            reply = reply.substring(0, 31) + "...";
         }
-
-        reply = reply + "...";
 
         return reply;
     }
