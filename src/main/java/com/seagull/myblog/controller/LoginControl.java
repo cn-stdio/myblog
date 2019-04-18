@@ -22,4 +22,9 @@ public class LoginControl {
         return "login";
     }
 
+    @GetMapping("/forgetPassword")
+    public String forgetPasswordJump() {
+        return "forgetPassword";
+    }
+
 }

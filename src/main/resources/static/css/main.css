@@ -540,4 +540,39 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     margin-left: -40px;
 }
 
+/*Firefox*/
+@-moz-document url-prefix() {
+    #header-text {
+        margin-left: -980px !important;
+    }
+}
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    #table-picture {
+        background-repeat: no-repeat;
+    }
+    .head-sculpture {
+        top: 100px;
+    }
+    #main-right-div, #headline,
+    .main-left-double, .main-left {
+        display: none;
+    }
+
+    .main-middle {
+        position: unset;
+        top: 0 !important;
+        left: 0;
+        width: 0 !important;
+    }
+    #main-middle-1 {
+        margin-top: 350px !important;
+    }
+
+    .prev {
+        float: left !important;
+        margin-left: 0;
+    }
+}
 

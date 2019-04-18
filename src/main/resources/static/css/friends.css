@@ -43,7 +43,6 @@
     }
     #friend-src ul li {
         float: left;
-        width: 50%;
         position: relative;
         transition: all .3s ease-out;
         border-radius: 5px;

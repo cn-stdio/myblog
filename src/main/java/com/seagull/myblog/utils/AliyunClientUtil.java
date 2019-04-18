@@ -58,10 +58,15 @@ public class AliyunClientUtil {
     private static String REGISTER_PHONE_TEMPLATE = "SMS_161592275";
 
     /**
+     * 阿里云短信服务找回密码模板CODE
+     */
+    private static String RETRIEVE_PHONE_TEMPLATE = "SMS_163705178";
+
+    /**
      * 阿里云短信单发服务
      * @param phone 电话号码
      * @param code 验证码
-     * @param type 模板选择（1为注册，2为修改密码）
+     * @param type 模板选择（1为注册，2为修改密码，3为找回密码）
      * @return 目标JSON
      * @throws ClientException
      */
@@ -90,8 +95,10 @@ public class AliyunClientUtil {
         request.setSignName("Seaguller");
         if(type == 1) {
             request.setTemplateCode(REGISTER_PHONE_TEMPLATE);
-        } else {
+        } else if(type == 2) {
             request.setTemplateCode(SAFETY_PHONE_TEMPLATE);
+        } else {
+            request.setTemplateCode(RETRIEVE_PHONE_TEMPLATE);
         }
         JSONObject smsJSON = new JSONObject();
         smsJSON.put("code", code);

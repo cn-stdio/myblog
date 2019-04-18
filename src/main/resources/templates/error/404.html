@@ -1,10 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 网站主题 -->
+    <meta name="subject" content="Seaguller的博客网站">
+    <!-- 页面关键词 -->
+    <meta name="keywords" content="web, 后端, spring boot, spring, java, 博客, 学习, 程序员, 编程, 404">
+    <!-- 页面描述内容 -->
+    <meta name="description" content="Seaguller的博客小站404页面~">
+    <!-- 移动端优化 -->
+    <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <title>Seaguller的小窝~</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="../../static/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://dreamsky.github.io/main/blog/common/init.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/live2d/css/waifu.css" />
+    <link href="../../static/css/article.css" rel="stylesheet"/>
+
+    <link href="../../static/css/game.css" rel="stylesheet"/>
 </head>
 <body>
-asdasd
+<div id="main-class-text">
+    <!-- 主页大图 -->
+    <div id="table-picture" style="background-image: url('../../static/img/bk-1.jpg')"></div>
+    <!-- 标题栏 -->
+    <div class="head-one">
+        <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
+            <div class="am-container">
+                <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse-4">
+                    <ul class="am-nav am-nav-pills am-topbar-nav">
+                        <a id="header-text" href="/">Seaguller的小窝~</a>
+                        <li class="am-active" id="li-main">
+                            <a href="/" class="header-a-main" id="header-a-main-one">
+                                <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                            </a>
+                        </li>
+                        <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                        <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                        <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                        <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                        <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+                    </ul>
+                    <div class="am-btn-group login-button-head"  th:unless="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown>
+                            <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                            <ul class="am-dropdown-content login-content">
+                                <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                                <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown id="login-sign-drop">
+                            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name">
+                                <span id="login-user-name"></span>
+                                <span class="am-icon-caret-down"></span>
+                            </button>
+                            <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
+                                <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
+                                <hr id="log-hr"/>
+                                <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                            </ul>
+                        </div>
+                        <button class="am-btn" id="login-button-circle" sec:authorize="hasAnyRole('ROLE_ADMIN')"><span id="login-button-write">写</span></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <!-- 反馈窗口 -->
+    <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">反馈</div>
+            <div class="am-modal-bd">
+                你有什么要悄悄告诉我滴吗！(`・ω・´)
+                <textarea maxlength="1000" id="feedback-text" style="resize:none;" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <br/>
+                <textarea maxlength="50" style="resize:none;" id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 文字喵 -->
+    <h1 id="headline" class="head-picture-font" >喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
+    <!-- 旋转小陀螺头像 -->
+    <div class="head-sculpture"><img src="../../static/img/maoer.gif" class="header-img-one"/></div>
+    <!-- 指定页面跳转位置 -->
+    <div id="turn-head"></div>
+    <!-- 主体内容 -->
+    <div id="art-list">
+        <img src="../../static/img/404.jpeg"/>
+        <div style="margin-top: -80px;">
+            <div class="error-text">您所要寻找的页面不晓得灰到哪里去嘞w(゜Д゜)w</div>
+            <div class="error-text" style="margin-left: 50px;">不如玩个游戏放松一下(`・ω・´)~</div>
+        </div>
+        <div class="wrapper" style="margin-left: -200px">
+            <canvas id="canvas" width="960" height="640">不支持画布</canvas>
+            <p>按［空格］暂停或继续</p>
+        </div>
+
+    </div>
+    <div class="main-left-double">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p>你一直说自己没努力</p>
+            <p>那你努力100%试一下啊</p>
+            <p>你的天空你不想飞一下吗？</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right; margin-right: 10px; margin-top: 10px"></i>
+    </div>
+    <div class="main-left">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p id="left-pp">你应该要学着做你自己</p>
+            <p>面对真实的自我</p>
+            <p>只要做到这一点</p>
+            <p>你就什么都不用惧怕</p>
+            <p id="left-pp-last">--- 《猫的报恩》</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right"></i>
+        <div class="main-left-last-text">
+            <div id="main-left-last-text-one">无论夜晚多么黑暗，</div>
+            <div id="main-left-last-text-two">黎明总会如约而至。</div>
+        </div>
+    </div>
+    <div class="waifu ">
+        <div class="waifu-tips" style="opacity:0"></div>
+        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    </div>
+</div>
+<footer id="footer" class="footer">
+    <hr/>
+    <div>
+        <p>嘀嗒~ 嘀嗒~ 小博客自破壳起已经运行&nbsp;&nbsp;<span id="clock"></span>&nbsp;&nbsp;啦！</p>
+        <p>© 2018-2019 Seaguller - <i class="fa fa-heart throb" style="color:#d43f57"></i> 高博宇 版权所有</p>
+        <p>蜀ICP备18000229号</p>
+    </div>
+</footer>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<!-- 字体阴影特效 -->
+<script type="text/javascript" src="../../static/js/shine.min.js"></script>
+<!-- 标题栏浮动隐藏JS -->
+<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.9.3/dist/headroom.min.js"></script>
+<!-- 主页JS -->
+<script src="../../static/js/main.js" type="text/javascript"></script>
+<script src="../../static/game/game.js" type="text/javascript"></script>
+<script src="../../static/game/index.js" type="text/javascript"></script>
+<!-- 背景线条 -->
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
+
+<script type="text/javascript" src="../../static/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="../../static/live2d/js/waifu.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "../../static/live2d/model/kesshouban/model.json");
+</script>
+<script type="text/javascript">
+    /* 微信翻转 */
+    $(".fa-weixin").mouseover(function () {
+        $(".card-weixin-divout").css("display", "block");
+        $(".card-weixin-divin").css("display", "block");
+        $("#weixin-img").css("display", "block");
+    });
+    $(".fa-weixin").mouseout(function () {
+        $(".card-weixin-divout").css("display", "none");
+        $(".card-weixin-divin").css("display", "none");
+        $("#weixin-img").css("display", "none");
+    });
+</script>
+<script type="text/javascript">
+    /* 尾部定时 */
+    var int = self.setInterval("clock()", 1000);
+    function clock()
+    {
+        var nowDay = new Date();
+        var localDay = new Date("2019-03-17 00:00:00");
+        var time = parseInt((nowDay.getTime()-localDay.getTime())/1000);
+        /*
+                var runTimeDate = new Date(parseInt(time));
+                var runTime = runTimeDate.getDay() + "天" + runTimeDate.getHours() + "小时" + runTimeDate.getMinutes() + "分" + runTimeDate.getSeconds() + "秒";
+        */
+        var min = parseInt(time/60);
+        var hour = parseInt(time/60/60);
+        var day = parseInt(time/60/60/24);
+
+        var runTime = "0";
+        if(min == 0) {
+            runTime = time + "秒";
+        } else if(hour == 0) {
+            runTime = min + "分" + (time-min*60) + "秒";
+        } else if(day == 0) {
+            var mh = min-hour*60;
+            runTime = hour + "时" + mh + "分" + (time-hour*3600-mh*60) + "秒"
+        } else {
+            var hd = hour - day*24;
+            var mh = min - day*24*60 - hd*60;
+            runTime = day + "天" + hd + "时" + mh + "分" + (time-day*24*3600-hd*3600-mh*60) + "秒";
+        }
+
+        $("#clock").html(runTime);
+    }
+</script>
+
+<!-- 反馈弹窗 -->
+<script type="text/javascript">
+    $(function() {
+        $('.doc-prompt-toggle').on('click', function() {
+            $("#feedback-text").val("");
+            $('#my-prompt').modal({
+                relatedTarget: this
+            });
+        });
+    });
+</script>
+
 </body>
+
 </html>

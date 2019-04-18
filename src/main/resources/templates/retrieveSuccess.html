@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 从该页面发出的请求不会包含referer -->
+    <meta name="referrer" content="never">
+    <title>找回成功！</title>
+
+    <style type="text/css">
+        body {
+            background-image:url(../static/img/rbg.jpg) !important;
+            background-size: cover !important;
+        }
+
+        .register-success {
+            padding-bottom: 25px;
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: 0 3px 20px -3px rgba(0,64,128,.2);
+            background: #ffffff70;
+            padding: 26px 24px 46px;
+            overflow: hidden;
+            font-weight: 400;
+            width: 370px;
+
+            margin-top: 250px;
+            margin-left: 600px;
+        }
+
+        #registerUpdateFormBtn {
+            border-color: pink !important;
+            background: pink;
+            margin-left: 115px;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+        #registerUpdateFormBtn:hover {
+            background-color: slateblue;
+            border-color: slateblue !important;
+            color: #fff;
+        }
+
+        .register-success-text {
+            font-size: 30px;
+            font-family: "shaonv";
+        }
+        #register-success-text-one {
+            letter-spacing: 5px;
+            margin-left: 90px;
+        }
+        #register-success-text-two {
+            letter-spacing: 10px;
+            margin-left: 60px;
+        }
+    </style>
+
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+<div class="register-success">
+    <div class="register-success-text" id="register-success-text-one">找回成功！</div><br/>
+    <div class="register-success-text" id="register-success-text-two">快去登录叭 ~</div>
+    <input class="article-button article-btn am-btn am-btn-primary am-btn-sm am-fl no_submit" id="registerUpdateFormBtn" style="border-radius: 5px" type="button" value="(๑•ㅂ•́)و✧">
+</div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#registerUpdateFormBtn").click(function () {
+        window.location.href = "/login";
+    });
+</script>
+</html>

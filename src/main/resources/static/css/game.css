@@ -1,0 +1,26 @@
+body{background-color: transparent}
+*{padding:0;margin:0;}
+.wrapper{
+    width: 960px;
+    line-height:36px;
+    text-align:center;
+    color: #999;
+}
+canvas{display:block; background: transparent;}
+.mod-botton{
+    height: 32px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+#art-list {
+    position: absolute;
+    top: 650px;
+    left: 620px;
+}
+.error-text {
+    font-family: "xionghaizi";
+    font-size: 30px;
+    color: cornflowerblue;
+    margin-left: -70px;
+}

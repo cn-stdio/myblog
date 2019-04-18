@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Seaguller的小窝~</title>
 
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
                         <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
                         <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
                         <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
-                        <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-message"><a href="/messageBoard" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
                         <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
                         <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
                     </ul>
@@ -37,7 +37,7 @@
                             <ul class="am-dropdown-content login-content">
                                 <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
                                 <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -50,8 +50,8 @@
                             </button>
                             <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
                                 <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
-                                <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
                                 <hr id="log-hr"/>
                                 <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
                             </ul>
@@ -61,6 +61,24 @@
                 </div>
             </div>
         </header>
+    </div>
+    <!-- 反馈窗口 -->
+    <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">反馈</div>
+            <div class="am-modal-bd">
+                你有什么要悄悄告诉我滴吗！(`・ω・´)
+                <textarea maxlength="1000" id="feedback-text" style="resize:none;" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <br/>
+                <textarea maxlength="50" style="resize:none;" id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            </div>
+
+
+        </div>
     </div>
 
     <div id="write-title">
@@ -101,7 +119,7 @@
                     <span>文章分类：</span>
                     <select id="publish-modal-type">
                         <option selected="" value="choose">请选择</option>
-                        <option value="回忆窗">回忆窗</option>
+                        <option value="心情窗">心情窗</option>
                         <option value="程序录">程序录</option>
                     </select>
                     <span class="publish-modal-required">*</span>
@@ -150,5 +168,16 @@
     <script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/jquery.share.min.js"></script>
     <script src="../static/js/publish.js"></script>
 
+    <!-- 反馈弹窗 -->
+    <script type="text/javascript">
+        $(function() {
+            $('.doc-prompt-toggle').on('click', function() {
+                $("#feedback-text").val("");
+                $('#my-prompt').modal({
+                    relatedTarget: this
+                });
+            });
+        });
+    </script>
 </body>
 </html>

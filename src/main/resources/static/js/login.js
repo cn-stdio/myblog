@@ -122,3 +122,8 @@ $("#doc-ipt-3").focus(function () {
 $("#doc-ipt-pwd-2").focus(function () {
     $(".error-alert").css("display", "none");
 });
+
+/* 忘记密码点击 */
+$("#registerUpdateFormBtn").click(function () {
+   window.location.href = "/forgetPassword";
+});

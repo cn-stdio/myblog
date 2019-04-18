@@ -69,6 +69,8 @@
     font-family: "xiaodanchun";
     font-size: 2.9rem;
     color: grey;
+
+    margin-bottom: 50px;
 }
 .am-icon-slideshare {
     float: left;
@@ -77,13 +79,28 @@
 .art-text-update {
     width: 500px;
 }
-#art-text-update-one {
+#art-text-update-1 {
     top: 1450px;
 }
-#art-text-update-two {
+#art-text-update-2 {
     top: 1630px;
 }
-#art-text-update-three {
+#art-text-update-3 {
     top: 1810px;
+}
+#art-text-update-4 {
+    top: 2040px;
+}
+#art-text-update-5 {
+    top: 2220px;
+}
+#art-text-update-6 {
+    top: 2450px;
+}
+#art-text-update-7 {
+    top: 2680px;
+}
+#art-text-update-8 {
+    top: 2910px;
 }
 

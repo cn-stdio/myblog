@@ -17,7 +17,7 @@ public interface RegisterService {
     /**
      * 发送手机验证码
      * @param phone 手机号码
-     * @param type 服务类型（1为注册，2为修改密码）
+     * @param type 服务类型（1为注册，2为修改密码，3为找回密码）
      * @return JSON
      */
     JSONObject sendPhoneCode(String phone, int type) throws ClientException;
@@ -35,6 +35,13 @@ public interface RegisterService {
      * @return JSON
      */
     JSONObject phoneRepeatCheck(String phone);
+
+    /**
+     * 手机号存在检查
+     * @param phone 手机号
+     * @return JSON
+     */
+    JSONObject phoneExistCheck(String phone);
 
     /**
      * 验证码匹配检查

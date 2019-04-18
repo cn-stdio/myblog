@@ -93,6 +93,29 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
+    public JSONObject phoneExistCheck(String phone) {
+        JSONObject prc = new JSONObject();
+        prc.put("code", 200);
+
+        List<String> allPhones = userMapper.queryAllPhone();
+        int flag = 0;
+        for (String p : allPhones) {
+            if(p.equals(phone)) {
+                flag = 1;
+                break;
+            }
+        }
+
+        if(flag == 0) {
+            prc.put("msg", "这个手机号没有注册过鸭！");
+            return prc;
+        }
+
+        prc.put("msg", "success");
+        return prc;
+    }
+
+    @Override
     public JSONObject captchaCheck(String phone, int captcha) {
         JSONObject cc = new JSONObject();
         cc.put("code", 200);

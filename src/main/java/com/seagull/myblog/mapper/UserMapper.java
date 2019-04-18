@@ -153,4 +153,13 @@ public interface UserMapper {
      */
     @Update("UPDATE user SET password = #{password} WHERE id = #{id}")
     public int updatePassword(@Param("id") String id, @Param("password") String password);
+
+    /**
+     * 更新用户（手机）密码
+     * @param phone 手机号
+     * @param password 新密码
+     * @return 更新条数
+     */
+    @Update("UPDATE user SET password = #{password} WHERE phone = #{phone}")
+    public int updatePasswordByPhone(@Param("phone") String phone, @Param("password") String password);
 }

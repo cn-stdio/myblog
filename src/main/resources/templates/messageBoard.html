@@ -7,9 +7,9 @@
     <!-- 网站主题 -->
     <meta name="subject" content="Seaguller的博客网站">
     <!-- 页面关键词 -->
-    <meta name="keywords" content="web, 后端, spring boot, spring, java, 博客, 学习, 程序员, 编程">
+    <meta name="keywords" content="web, 后端, spring boot, spring, java, 博客, 学习, 程序员, 编程, 留言板">
     <!-- 页面描述内容 -->
-    <meta name="description" content="Seaguller的博客小站，一个web前后端程序猿的栖身之所~">
+    <meta name="description" content="Seaguller的博客留言板~">
     <!-- 移动端优化 -->
     <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>Seaguller的小窝~</title>
@@ -28,7 +28,7 @@
 <body>
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div id="table-picture" style="background-image: url('../static/img/bk-10.jpg')"></div>
+    <div id="table-picture" style="background-image: url('../static/img/bk-1.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
         <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -44,8 +44,8 @@
                         <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
                         <li id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
                         <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
-                        <li id="li-message" class="am-active"><a href="/messageBoard" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
-                        <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
+                        <li class="am-active" id="li-message"><a href="/messageBoard" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
                         <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
                     </ul>
                     <div class="am-btn-group login-button-head"  th:unless="${#httpServletRequest.remoteUser}">
@@ -54,7 +54,7 @@
                             <ul class="am-dropdown-content login-content">
                                 <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
                                 <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,15 +67,13 @@
                             </button>
                             <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
                                 <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
-                                <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;悄悄话</span></a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
                                 <hr id="log-hr"/>
                                 <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
                             </ul>
                         </div>
-                        <button class="am-btn" id="login-button-circle" sec:authorize="hasAnyRole('ROLE_ADMIN')">
-                            <span id="login-button-write">写</span>
-                        </button>
+                        <button class="am-btn" id="login-button-circle" sec:authorize="hasAnyRole('ROLE_ADMIN')"><span id="login-button-write">写</span></button>
                     </div>
                 </div>
             </div>
@@ -84,12 +82,12 @@
     <!-- 反馈窗口 -->
     <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">
-            <div class="am-modal-hd">悄悄话</div>
+            <div class="am-modal-hd">反馈</div>
             <div class="am-modal-bd">
                 你有什么要悄悄告诉我滴吗！(`・ω・´)
-                <textarea id="feedback-text" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <textarea maxlength="1000" id="feedback-text" style="resize:none;" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
                 <br/>
-                <textarea id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+                <textarea maxlength="50" style="resize:none;" id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
@@ -110,10 +108,7 @@
 
         <!-- 名片目录，点进文章的时候再加进去 -->
         <div id="right-catalog-div">
-            <!--<ul class="right-catalog">
-                <li class="right-catalog-article right-catalog-style">文章目录</li>
-                <li class="right-catalog-user">作者信息</li>
-            </ul>-->
+
         </div>
 
         <div id="main-right-text">
@@ -313,6 +308,7 @@
         $("#weixin-img").css("display", "none");
     });
 </script>
+<!-- 定时 -->
 <script type="text/javascript">
     /* 尾部定时 */
     var int = self.setInterval("clock()", 1000);

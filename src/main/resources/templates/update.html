@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:http="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 网站主题 -->
+    <meta name="subject" content="Seaguller的博客网站">
+    <!-- 页面关键词 -->
+    <meta name="keywords" content="web, 后端, spring boot, spring, java, 博客, 学习, 程序员, 编程, 更新">
+    <!-- 页面描述内容 -->
+    <meta name="description" content="Seaguller的博客更新~">
+    <!-- 移动端优化 -->
+    <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>Seaguller的小窝~</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
@@ -15,7 +25,7 @@
 <body>
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div id="table-picture" style="background-image: url('../static/img/bk-10.jpg')"></div>
+    <div id="table-picture" style="background-image: url('../static/img/bk-1.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
         <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -29,18 +39,62 @@
                             </a>
                         </li>
                         <li id="li-archive"><a href="/archive" class="header-a-main" id="header-a-main-archive"><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
-                        <li id="li-update" class="am-active"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                        <li class="am-active" id="li-update"><a href="/update" class="header-a-main" id="header-a-main-update"><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
                         <li id="li-music"><a href="/music" class="header-a-main" id="header-a-main-music"><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
-                        <li id="li-message"><a href="#turn-head" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
-                        <li id="li-friends"><a href="#turn-head" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;后&nbsp;&nbsp;宫</span></a></li>
-                        <li id="li-aboutMe"><a href="#turn-head" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
-
-                        <li id="li-login"><a href="/login" class="header-a-main" id="header-a-main-login"><span class="am-icon-hand-paper-o">&nbsp;登陆&nbsp;</span><span class="am-icon-hand-paper-o"></span></a></li>
+                        <li id="li-message"><a href="/messageBoard" class="header-a-main" id="header-a-main-message"><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                        <li id="li-friends"><a href="/friends" class="header-a-main" id="header-a-main-friends"><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                        <li id="li-aboutMe"><a href="/aboutMe" class="header-a-main" id="header-a-main-aboutMe"><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
                     </ul>
+                    <div class="am-btn-group login-button-head"  th:unless="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown>
+                            <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                            <ul class="am-dropdown-content login-content">
+                                <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                                <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown id="login-sign-drop">
+                            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name">
+                                <span id="login-user-name"></span>
+                                <span class="am-icon-caret-down"></span>
+                            </button>
+                            <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul">
+                                <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
+                                <hr id="log-hr"/>
+                                <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                            </ul>
+                        </div>
+                        <button class="am-btn" id="login-button-circle" sec:authorize="hasAnyRole('ROLE_ADMIN')"><span id="login-button-write">写</span></button>
+                    </div>
                 </div>
             </div>
         </header>
     </div>
+    <!-- 反馈窗口 -->
+    <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">反馈</div>
+            <div class="am-modal-bd">
+                你有什么要悄悄告诉我滴吗！(`・ω・´)
+                <textarea maxlength="1000" id="feedback-text" style="resize:none;" class="am-modal-prompt-input private-conversation" placeholder="请填写您对本站的建议或者私下要对小弟说滴话~"></textarea>
+                <br/>
+                <textarea maxlength="50" style="resize:none;" id="feedback-contact" class="am-modal-prompt-input private-conversation-two" placeholder="方便留下您的联系方式咩？（选填）"></textarea>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" id="feedback-submit" data-am-modal-confirm>提交</span>
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            </div>
+
+
+        </div>
+    </div>
+
     <!-- 文字喵 -->
     <h1 id="headline" class="head-picture-font" >喵&nbsp;呜~&nbsp;喵&nbsp;帕&nbsp;斯~！</h1>
     <!-- 旋转小陀螺头像 -->
@@ -109,7 +163,7 @@
             <span class="am-icon-modx"></span>
             <div id="art-title-update-one">博客更新日志</div>
         </div>
-        <div class="art-text-update-all" id="art-text-update-one" data-am-scrollspy="{animation: 'scale-up'}">
+        <div class="art-text-update-all" id="art-text-update-1" data-am-scrollspy="{animation: 'scale-up'}">
             <span class="am-icon-slideshare"></span>
             <div class="art-text-update">2018年12月14日</div>
             <div class="art-text-update-content">
@@ -117,7 +171,7 @@
                 </blockquote>
             </div>
         </div>
-        <div class="art-text-update-all" id="art-text-update-two" data-am-scrollspy="{animation: 'scale-up'}">
+        <div class="art-text-update-all" id="art-text-update-2" data-am-scrollspy="{animation: 'scale-up'}">
             <span class="am-icon-slideshare"></span>
             <div class="art-text-update">2018年12月19日</div>
             <div class="art-text-update-content">
@@ -125,7 +179,7 @@
                 </blockquote>
             </div>
         </div>
-        <div class="art-text-update-all" id="art-text-update-three" data-am-scrollspy="{animation: 'scale-up'}">
+        <div class="art-text-update-all" id="art-text-update-3" data-am-scrollspy="{animation: 'scale-up'}">
             <span class="am-icon-slideshare"></span>
             <div class="art-text-update">2018年12月23日</div>
             <div class="art-text-update-content">
@@ -134,9 +188,63 @@
                 </blockquote>
             </div>
         </div>
+        <div class="art-text-update-all" id="art-text-update-4" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2019年01月18日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>更新了音乐馆页面，增加了APlayer播放器支持</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-5" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2019年03月31日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>注册与登录功能完成</p>
+                    <p>加入底部footer显示</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-6" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2019年04月08日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>评论与留言板功能完成</p>
+                    <p>修复文章目录显示BUG</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-7" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2019年04月16日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>个人中心与管理端整体完成</p>
+                    <p>更新了评论回复功能</p>
+                </blockquote>
+            </div>
+        </div>
+        <div class="art-text-update-all" id="art-text-update-8" data-am-scrollspy="{animation: 'scale-up'}">
+            <span class="am-icon-slideshare"></span>
+            <div class="art-text-update">2019年04月17日</div>
+            <div class="art-text-update-content">
+                <blockquote><p>调试若干页面，准备上线</p>
+                    <p>修复了若干个BUG</p>
+                    <p>（总是写到后面才发现前面有东西没考虑呜呜呜）</p>
+                </blockquote>
+            </div>
+        </div>
     </div>
 
-    <div class="main-left">
+    <div class="main-left-double am-show-lg-only">
+        <i class="fa fa-quote-left" style="float: left"></i><br/>
+        <div class="main-left-text">
+            <p>你一直说自己没努力</p>
+            <p>那你努力100%试一下啊</p>
+            <p>你的天空你不想飞一下吗？</p>
+        </div>
+        <i class="fa fa-quote-right" style="float: right; margin-right: 10px; margin-top: 10px"></i>
+    </div>
+    <div class="main-left  am-show-lg-only">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
             <p id="left-pp">你应该要学着做你自己</p>
@@ -159,8 +267,8 @@
 </div>
 <footer id="footer" class="footer">
     <hr/>
-    <div class="footer-inner">
-        <p>嘀嗒~ 嘀嗒~ 破壳 1000天50时20分01秒</p>
+    <div>
+        <p>嘀嗒~ 嘀嗒~ 小博客自破壳起已经运行&nbsp;&nbsp;<span id="clock"></span>&nbsp;&nbsp;啦！</p>
         <p>© 2018-2019 Seaguller - <i class="fa fa-heart throb" style="color:#d43f57"></i> 高博宇 版权所有</p>
         <p>蜀ICP备18000229号</p>
     </div>
@@ -193,6 +301,53 @@
         $(".card-weixin-divout").css("display", "none");
         $(".card-weixin-divin").css("display", "none");
         $("#weixin-img").css("display", "none");
+    });
+</script>
+
+<!-- 定时 -->
+<script type="text/javascript">
+    /* 尾部定时 */
+    var int = self.setInterval("clock()", 1000);
+    function clock()
+    {
+        var nowDay = new Date();
+        var localDay = new Date("2019-03-17 00:00:00");
+        var time = parseInt((nowDay.getTime()-localDay.getTime())/1000);
+        /*
+                var runTimeDate = new Date(parseInt(time));
+                var runTime = runTimeDate.getDay() + "天" + runTimeDate.getHours() + "小时" + runTimeDate.getMinutes() + "分" + runTimeDate.getSeconds() + "秒";
+        */
+        var min = parseInt(time/60);
+        var hour = parseInt(time/60/60);
+        var day = parseInt(time/60/60/24);
+
+        var runTime = "0";
+        if(min == 0) {
+            runTime = time + "秒";
+        } else if(hour == 0) {
+            runTime = min + "分" + (time-min*60) + "秒";
+        } else if(day == 0) {
+            var mh = min-hour*60;
+            runTime = hour + "时" + mh + "分" + (time-hour*3600-mh*60) + "秒"
+        } else {
+            var hd = hour - day*24;
+            var mh = min - day*24*60 - hd*60;
+            runTime = day + "天" + hd + "时" + mh + "分" + (time-day*24*3600-hd*3600-mh*60) + "秒";
+        }
+
+        $("#clock").html(runTime);
+    }
+</script>
+
+<!-- 反馈弹窗 -->
+<script type="text/javascript">
+    $(function() {
+        $('.doc-prompt-toggle').on('click', function() {
+            $("#feedback-text").val("");
+            $('#my-prompt').modal({
+                relatedTarget: this
+            });
+        });
     });
 </script>
 </body>
