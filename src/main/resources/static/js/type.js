@@ -182,7 +182,7 @@ $(".right-catalog-user").click(function () {
         '            <div class="card-my-head">\n' +
         '                <div class="head-card-img-div">\n' +
         '                    <div class="card-head-left-img">\n' +
-        '                        <img src="../static/img/header.jpg" id="head-card-img"/>\n' +
+        '                        <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/headImg/cc5d76e15a0144f4ba911ca27889e88c.jpeg" id="head-card-img"/>\n' +
         '                    </div>\n' +
         '                </div>\n' +
         '                <div class="card-head-right-word">\n' +
@@ -207,7 +207,7 @@ $(".right-catalog-user").click(function () {
         '            </ul>\n' +
         '            <div class="card-weixin-divout">\n' +
         '                <div class="card-weixin-divin"></div>\n' +
-        '                <img src="../static/img/weixin.gif" id="weixin-img"/>\n' +
+        '                <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>\n' +
         '            </div>\n' +
         '\n' +
         '        </div>';

@@ -332,8 +332,7 @@ hr {
     resize: none;
     width: 642px;
     height: 126px;
-    font-family: cursive;
-    font-size: 22px;
+    font-size: 19px;
     margin-left: -5px;
     margin-top: -6px;
     background-color: transparent;
@@ -380,8 +379,7 @@ hr {
 
 .comment-reply-text {
     resize: none;
-    font-family: cursive;
-    font-size: 22px;
+    font-size: 19px;
     background-color: transparent;
     border: none;
 }

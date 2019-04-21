@@ -21,8 +21,6 @@ import java.io.File;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final String IMG_FILE_PATH = "D:\\";
-
     @Autowired
     private UserMapper userMapper;
 
@@ -66,7 +64,7 @@ public class UserServiceImpl implements UserService {
     public String updateUserImg(String userId, String imgBase64) {
         String postfix = imgBase64.substring(imgBase64.indexOf("/")+1, imgBase64.indexOf(";"));
 
-        File imgFile = Base64ToImageUtil.Base64ToImage(imgBase64, IMG_FILE_PATH + userId + "." + postfix);
+        File imgFile = Base64ToImageUtil.Base64ToImage(imgBase64, userId + "." + postfix);
         AliyunClientUtil.uploadObjectOSS(imgFile, "seaguller", "headImg/");
 
         String imgUrl = AliyunClientUtil.getUrl("seaguller", "headImg", userId + "." + postfix);

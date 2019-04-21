@@ -113,7 +113,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     text-align: center;
 
     font-size: 120px;
-    font-family: "shaonv";
+    font-family: "shaonv", -webkit-pictograph;
     font-weight: 800;
 
     letter-spacing: -0.02em;
@@ -134,7 +134,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     top: 175px;
     width: 130px;
     height: 130px;
-    background: no-repeat url(../img/header.jpg) left top;
+    background: no-repeat url(https://seaguller.oss-cn-beijing.aliyuncs.com/headImg/cc5d76e15a0144f4ba911ca27889e88c.jpeg) left top;
     background-size: 100%;
     webkit-background-size: 220px 220px;
     moz-background-size: 220px 220px;
@@ -487,7 +487,6 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     color: lightskyblue;
 }
 .am-modal-bd {
-    font-family: "shaonv";
     font-size: 17px;
 }
 
