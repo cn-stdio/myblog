@@ -122,15 +122,29 @@ public class ArticleServiceImpl implements ArticleService {
                 if(i==0) {
                     data.put("prevArticleId", "no");
                     data.put("prevArticleTitle", "no");
-                    data.put("nextArticleId", articles.get(i+1).getArticleId());
-                    data.put("nextArticleTitle", articles.get(i+1).getTitle());
+
+                    if(articles.size()==1) {
+                        data.put("nextArticleId", "no");
+                        data.put("nextArticleTitle", "no");
+                    } else {
+                        data.put("nextArticleId", articles.get(i+1).getArticleId());
+                        data.put("nextArticleTitle", articles.get(i+1).getTitle());
+                    }
+
                     break;
                 }
                 if(i==articles.size()-1) {
                     data.put("nextArticleId", "no");
                     data.put("nextArticleTitle", "no");
-                    data.put("prevArticleId", articles.get(i-1).getArticleId());
-                    data.put("prevArticleTitle", articles.get(i-1).getTitle());
+
+                    if(articles.size()==1) {
+                        data.put("prevArticleId", "no");
+                        data.put("prevArticleTitle", "no");
+                    } else {
+                        data.put("prevArticleId", articles.get(i-1).getArticleId());
+                        data.put("prevArticleTitle", articles.get(i-1).getTitle());
+                    }
+
                     break;
                 }
 

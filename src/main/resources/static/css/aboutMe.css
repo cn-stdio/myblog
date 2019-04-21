@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "shaonv";
+    src: url('../font/shaonv.ttf');
+}
+@font-face {
+    font-family: "xiaodanchun";
+    src: url('../font/xiaodanchun.ttf');
+}
+@font-face {
+    font-family: "xionghaizi";
+    src: url('../font/xionghaizi.ttf');
+}
+
 .aboutMe-list {
     position: absolute;
     top: 650px;

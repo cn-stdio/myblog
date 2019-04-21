@@ -7,7 +7,9 @@ function timeStampToDate(date){
     var date= new Date(parseInt(date));
     return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 }
-
+function articleTurn(id) {
+    window.location.href = "/article/" + id;
+}
 var pageNum = 1;
 
 var page = pageNum;
@@ -47,7 +49,7 @@ function pageTurn(p, dd) {
                         '                                <div class="circ"></div>\n' +
                         '                                <div class="time">'+ (date.getMonth()+1) +'月'+ date.getDate() +'日</div>\n' +
                         '                                <div class="events">\n' +
-                        '                                    <div class="events-header">'+ obj['title'] +'</div>\n' +
+                        '                                    <div class="events-header" onclick="articleTurn('+ obj['articleId'] +')">'+ obj['title'] +'</div>\n' +
                         '                                    <div class="events-body">\n' +
                         '                                        <span class="am-icon-calendar">\n' +
                         '                                            <a id="events-body-create-time">'+ timeStampToDate(obj['createTime']) +'</a>\n' +

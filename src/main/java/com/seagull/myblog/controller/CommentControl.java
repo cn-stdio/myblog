@@ -94,7 +94,7 @@ public class CommentControl {
     /**
      * 插入评论操作
      * @param request 请求域
-     * @param principal 用于获取目前登陆用户
+     * @param principal 用于获取目前登录用户
      * @return JSON
      */
     @PreAuthorize("hasAnyRole('ADMIN','USER')")

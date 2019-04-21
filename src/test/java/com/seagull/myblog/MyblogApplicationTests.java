@@ -6,21 +6,14 @@ import com.seagull.myblog.mapper.ArticleMapper;
 import com.seagull.myblog.mapper.RoleMapper;
 import com.seagull.myblog.mapper.UserMapper;
 import com.seagull.myblog.model.Article;
-import com.seagull.myblog.model.User;
 import com.seagull.myblog.service.redis.RedisService;
 import com.seagull.myblog.utils.AliyunClientUtil;
 import net.sf.json.JSONObject;
-import org.apache.ibatis.transaction.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -108,14 +101,6 @@ public class MyblogApplicationTests {
     }
 
     /**
-     * 插入字符串
-     */
-    @Test
-    public void setString() {
-        redisService.set("redis_string_test", "yayaya");
-    }
-
-    /**
      * 获取字符串
      */
     @Test
@@ -123,28 +108,6 @@ public class MyblogApplicationTests {
         System.out.println();
         System.out.println();
         System.out.println(UUID.randomUUID().toString().replace("-", ""));
-        System.out.println();
-        System.out.println();
-        System.out.println();
-    }
-
-    @Test
-    public void testGetRole() throws Exception {
-        User user = new User();
-        user.setId("999A");
-        user.setPassword("123456");
-        user.setGender(1);
-        /*user.setPhone("17888888888");*/
-        user.setUserName("ahaha");
-
-
-        userMapper.insertUser(user);
-        roleMapper.insertUserRole(user.getId(), 2);
-
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
         System.out.println();
         System.out.println();
         System.out.println();

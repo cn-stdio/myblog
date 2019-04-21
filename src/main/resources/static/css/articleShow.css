@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "shaonv";
+    src: url('../font/shaonv.ttf');
+}
+@font-face {
+    font-family: "xiaodanchun";
+    src: url('../font/xiaodanchun.ttf');
+}
+@font-face {
+    font-family: "xionghaizi";
+    src: url('../font/xionghaizi.ttf');
+}
+
 #main-middle-article, .article-content {
     height: auto;
 }
@@ -150,7 +163,7 @@ hr {
     margin-left: 70px;
 }
 .comment-right-name {
-    font-family: "xiaodanchun";
+    font-family: -webkit-pictograph;
     font-size: 20px;
     color: skyblue;
 }
@@ -319,7 +332,7 @@ hr {
     resize: none;
     width: 642px;
     height: 126px;
-    font-family: "xiaodanchun";
+    font-family: cursive;
     font-size: 22px;
     margin-left: -5px;
     margin-top: -6px;
@@ -367,7 +380,7 @@ hr {
 
 .comment-reply-text {
     resize: none;
-    font-family: "xiaodanchun";
+    font-family: cursive;
     font-size: 22px;
     background-color: transparent;
     border: none;

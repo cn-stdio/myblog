@@ -28,7 +28,7 @@
 <body>
 <div id="main-class-text">
     <!-- 主页大图 -->
-    <div id="table-picture" style="background-image: url('../static/img/bk-1.jpg')"></div>
+    <div id="table-picture" style="background-image: url('https://seaguller.oss-cn-beijing.aliyuncs.com/bk-1.jpg')"></div>
     <!-- 标题栏 -->
     <div class="head-one">
         <header class="am-topbar am-topbar-inverse am-topbar-fixed-top">
@@ -162,7 +162,7 @@
             </div>
         </div>
         <div class="article-comment">
-            <div th:unless="${#httpServletRequest.remoteUser}" id="comment-init-text">哼，不<a href="/login">登陆</a>就想对我指指点点，白嫖吗！</div>
+            <div th:unless="${#httpServletRequest.remoteUser}" id="comment-init-text">哼，不<a href="/login">登录</a>就想对我指指点点，白嫖吗！</div>
             <textarea th:if="${#httpServletRequest.remoteUser}" maxlength="500" id="comment-text" class="am-modal-prompt-input private-conversation" placeholder="畅所欲言叭，骚年d(`･∀･)b！"></textarea>
             <div><a class="comment-btn" id="comment-btn">发表评论</a></div>
             <div class="article-comment-title">

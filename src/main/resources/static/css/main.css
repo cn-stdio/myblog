@@ -498,7 +498,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 
 #login-sign-name {
     border: none;
-    font-family: "shaonv";
+    font-family: auto;
     color: lavender;
     background-color: transparent;
     height: 35px;

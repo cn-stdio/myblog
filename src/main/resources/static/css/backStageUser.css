@@ -1,3 +1,16 @@
+@font-face {
+    font-family: "shaonv";
+    src: url('../font/shaonv.ttf');
+}
+@font-face {
+    font-family: "xiaodanchun";
+    src: url('../font/xiaodanchun.ttf');
+}
+@font-face {
+    font-family: "xionghaizi";
+    src: url('../font/xionghaizi.ttf');
+}
+
 html, body {
     background: #e9ecf3;
 }
@@ -398,7 +411,7 @@ ul, li {
     resize: none;
     width: 576px;
     height: 126px;
-    font-family: "xiaodanchun";
+    font-family: cursive;
     font-size: 22px;
     margin-left: -5px;
     margin-top: -6px;
