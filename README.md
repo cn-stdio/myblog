@@ -1,4 +1,4 @@
-# 👑 myblog
+# ☁️ myblog
 SSM框架独立搭建的个人博客系统
 
 项目链接：https://www.seaguller.cn （备案中，暂不可用）
@@ -37,7 +37,7 @@ SSM框架独立搭建的个人博客系统
 | 运行环境 | 阿里云Centos7 |
 
 ## 🍪 页面展示
-### 首页
+### ☕ 首页
 ![首页](http://seaguller.oss-cn-beijing.aliyuncs.com/myblog/index.jpg)
 ![首页](http://seaguller.oss-cn-beijing.aliyuncs.com/myblog/index.png)
 
