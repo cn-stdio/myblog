@@ -77,8 +77,8 @@ public class DruidDataSourceConfig {
         servletRegistrationBean.setServlet(new StatViewServlet());
         servletRegistrationBean.addUrlMappings("/druid/*");
         Map<String, String> initParameters = new HashMap<String, String>();
-        initParameters.put("loginUsername", "admin");
-        initParameters.put("loginPassword", "admin");
+        initParameters.put("loginUsername", "***");
+        initParameters.put("loginPassword", "***");
         initParameters.put("resetEnable", "false");
         initParameters.put("allow", "");
         //initParameters.put("deny", "192.168.20.38");// IP黑名单 (存在共同时，deny优先于allow)
