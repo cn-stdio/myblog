@@ -36,6 +36,50 @@ SSM框架独立搭建的个人博客系统
 | 项目构建 | Maven |
 | 运行环境 | 阿里云Centos7 |
 
+### 🍪 主要数据表展示
+#### ☕ 文章表
+| 名称 | 类型 | 非空 | 默认 | 主键 | 描述 |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| id | int | ture | 无 | true | 主键ID |
+| title | varchar | ture | 无 | false | 文章标题 |
+| author | varchar | ture | 无 | false | 作者ID |
+| content | longtext | ture | 无 | false | 文章内容 |
+| create_time | timestamp | ture | CURRENT_TIMESTAMP | false | 文章创建时间 |
+| update_time | timestamp | ture | CURRENT_TIMESTAMP | false | 文章更新时间 |
+| attribute_label | varchar | false | 无 | false | 文章标签 |
+| summary | longtext | false | 无 | false | 文章摘要 |
+| article_id | bigint | false | 无 | false | 文章ID标识 |
+| type | varchar | true | 无 | false | 文章分类 |
+| classify | varchar | true | 无 | false | 文章类别（原创） |
+
+#### ☕ 用户表
+| 名称 | 类型 | 非空 | 默认 | 主键 | 描述 |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| id | varchar | ture | 无 | true | 主键用户ID标识 |
+| gender | tinyint | ture | 无 | false | 性别 |
+| user_name | varchar | ture | 无 | false | 昵称 |
+| email | varchar | false | 无 | false | 电子邮箱地址 |
+| birthday | varchar | false | 无 | false | 生日 |
+| image_url | varchar | false | 无 | false | 头像外链地址 |
+| recent_login_date | timestamp | false | 无 | false | 用户最近登录时间 |
+| phone | varchar | true | 无 | false | 手机号 |
+| password | varchar | true | 无 | false | 密码 |
+| name | varchar | false | 无 | false | 真实姓名 |
+| introduce | varchar | false | 无 | false | 个人介绍 |
+
+#### ☕ 评论表
+| 名称 | 类型 | 非空 | 默认 | 主键 | 描述 |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| id | varchar | ture | 无 | true | 主键ID |
+| self_id | varchar | ture | '1' | false | 层级ID |
+| article_id | bigint | ture | 无 | false | 文章ID |
+| original_author | varchar | true | 无 | false | 文章作者ID |
+| answer_name | varchar | true | 无 | false | 被回复者ID |
+| respondent_name | varchar | true | 无 | false | 回复者ID |
+| comment_date | timestamp | true | CURRENT_TIMESTAMP | false | 评论日期 |
+| likes | int | true | 0 | false | 楼层点赞数 |
+| comment_content | text | true | 无 | false | 评论内容 |
+
 ### 🍪 页面展示
 #### ☕ 首页
 ![首页](http://seaguller.oss-cn-beijing.aliyuncs.com/myblog/index.jpg)
