@@ -118,22 +118,10 @@ public class ArticleServiceImpl implements ArticleService {
         data.put("like", article.getAttribute().getLike());
 
         for(int i=0; i<articles.size(); i++) {
+            /* 因为倒序返回文章列表，所以prev与next颠倒 */
             if(articles.get(i).getArticleId() == articleId) {
+                /* 访问的文章是最新发表的文章 */
                 if(i==0) {
-                    data.put("prevArticleId", "no");
-                    data.put("prevArticleTitle", "no");
-
-                    if(articles.size()==1) {
-                        data.put("nextArticleId", "no");
-                        data.put("nextArticleTitle", "no");
-                    } else {
-                        data.put("nextArticleId", articles.get(i+1).getArticleId());
-                        data.put("nextArticleTitle", articles.get(i+1).getTitle());
-                    }
-
-                    break;
-                }
-                if(i==articles.size()-1) {
                     data.put("nextArticleId", "no");
                     data.put("nextArticleTitle", "no");
 
@@ -141,17 +129,33 @@ public class ArticleServiceImpl implements ArticleService {
                         data.put("prevArticleId", "no");
                         data.put("prevArticleTitle", "no");
                     } else {
-                        data.put("prevArticleId", articles.get(i-1).getArticleId());
-                        data.put("prevArticleTitle", articles.get(i-1).getTitle());
+                        data.put("prevArticleId", articles.get(i+1).getArticleId());
+                        data.put("prevArticleTitle", articles.get(i+1).getTitle());
                     }
 
                     break;
                 }
 
-                data.put("prevArticleId", articles.get(i-1).getArticleId());
-                data.put("prevArticleTitle", articles.get(i-1).getTitle());
-                data.put("nextArticleId", articles.get(i+1).getArticleId());
-                data.put("nextArticleTitle", articles.get(i+1).getTitle());
+                /* 访问的文章是第一篇文章 */
+                if(i==articles.size()-1) {
+                    data.put("prevArticleId", "no");
+                    data.put("prevArticleTitle", "no");
+
+                    if(articles.size()==1) {
+                        data.put("nextArticleId", "no");
+                        data.put("nextArticleTitle", "no");
+                    } else {
+                        data.put("nextArticleId", articles.get(i-1).getArticleId());
+                        data.put("nextArticleTitle", articles.get(i-1).getTitle());
+                    }
+
+                    break;
+                }
+
+                data.put("prevArticleId", articles.get(i+1).getArticleId());
+                data.put("prevArticleTitle", articles.get(i+1).getTitle());
+                data.put("nextArticleId", articles.get(i-1).getArticleId());
+                data.put("nextArticleTitle", articles.get(i-1).getTitle());
                 break;
             }
         }

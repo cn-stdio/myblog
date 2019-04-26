@@ -182,8 +182,20 @@ $(".article-content :header").each(function () {
 var countH = 1;
 var sstep = "1";
 var catalogJudge = 0;
+var initLength = 0;
 
-$(".article-content h1").each(function () {
+/* 查询最大标题 */
+for (var i=1; i<=6; i++) {
+    initLength = parseInt($(".article-content").find("h" + i).length);
+
+    if(initLength != 0) {
+        initLength = i;
+
+        break;
+    }
+}
+
+$(".article-content h" + initLength).each(function () {
     catalogJudge = 1;
 
     var str = "";
@@ -237,9 +249,12 @@ function catalogPlus(hStep) {
 
     countH = 1;
 }
-for(var i=2; i<=6; i++) {
+
+initLength ++;
+for(var i=initLength; i<=6; i++) {
     catalogPlus(i);
 }
+
 if(catalogJudge==0) {
     $(".right-catalog").css("display", "none");
     $(".right-catalog-article").removeClass("right-catalog-style");

@@ -2,6 +2,7 @@ package com.seagull.myblog.mapper;
 
 import com.seagull.myblog.model.User;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -24,7 +25,7 @@ public interface UserMapper {
      */
     @Results(
             id = "user", value = {
-            @Result(property = "role", column = "id", one = @One(select = "com.seagull.myblog.mapper.RoleMapper.queryUserRole")),
+            @Result(property = "role", column = "id", one = @One(fetchType= FetchType.LAZY, select = "com.seagull.myblog.mapper.RoleMapper.queryUserRole")),
             @Result(property = "id", column = "id")
     }
     )
