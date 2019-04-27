@@ -28,8 +28,6 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
 
-        String url=request.getRequestURI();
-
         /* 登录成功更新登录时间 */
         userMapper.updateRecentLoginDate(authentication.getName(), new Date());
 
@@ -37,9 +35,7 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
             //如果是要跳转到某个页面的
             new DefaultRedirectStrategy().sendRedirect(request, response,(String)request.getSession().getAttribute("url"));
             request.getSession().removeAttribute("url");
-        }
-
-        else {
+        } else {
             super.onAuthenticationSuccess(request, response, authentication);
         }
 

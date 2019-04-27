@@ -387,3 +387,18 @@ hr {
 #article-like {
     outline: none;
 }
+
+#wordsView table, #wordsView tr, #wordsView td, #wordsView th {
+    line-height: 22px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#wordsView table tr:nth-child(2n) {
+    background-color: #f7f7f7;
+}
+#wordsView table tr th {
+    background-color: #eff3f5;
+}
+#wordsView img {
+    width: 600px;
+}
