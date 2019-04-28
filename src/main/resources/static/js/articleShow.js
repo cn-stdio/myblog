@@ -163,7 +163,6 @@ function pageContent() {
                     initialized: true // 不自动生成图标
                 };
                 $('.social-share').share($config);
-
             },
             error: function () {
                 alert("请求失败");
@@ -429,7 +428,20 @@ $("#main-right-article-catalog a").click(function(){
 });
 
 /* 获取目标节点位置，定位评论区 */
-var ah = $("#article-page-next").offset().top + 80;
+var imgFlag=0;
+var imgCount = 0;
+$("#wordsView").find("img").each(function (index, e) {
+    if($(e).height()==0) {
+        imgFlag = 1;
+    }
+    imgCount ++;
+});
+
+var ah =  $("#article-page-next").offset().top + 80;
+if(imgFlag==1) {
+    ah += 274 * imgCount;
+}
+console.log(ah + "          44444444");
 $(".article-comment").css("margin-top", ah+15);
 
 /* 文章点赞实现 */
