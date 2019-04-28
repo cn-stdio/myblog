@@ -429,10 +429,8 @@ $("#main-right-article-catalog a").click(function(){
 });
 
 /* 获取目标节点位置，定位评论区 */
-var article_offset = $("#main-middle-article").offset();
-var ah = $("#main-middle-article").css("height").substring(0, $("#main-middle-article").css("height").length-2);
-var hh = article_offset.top + parseInt(ah);
-$(".article-comment").css("margin-top", hh+15);
+var ah = $("#article-page-next").offset().top + 80;
+$(".article-comment").css("margin-top", ah+15);
 
 /* 文章点赞实现 */
 var loginCheck=0;
