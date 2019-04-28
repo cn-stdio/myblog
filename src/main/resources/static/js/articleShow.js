@@ -427,22 +427,22 @@ $("#main-right-article-catalog a").click(function(){
     },400);
 });
 
-/* 获取目标节点位置，定位评论区 */
-var imgFlag=0;
+/* 判断文章图片是否加载完毕并获取目标节点位置，定位评论区 */
 var imgCount = 0;
-$("#wordsView").find("img").each(function (index, e) {
-    if($(e).height()==0) {
-        imgFlag = 1;
-    }
+$("#wordsView").find("img").each(function () {
     imgCount ++;
 });
-
 var ah =  $("#article-page-next").offset().top + 80;
-if(imgFlag==1) {
-    ah += 274 * imgCount;
+if(imgCount == 0) {
+    $(".article-comment").css("margin-top", ah+15);
+} else {
+    $("#wordsView").find("img").each(function (index, e) {
+        $(e).on('load', function () {
+            ah =  $("#main-middle-article").height() + 31;
+            $(".article-comment").css("margin-top", parseInt(ah)+15+690);
+        });
+    });
 }
-console.log(ah + "          44444444");
-$(".article-comment").css("margin-top", ah+15);
 
 /* 文章点赞实现 */
 var loginCheck=0;
