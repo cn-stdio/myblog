@@ -197,23 +197,23 @@ function getArticle(pageNum) {
                         $(".user-next").css("display", "none");
 
                         if(data['articleNum'] == 1) {
-                            $(".tpl-right").css("height", 300);
                             $("#user-paper-white").css("margin-top", 0);
                         } else if(data['articleNum'] == 4) {
-                            $(".tpl-right").css("height", 300 + (data['articleNum']-1)*110);
                             $("#user-paper-white").css("margin-top", 700);
                         } else if(data['articleNum'] == 5) {
-                            $(".tpl-right").css("height", 300 + (data['articleNum']-1)*110);
                             $("#user-paper-white").css("margin-top", 804);
                         } else if(data['articleNum'] == 6) {
-                            $(".tpl-right").css("height", 300 + (data['articleNum']-1)*110);
                             $("#user-paper-white").css("margin-top", 908);
                         } else {
-                            $(".tpl-right").css("height", 300 + (data['articleNum']-1)*110);
                             $("#user-paper-white").css("margin-top", 0);
                         }
+
+                        $(".tpl-right").css("height", "auto");
+
                     } else {
                         var pageTurn = "";
+
+                        $(".tpl-right").css("height", 1090);
 
                         if(pageNum == 1) {
                             pageTurn +=
@@ -226,21 +226,21 @@ function getArticle(pageNum) {
 
                             var articleLastNum = data['articleNum'] % 6;
                             if(articleLastNum == 1) {
-                                $(".tpl-right").css("height", 300);
                                 $("#user-paper-white").css("margin-top", 0);
                             } else if(articleLastNum == 4) {
-                                $(".tpl-right").css("height", 300 + (articleLastNum-1)*110);
                                 $("#user-paper-white").css("margin-top", 700);
                             } else if(articleLastNum == 5) {
-                                $(".tpl-right").css("height", 300 + (articleLastNum-1)*110);
                                 $("#user-paper-white").css("margin-top", 804);
                             } else if(articleLastNum == 6) {
-                                $(".tpl-right").css("height", 300 + (articleLastNum-1)*110);
                                 $("#user-paper-white").css("margin-top", 908);
                             } else {
-                                $(".tpl-right").css("height", 300 + (articleLastNum-1)*110);
                                 $("#user-paper-white").css("margin-top", 0);
                             }
+
+                            $(".tpl-right").css("height", "auto");
+                            var tplRightHeight = $(".tpl-right").css("height");
+                            $(".tpl-right").css("height", parseInt(tplRightHeight.split("p")[0])+40);
+
                         } else {
                             pageTurn +=
                                 '                <a href="#" class="user-prev" style="display: block;" onclick="getArticle('+ (pageNum-1) +')">上一页</a>\n' +
