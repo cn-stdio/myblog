@@ -6,7 +6,7 @@
     },
     {
       "selector": "a.article-title-link",
-      "text": ["你确定要看<span style=\"color:#0099cc;\">宇宙第一不要脸</span>写的第一篇文章咩？"]
+      "text": ["你确定要看<span style=\"color:#0099cc;\">宇宙第一不要脸</span>写的文章咩？"]
     },
     {
       "selector": "#head-card-img",
@@ -59,16 +59,6 @@
     {
       "selector": ".fa-weibo",
       "text": ["这里是我家主人的微博(讨厌的主人从来没有打理过)~"]
-    },
-    {
-      "selector": ".waifu #live2d",
-      "text": ["干嘛呢你，快把手拿开", "鼠…鼠标放错地方了！"]
-    }
-  ],
-  "click": [
-    {
-      "selector": ".waifu #live2d",
-      "text": ["是…是不小心碰到了吧", "萝莉控是什么呀", "你看到我的小熊了吗", "再摸的话我可要报警了！⌇●﹏●⌇", "110吗，这里有个变态一直在摸我(ó﹏ò｡)"]
     }
   ],
   "seasons": [

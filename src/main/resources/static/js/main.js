@@ -24,6 +24,8 @@ window.addEventListener('mousemove', handleMouseMove, false);
 
 /* 名片随页面滚动 */
 window.onload= function() {
+    $('body').addClass('loaded');
+
     var oDiv = document.getElementById("main-right-div"),
         H = 0,
         Y = oDiv;
@@ -46,6 +48,9 @@ window.onload= function() {
     var cw = document.body.scrollHeight;
     console.log(cw);
     $(".footer").css("top", cw+50);
+
+
+    $('#loader-wrapper .load_title').remove();
 
 };
 

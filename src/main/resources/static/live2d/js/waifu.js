@@ -23,11 +23,13 @@ var re = /x/;
 console.log(re);
 re.toString = function() {
     showMessage('哈哈，你打开了控制台，是想要看看我的秘密吗？', 5000, true);
+    $(".pio-dialog").addClass("active");
     return '';
 };
 
 $(document).on('copy', function (){
     showMessage('你都复制了些什么呀，转载要记得加上出处哦', 5000, true);
+    $(".pio-dialog").addClass("active");
 });
 
 function initTips() {
@@ -42,14 +44,8 @@ function initTips() {
                     if (Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1) - 1];
                     text = text.render({text: $(this).text()});
                     showMessage(text, 3000);
-                });
-            });
-            $.each(result.click, function (index, tips) {
-                $(document).on("click", tips.selector, function () {
-                    var text = tips.text;
-                    if (Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1) - 1];
-                    text = text.render({text: $(this).text()});
-                    showMessage(text, 3000, true);
+                    $(".pio-dialog").addClass("active");
+
                 });
             });
             $.each(result.seasons, function (index, tips) {
@@ -63,6 +59,7 @@ function initTips() {
                     if (Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1) - 1];
                     text = text.render({year: now.getFullYear()});
                     showMessage(text, 6000, true);
+                    $(".pio-dialog").addClass("active");
                 }
             });
         }
@@ -77,7 +74,7 @@ initTips();
         referrer.href = document.referrer;
     }
 
-    if(referrer.href !== '' && referrer.hostname != 'litblc.com'){
+    if(referrer.href !== '' && referrer.hostname != 'seaguller.cn'){
         var referrer = document.createElement('a');
         referrer.href = document.referrer;
         text = 'Hello! 来自 <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友';
@@ -90,7 +87,7 @@ initTips();
             text = 'Hello! 来自 谷歌搜索 的朋友<br>欢迎阅读<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
         }
     }else {
-        if (window.location.href == 'https://www.litblc.com/') { //如果是主页
+        if (window.location.href == 'https://www.seaguller.cn/') { //如果是主页
             var now = (new Date()).getHours();
             if (now > 23 || now <= 5) {
                 text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛';
@@ -116,31 +113,33 @@ initTips();
         }
     }
     showMessage(text, 6000);
+    $(".pio-dialog").addClass("active");
 })();
 
-window.hitokotoTimer = window.setInterval(showHitokoto,30000);
+window.hitokotoTimer = window.setInterval(showHitokoto,12000);
 
 function showHitokoto() {
     $.getJSON("https://v1.hitokoto.cn/", function (result) {
         showMessage(result.hitokoto, 5000);
+        $(".pio-dialog").addClass("active");
     });
 }
 function showMessage(text, timeout, flag){
-    if(flag || sessionStorage.getItem('waifu-text') === '' || sessionStorage.getItem('waifu-text') === null){
+    if(flag || sessionStorage.getItem('pio-text') === '' || sessionStorage.getItem('pio-text') === null){
         if(Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1)-1];
         //console.log(text);
-        if(flag) sessionStorage.setItem('waifu-text', text);
-        $('.waifu-tips').stop();
-        $('.waifu-tips').html(text).fadeTo(200, 1);
+        if(flag) sessionStorage.setItem('pio-text', text);
+        $('.pio-dialog').stop();
+        $('.pio-dialog').html(text).fadeTo(200, 1);
         if (timeout === null) timeout = 5000;
         hideMessage(timeout);
     }
 }
 function hideMessage(timeout){
-    $('.waifu-tips').stop().css('opacity',1);
+    $('.pio-dialog').stop().css('opacity',1);
     if (timeout === null) timeout = 5000;
-    window.setTimeout(function() {sessionStorage.removeItem('waifu-text')}, timeout);
-    $('.waifu-tips').delay(timeout).fadeTo(200, 0);
+    window.setTimeout(function() {sessionStorage.removeItem('pio-text')}, timeout);
+    $('.pio-dialog').delay(timeout).fadeTo(200, 0);
 }
 function initLive2d() {
     $('.hide-button').fadeOut(0).on('click', () => {

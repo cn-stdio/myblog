@@ -7400,8 +7400,8 @@
             ,
             r.prototype.loadTexture = function(t, i, e, r) {
                 var n = new Image;
+                n.src = e;
                 n.crossOrigin = "Anonymous",
-                    n.src = e;
                 n.onload = function() {
                     var e = (0,
                         o.getContext)()

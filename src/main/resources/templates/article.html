@@ -13,11 +13,14 @@
     <!-- 移动端优化 -->
     <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>Seaguller的小窝~</title>
+    <link rel="icon" href="https://seaguller.oss-cn-beijing.aliyuncs.com/static/myIcon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/loader.css">
+
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://dreamsky.github.io/main/blog/common/init.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../static/live2d/css/waifu.css" />
+    <link href="../static/live2dMod/static/pio.css" rel="stylesheet"/>
     <link href="../static/css/article.css" rel="stylesheet"/>
 
     <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
@@ -275,9 +278,9 @@
             <div id="main-left-last-text-two">黎明总会如约而至。</div>
         </div>
     </div>
-    <div class="waifu ">
-        <div class="waifu-tips" style="opacity:0"></div>
-        <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="pio-container left">
+        <div class="pio-action"></div>
+        <canvas id="pio" width="250" height="300"></canvas>
     </div>
 </div>
 <footer id="footer" class="footer">
@@ -288,6 +291,15 @@
         <p>冀ICP备19012050号</p>
     </div>
 </footer>
+
+<!-- 页面加载动画 -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+    <div class="load_title">努力加载Seaguller站点中<br><span>稍安勿躁，嘻嘻嘻</span></div>
+</div>
+
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 <!-- markdown -->
@@ -313,11 +325,20 @@
 <!-- 背景线条 -->
 <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
 
-<script type="text/javascript" src="../static/live2d/js/live2d.js"></script>
-<script type="text/javascript" src="../static/live2d/js/waifu.js"></script>
-<script type="text/javascript">
-    loadlive2d("live2d", "../static/live2d/model/kesshouban/model.json");
-</script>
+<!-- live2D -->
+    <script type="text/javascript" src="../static/live2dMod/static/l2d.js"></script>
+    <script type="text/javascript" src="../static/live2dMod/static/pio.js"></script>
+    <script type="text/javascript" src="../static/live2d/js/waifu.js"></script>
+
+    <script type="text/javascript">
+        var pio = new Paul_Pio({
+            "mode":"draggable",
+            "hidden":false,
+            "content":{},
+            "selector":{"articles":"a.article-title-link"},
+            "model":["../static/live2dMod/models/model.json"]
+        });
+    </script>
 <!-- 定时 -->
 <script type="text/javascript">
     /* 尾部定时 */
