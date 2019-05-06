@@ -86,15 +86,15 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 /* 图片中间字体设置 */
 @font-face {
     font-family: "shaonv";
-    src: url('../font/shaonv.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/shaonv.ttf');
 }
 @font-face {
     font-family: "xiaodanchun";
-    src: url('../font/xiaodanchun.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/xiaodanchun.ttf');
 }
 @font-face {
     font-family: "xionghaizi";
-    src: url('../font/xionghaizi.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/xionghaizi.ttf');
 }
 .head-picture-font {
     position: absolute;

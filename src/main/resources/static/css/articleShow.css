@@ -1,14 +1,14 @@
 @font-face {
     font-family: "shaonv";
-    src: url('../font/shaonv.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/shaonv.ttf');
 }
 @font-face {
     font-family: "xiaodanchun";
-    src: url('../font/xiaodanchun.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/xiaodanchun.ttf');
 }
 @font-face {
     font-family: "xionghaizi";
-    src: url('../font/xionghaizi.ttf');
+    src: url('https://seaguller.oss-cn-beijing.aliyuncs.com/static/font/xionghaizi.ttf');
 }
 
 #main-middle-article, .article-content {
@@ -401,4 +401,41 @@ hr {
 }
 #wordsView img {
     width: 600px;
+}
+
+#wordsView {
+    padding: 0 !important;
+    word-wrap:break-word;
+    overflow: hidden;
+}
+
+#wordsView table {
+    border: none;
+}
+
+.article-content {
+    width: 612px;
+    margin-left: 50px;
+    margin-top: 70px;
+}
+.lang-xml {
+    overflow-x: auto;
+}
+.linenums li.L1, li.L3, li.L5, li.L7, li.L9 {
+    background: none;
+}
+pre code {
+    white-space: pre;
+    overflow-x: auto;
+}
+pre {
+    white-space: unset;
+}
+.editormd-preview-container pre, .editormd-html-preview pre {
+    background: #f5f7ff;
+}
+.editormd-preview-container code, .editormd-html-preview code {
+    display: inline-flex;
+    overflow-x: auto;
+    max-width: 612px;
 }
