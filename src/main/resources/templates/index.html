@@ -11,7 +11,7 @@
     <!-- 页面描述内容 -->
     <meta name="description" content="Seaguller的博客小站，一个web前后端程序猿的栖身之所~">
     <!-- 移动端优化 -->
-    <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
     <title>Seaguller的小窝~</title>
     <link rel="icon" href="https://seaguller.oss-cn-beijing.aliyuncs.com/static/myIcon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="../static/css/loader.css">
@@ -76,7 +76,77 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 手机端适配小标题 -->
+                <div class="am-container-two" style="display: none">
+                    <div class="am-btn-group login-button-head login-button-head-phone"  th:unless="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown>
+                            <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                            <ul class="am-dropdown-content login-content">
+                                <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                                <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                        <div class="am-dropdown" data-am-dropdown>
+                            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle">
+                                <span id="login-user-name-phone"></span>
+                                <span class="am-icon-caret-down"></span>
+                            </button>
+                            <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul-phone">
+                                <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                                <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                                <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
+                                <hr />
+                                <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="phone-title-text">
+                        Seaguller的小窝
+                    </div>
+
+                    <div>
+                        <button id="phone-title-button" class="am-topbar-btn am-btn am-btn-sm am-btn-primary" data-am-offcanvas="{target: '#offcanvasId'}"><span class="am-icon-bars"></span></button>
+                    </div>
+
+                </div>
             </header>
+    </div>
+
+    <!-- 手机端标题侧边栏 -->
+    <div id="offcanvasId" class="am-offcanvas">
+        <div class="am-offcanvas-bar">
+            <div class="am-offcanvas-content">
+                <ul class="am-menu-nav am-avg-sm-1">
+                    <li class="phone-offcanvas-title-t">帅气的标题栏</li>
+                    <li class="phone-offcanvas-title">
+                        <a href="/" class="header-a-main">
+                            <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                        </a>
+                    </li>
+                    <li class="phone-offcanvas-title"><a href="/archive" class="header-a-main" ><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/update" class="header-a-main" ><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/music" class="header-a-main" ><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/messageBoard" class="header-a-main" ><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/friends" class="header-a-main" ><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/aboutMe" class="header-a-main" ><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                </ul>
+                <!--<div th:unless="${#httpServletRequest.remoteUser}">
+                    <div >
+                        <ul class="am-menu-nav am-avg-sm-1">
+                            <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                            <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
+                        </ul>
+                    </div>
+                </div>-->
+            </div>
+        </div>
     </div>
     <!-- 反馈窗口 -->
     <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
@@ -134,14 +204,17 @@
                     <li><a target="_blank" href="https://github.com/cn-stdio" class="card-icons"><i class="fa fa-github" title="活跃不起来滴小github~"></i></a></li>
                     <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>
                     <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>
-                    <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">
-                    </i></a></li>
+                    <li>
+                        <a href="javascript:void(0);" class="card-icons">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <div class="card-weixin-divout">
+                            <div class="card-weixin-divin"></div>
+                            <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>
+                        </div>
+                    </li>
                     <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>
                 </ul>
-                <div class="card-weixin-divout">
-                    <div class="card-weixin-divin"></div>
-                    <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>
-                </div>
             </div>
         </div>
 
@@ -152,7 +225,7 @@
     <div id="art-list">
     </div>
 
-    <div class="main-left-double am-show-lg-only">
+    <div class="main-left-double am-show-lg-only main-left-screen">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
             <p>你一直说自己没努力</p>
@@ -161,7 +234,7 @@
         </div>
         <i class="fa fa-quote-right" style="float: right; margin-right: 10px; margin-top: 10px"></i>
     </div>
-    <div class="main-left  am-show-lg-only">
+    <div class="main-left  am-show-lg-only main-left-screen">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
             <p id="left-pp">你应该要学着做你自己</p>
@@ -176,6 +249,7 @@
             <div id="main-left-last-text-two">黎明总会如约而至。</div>
         </div>
     </div>
+
 
     <div id="landlord" style="left:5px;bottom:0px;">
         <div class="message" style="opacity:0"></div>

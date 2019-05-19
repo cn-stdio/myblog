@@ -18,6 +18,7 @@ $.ajax(
     });
 if(username != "") {
     $("#login-user-name").html(username);
+    $("#login-user-name-phone").html(username);
 }
 
 /* 添加标签 */

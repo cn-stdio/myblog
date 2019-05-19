@@ -286,20 +286,21 @@ if(catalogJudge==0) {
         '                <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>\n' +
         '                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>\n' +
         '                <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">\n' +
-        '                </i></a></li>\n' +
-        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
-        '            </ul>\n' +
+        '                </i></a>' +
         '            <div class="card-weixin-divout" id="card-weixin-divout-double"">\n' +
         '                <div class="card-weixin-divin"></div>\n' +
         '                <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>\n' +
         '            </div>\n' +
+        '</li>\n' +
+        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
+        '            </ul>\n' +
         '\n' +
         '        </div>';
 
     oUl.html(str);
 
     /* 微信翻转 */
-    $(".card-weixin-divout").css("top", "370px");
+    $(".card-weixin-divout").css("top", "51px");
     $(".fa-weixin").mouseover(function () {
         $(".card-weixin-divout").css("display", "block");
         $(".card-weixin-divin").css("display", "block");
@@ -370,20 +371,21 @@ $(".right-catalog-user").click(function () {
         '                <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>\n' +
         '                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>\n' +
         '                <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">\n' +
-        '                </i></a></li>\n' +
-        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
-        '            </ul>\n' +
+        '                </i></a>\n' +
         '            <div class="card-weixin-divout">\n' +
         '                <div class="card-weixin-divin"></div>\n' +
         '                <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>\n' +
         '            </div>\n' +
+        '          </li>\n' +
+        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
+        '            </ul>\n' +
         '\n' +
         '        </div>';
 
     oUl.html(str);
 
     /* 微信翻转 */
-    $(".card-weixin-divout").css("top", "370px");
+    $(".card-weixin-divout").css("top", "51px");
     $(".fa-weixin").mouseover(function () {
         $(".card-weixin-divout").css("display", "block");
         $(".card-weixin-divin").css("display", "block");
@@ -443,7 +445,24 @@ if(imgCount == 0) {
         });
     });
 }
-
+/*/!* 窗口尺寸变化时改变评论区位置 *!/
+$(window).resize(function(){
+    imgCount = 0;
+    $("#wordsView").find("img").each(function () {
+        imgCount ++;
+    });
+    var ah =  $("#article-page-next").offset().top + 80;
+    if(imgCount == 0) {
+        $(".article-comment").css("margin-top", ah+15);
+    } else {
+        $("#wordsView").find("img").each(function (index, e) {
+            $(e).on('load', function () {
+                ah =  $("#main-middle-article").height() + 31;
+                $(".article-comment").css("margin-top", parseInt(ah)+15+690);
+            });
+        });
+    }
+});*/
 /* 文章点赞实现 */
 var loginCheck=0;
 $.ajax(

@@ -14,37 +14,36 @@
 .aboutMe-list {
     position: absolute;
     top: 650px;
-    left: 500px;
+    left: 32.9%;
 }
     .aboutMe-title-text {
         font-family: shaonv;
-        font-size: 40px;
+        font-size: 2.6vw;
         color: aquamarine;
-        margin-left: -50px;
+        margin-left: -9%;
         font-weight: bold;
     }
     .am-icon-hand-o-right {
         position: absolute;
-        left: 80px;
+        left: 14.25%;
     }
     .aboutMe-main-text {
-        font-size: 18px;
-        width: 580px;
+        font-size: 1.172vw;
+        width: 37.891vw;
         text-indent: 2em;
         margin-left: -20px;
     }
     .aboutMe-main-img {
-        height: 300px;
-        margin-left: 85px;
+        margin-left: 14.6%;
     }
     .aboutMe-main-img2 {
-        height: 300px;
-        margin-left: 128px;
+        width: 19.195vw;
+        margin-left: 22%;
         margin-top: -22px;
     }
     .aboutMe-main-img3 {
-        height: 250px;
-        margin-left: 115px;
+        width: 22.888vw;
+        margin-left: 19.8%;
     }
 
     .text-star {
@@ -54,3 +53,16 @@
     .aboutMe-main-text-like {
         color: lightskyblue;
     }
+
+#aboutMe-title-img {
+    width: 36.2vw;
+}
+#aboutMe-title-img-first {
+    width: 27.195vw;
+}
+#aboutMe-title-img-second {
+    width: 28.378vw;
+}
+#aboutMe-title-img-third {
+    width: 29.37vw;
+}

@@ -1,16 +1,16 @@
 .message-list {
     position: absolute;
     top: 650px;
-    left: 500px;
+    left: 32.9%;
 }
 #message-title-img {
-    width: 600px;
-    margin-left: -35px;
+    width: 39.1vw;
+    margin-left: -6%;
 }
 #message-title-text {
     font-family: "xiaodanchun";
-    font-size: 20px;
-    margin-left: -50px;
+    font-size: 1.305vw;
+    margin-left: -7.5%;
     color: dimgray;
     margin-top: 50px;
 }

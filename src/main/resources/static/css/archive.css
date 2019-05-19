@@ -20,7 +20,7 @@
     display: inline-block;
     cursor: pointer;
     border-bottom: 1px solid transparent;
-    font-size: 22px;
+    font-size: 1.47vw;
     list-style-type:none;
     width:100%;
     font-family: "xionghaizi";
@@ -29,10 +29,10 @@
 
 #art-list {
     position: absolute;
-    left: 399px;
+    left: 26.3%;
     top: 690px;
     padding: 15px 0;
-    width: 713px;
+    width: 46.4vw;
     height: auto;
 }
 
@@ -57,16 +57,19 @@
 }
 .VivaTimeline dl dt {
     font-family: cursive;
-    font-size: 22px;
+    font-size: 1.35vw;
 }
 .container {
     margin-top: 30px;
 }
 .container-before-icon {
     position: absolute;
-    margin-left: 339px;
+    margin-left: 22.04vw;
     color: lightcoral;
-    font-size: 15px;
+    font-size: 0.978vw;
+}
+.VivaTimeline dl dd .events .events-header {
+    font-size: 1.05vw !important;
 }
 
 /* 翻页 */
@@ -134,9 +137,14 @@
 #main-right-text {
     height: auto;
     max-height: 361px;
-    overflow-y: auto;
 }
 
 #events-body-create-time {
     cursor: auto;
+}
+
+.main-right-text-overflow {
+    height: auto;
+    max-height: 361px;
+    overflow-y: auto;
 }

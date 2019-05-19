@@ -13,8 +13,8 @@
 .music-table {
     position: absolute;
     margin-top: 710px;
-    margin-left: 400px;
-    width: 715px;
+    margin-left: 26.32%;
+    width: 46.6vw;
 
     z-index: 0;
 }
@@ -31,10 +31,10 @@ tr {
 .music-title {
     position: absolute;
     margin-top: 650px;
-    width: 360px;
+    width: 23.44vw;
     text-align: center;
-    margin-left: 560px;
-    font-size: 30px;
+    margin-left: 36.85%;
+    font-size: 1.96vw;
     font-family: "xionghaizi";
 
     color: darkturquoise;

@@ -129,6 +129,7 @@ $.ajax(
     });
 if(username != "") {
     $("#login-user-name").html(username);
+    $("#login-user-name-phone").html(username);
 }
 
 /* 悄悄话点击 */

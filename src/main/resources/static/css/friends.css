@@ -1,11 +1,11 @@
 #friend-title {
     position: absolute;
-    left: 645px;
+    left: 42.45%;
     top: 690px;
-    font-size: 30px;
+    font-size: 1.98vw;
 }
     #friend-title-text {
-        font-size: 30px;
+        font-size: 1.98vw;
         font-family: "xionghaizi";
         color: hotpink;
     }
@@ -22,19 +22,19 @@
 
 #friend-src {
     position: absolute;
-    left: 450px;
+    left: 29.6%;
     top: 750px;
-    width: 650px;
+    width: 42.32vw;
 }
     .friend-a {
-        padding: 0 10px 0 90px;
+        padding: 0 0.65vw 0 5.86vw;
         height: 90px;
         color: #555;
         border-bottom: 0;
         text-decoration: none;
         background-color: transparent;
         display: block;
-        margin-left: 10px;
+        margin-left: 0.65vw;
     }
     #friend-src ul {
         list-style-type: none;
@@ -53,18 +53,17 @@
         background: rgba(230,244,250,.5);
     }
     .link-img {
-        width: 60px;
-        height: 60px;
+        width: 3.91vw;
         border-radius: 50%;
         position: absolute;
         top: 15px;
-        left: 25px;
+        left: 10.2%;
         cursor: pointer;
         margin: 0;
     }
     .link-text {
         margin-top: 10px;
-        font-size: 22px;
+        font-size: 1.44vw;
         font-weight: bold;
         font-family: cursive;
     }

@@ -1,37 +1,39 @@
 #art-img {
     position: absolute;
     top: 700px;
-    left: 470px;
+    left: 30.95%;
     background-color: transparent;
+
+    width: 37.8vw;
 }
 
 #art-update-title {
     top: 1050px;
-    left: 455px;
+    left: 29.98%;
     position: absolute;
     color: lightcoral;
-    font-size: 2.8rem;
+    font-size: 1.822vw;
     font-family: "xionghaizi";
 }
 
 #am-icon-star-one {
     position: absolute;
     top: 1054px;
-    left: 405px;
+    left: 26.39vw;
     color: yellow;
 }
 #am-icon-star-two {
     position: absolute;
     top: 1056px;
-    left: 1085px;
+    left: 70.59vw;
     color: yellow;
 }
 
 #art-text {
     position: absolute;
     top: 1110px;
-    left: 470px;
-    font-size: 2rem;
+    left: 30.95%;
+    font-size: 1.303vw;
     font-family: "shaonv";
     color: skyblue;
     text-align: center;
@@ -48,9 +50,9 @@
 #art-title-update {
     position: absolute;
     top: 1370px;
-    left: 400px;
+    left: 26.3%;
     font-family: "xiaodanchun";
-    font-size: 3.1rem;
+    font-size: 2.02vw;
     color: plum;
 }
 #art-title-update-one {
@@ -59,15 +61,15 @@
 }
 
 .art-text-update-content {
-    font-size: 2rem;
+    font-size: 1.305vw;
     margin-top: 20px;
     margin-left: 30px;
 }
 .art-text-update-all {
     position: absolute;
-    left: 450px;
+    left: 29.61%;
     font-family: "xiaodanchun";
-    font-size: 2.9rem;
+    font-size: 1.889vw;
     color: grey;
 
     margin-bottom: 50px;

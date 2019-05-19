@@ -77,9 +77,9 @@ hr {
 
 .article-comment {
     position: absolute;
-    width: 666px;
+    width: 43.4vw;
     height: 140px;
-    left: 420px;
+    left: 27.39vw;
     box-shadow: 0px 0px 10px 0.5px #4398ed;
     border: 1px solid #4398ed;
     padding: 15px 15px 5px;
@@ -95,8 +95,8 @@ hr {
 #comment-btn {
     background: #97dffd;
     color: #fff;
-    font-size: 18px;
-    padding: 1px 15px;
+    font-size: 1.18vw;
+    padding: 1px 1vw;
     border-radius: 5px;
     display: inline-block;
     text-decoration: none;
@@ -107,7 +107,7 @@ hr {
     line-height: 2;
 
     margin-top: 95px;
-    margin-left: 530px;
+    margin-left: 83%;
 }
 #comment-btn:hover {
     background-color: slateblue;
@@ -215,7 +215,7 @@ hr {
 }
 
 .comment-reply {
-    width: 550px;
+    width: 35.81vw;
     height: 140px;
     left: 420px;
     box-shadow: 0px 0px 10px 0.5px lightsalmon;
@@ -232,8 +232,8 @@ hr {
 .comment-reply-btn-right {
     background: pink;
     color: #fff;
-    font-size: 18px;
-    padding: 1px 15px;
+    font-size: 1.18vw;
+    padding: 1px 1vw;
     border-radius: 5px;
     display: inline-block;
     text-decoration: none;
@@ -242,7 +242,7 @@ hr {
     transition-timing-function: ease-in-out;
     transition-delay: 0s;
     line-height: 2;
-    margin-left: 290px;
+    margin-left: 50.1%;
 }
 .comment-reply-btn-right:hover {
     background-color: sandybrown;
@@ -251,8 +251,8 @@ hr {
 .comment-reply-btn-left {
     background: pink;
     color: #fff;
-    font-size: 18px;
-    padding: 1px 15px;
+    font-size: 1.18vw;
+    padding: 1px 1vw;
     border-radius: 5px;
     display: inline-block;
     text-decoration: none;
@@ -316,21 +316,17 @@ hr {
     overflow-y: auto;
 }
 
-#card-weixin-divout-double {
-    top: 322px !important;
-}
-
 .article-comment-nonpeople {
     font-family: "xionghaizi";
     color: darkgray;
-    font-size: 20px;
-    margin-left: 240px;
+    font-size: 1.315vw;
+    margin-left: 15.6vw;
     display: none;
 }
 
 #comment-text {
     resize: none;
-    width: 642px;
+    width: 41.8vw;
     height: 126px;
     font-size: 19px;
     margin-left: -5px;
@@ -414,7 +410,7 @@ hr {
 }
 
 .article-content {
-    width: 612px;
+    width: 85.96%;
     margin-left: 50px;
     margin-top: 70px;
 }

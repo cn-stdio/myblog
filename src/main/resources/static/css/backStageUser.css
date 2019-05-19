@@ -22,14 +22,14 @@ ul, li {
 }
 
 .tpl-left-nav {
-    width: 235px;
+    width: 15.3vw;
     float: left;
     background: #fff;
     border-radius: 6px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     padding-bottom: 20px;
 
-    margin-left: 160px;
+    margin-left: 10.56%;
     margin-top: 15px;
 }
 .tpl-left-nav-content {
@@ -45,7 +45,7 @@ ul, li {
     font-size: 12px!important;
 }
 .tpl-left-nav-list {
-    width: 235px;
+    width: 15.3vw;
 }
 .tpl-left-nav-item {}
 
@@ -114,14 +114,14 @@ ul, li {
 }
 
 .tpl-right {
-    width: 900px;
+    width: 58.6vw;
     height: 1000px;
     background: #fff;
     border-radius: 6px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     margin-top: 15px;
     position: absolute;
-    left: 430px;
+    left: 28.3%;
 }
 
 .user-head, .user-name,
@@ -217,7 +217,7 @@ ul, li {
     margin-left: 190px;
     margin-top: -30px;
     resize: none;
-    width: 400px;
+    width: 26.042vw;
     height: 120px;
 }
 .user-phone-number, .user-sex-label {
@@ -241,7 +241,7 @@ ul, li {
     padding: 10px 30px;
     line-height: 1;
 
-    margin-left: 400px;
+    margin-left: 44.5%;
     margin-top: 15px;
     font-size: 18px;
 }
@@ -385,20 +385,20 @@ ul, li {
 }
 
 .user-talk-img {
-    width: 270px;
-    margin-left: 20px;
+    width: 17.58vw;
+    margin-left: 2.25%;
 }
 #user-talk-title {
-    font-size: 23px;
+    font-size: 1.5vw;
     color: pink;
     font-family: "shaonv";
-    margin-left: 30px;
+    margin-left: 3.3%;
 }
 #user-talk-div {
     position: absolute;
-    width: 600px;
+    width: 39.07vw;
     height: 140px;
-    left: 150px;
+    left: 16.7%;
     box-shadow: 0px 0px 10px 0.5px pink;
     border: 1px solid pink;
     padding: 15px 15px 5px;
@@ -409,7 +409,7 @@ ul, li {
 }
 #user-talk-text {
     resize: none;
-    width: 576px;
+    width: 37.5vw;
     height: 126px;
     font-size: 19px;
     margin-left: -5px;
@@ -420,5 +420,5 @@ ul, li {
 #user-talk-btn {
     background-color: pink;
     margin-top: 30px;
-    margin-left: 240px;
+    margin-left: 42.2%;
 }

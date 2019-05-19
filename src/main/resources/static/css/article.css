@@ -6,7 +6,7 @@
     margin-top: 15px;
 }
 .article-title-link {
-    font-size: 25px;
+    font-size: 1.629vw;
     font-weight: 700;
     position: relative;
     color: #555;
@@ -15,7 +15,7 @@
     vertical-align: top;
 }
 .article-title-link:visited {
-    font-size: 25px;
+    font-size: 1.629vw;
     font-weight: 700;
     position: relative;
     color: #555;
@@ -133,7 +133,7 @@
     color: #fff;
 }
 .article-content {
-    width: 560px;
+    width: 77%;
     height:90px;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -217,7 +217,7 @@
     display: inline-block;
     cursor: pointer;
     border-bottom: 1px solid transparent;
-    font-size: 17px;
+    font-size: 1.12vw;
     color: #555;
     list-style-type:none;
     width:100%;

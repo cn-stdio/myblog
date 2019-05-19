@@ -200,20 +200,21 @@ $(".right-catalog-user").click(function () {
         '                <li><a target="_blank" href="https://gitee.com/Seaguller" class="card-icons"><i class="fa fa-gg" title="码码码码码云~"></i></a></li>\n' +
         '                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1656299466&site=qq&menu=yes" class="card-icons"><i class="fa fa-qq" title="点击QQ联系俺~"></i></a></li>\n' +
         '                <li><a href="javascript:void(0);" class="card-icons"><i class="fa fa-weixin">\n' +
-        '                </i></a></li>\n' +
-        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
-        '            </ul>\n' +
+        '                </i></a>\n' +
         '            <div class="card-weixin-divout">\n' +
         '                <div class="card-weixin-divin"></div>\n' +
         '                <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/weixin.gif" id="weixin-img"/>\n' +
         '            </div>\n' +
+        '          </li>\n' +
+        '                <li><a target="_blank" href="https://weibo.com/p/1005053269816883" class="card-icons"><i class="fa fa-weibo" title="基本不碰的小微博~"></i></a></li>\n' +
+        '            </ul>\n' +
         '\n' +
         '        </div>';
 
     oUl.html(str);
 
     /* 微信翻转 */
-    $(".card-weixin-divout").css("top", "370px");
+    $(".card-weixin-divout").css("top", "51px");
     $(".fa-weixin").mouseover(function () {
         $(".card-weixin-divout").css("display", "block");
         $(".card-weixin-divin").css("display", "block");

@@ -1,13 +1,13 @@
 body {
-    font-size: 14px;
+    font-size: 0.92vw;
     cursor: url(../cursor/rain.cur),url(../cursor/rain.gif),auto;
 
 }
 #header-text {
     position: absolute;
-    margin-left: -150px;
+    margin-left: -10%;
     font-family: "xionghaizi";
-    font-size: 30px;
+    font-size: 1.953vw;
     margin-top: -5px;
 }
 #header-text:hover {
@@ -96,20 +96,20 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 .head-picture-font {
     position: absolute;
     top: 340px;
-    left: 60px;
-    margin-left: 302px;
+    left: 23.8%;
     margin-top: -12px;
 
 
     display: table;
     height: auto;
+    width: 65%;
 
     color: white;
     -webkit-text-stroke: 1px white;
     text-transform: uppercase;
     text-align: center;
 
-    font-size: 120px;
+    font-size: 7.87vw;
     font-family: "shaonv", -webkit-pictograph;
     font-weight: 800;
 
@@ -167,13 +167,12 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 /* 随页面滚动的小面板 */
 .main-right {
     position: absolute;
-    left: 1135px;
+    left: 74.4%;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
-    width: 315px;
-    height: auto;
+    width: 22%;
 }
 /* 标签云（未完成） */
 .main-right-down {
@@ -190,12 +189,12 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 }
 .main-middle {
     position: absolute;
-    left: 399px;
+    left: 26.3%;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
-    width: 713px;
+    width: 47%;
     height: 330px;
 
     background-color: transparent;
@@ -205,25 +204,23 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 }*/
 .main-left-double {
     position: absolute;
-    left: 60px;
+    left: 4%;
     top: 690px;
     padding: 15px 0;
     box-shadow: 0px 0px 10px 0.5px #aaa;
     border: 1px solid #BFBFBF;
-    width: 315px;
-    height: 200px;
+    width: 20.8%;
     background: rgba(255,250,240,0.5);
     text-align: center;
 }
 .main-left {
     position: absolute;
-    left: 60px;
+    left: 4%;
     top: 920px;
     padding: 15px 0;
     box-shadow: 0px 0px  10px 0.5px #aaa;
     border:1px solid #BFBFBF;
-    width: 315px;
-    height: 420px;
+    width: 20.8%;
     background: rgba(52.94%, 80.78%, 95.16%, 0.5);
     text-align: center;
 }
@@ -276,7 +273,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     float: left;
 }
 #head-card-img {
-    width: 120px;
+    width: 7.79vw;
     border-top:7px double cyan;
     border-left:7px double yellow;
     border-right:7px double hotpink;
@@ -290,15 +287,19 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     position: absolute;
     margin-top: -10px;
     font-family: "xionghaizi";
-    font-size: 30px;
+    font-size: 1.95vw;
+    word-wrap: break-word;
+    word-break: break-all;
+    left: 10vw;
 }
 /* 名字下面的文字 */
 .card-head-right-writing {
     font-family: "xiaodanchun";
-    font-size: 17px;
+    font-size: 1.17vw;
     color: #aaaaaa;
     position: absolute;
     margin-top: 39px;
+    left: 10vw;
 }
 /* 名片中间 */
 .card-middle {
@@ -321,47 +322,52 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     font-size: 20px;
     text-align: center;
     padding: 0 !important;
-    margin-left: 16px;
+    margin-left: 1.2vw;
 }
 .am-nav>li>a:focus, .am-nav>li>a:hover {
     background-color: transparent;
 }
 .fa-github {
     border-radius:50%;
-    width: 40px;
-    height: 40px;
+    width: 2.63vw;
+    height: 2.63vw;
+     line-height: 1.4vw !important;
     padding-top: 9px;
     color: black;
     border: 1px solid black;
 }
 .fa-weixin {
     border-radius:50%;
-    width: 40px;
-    height: 40px;
+    width: 2.63vw;
+    height: 2.63vw;
+     line-height: 1.4vw !important;
     padding-top: 9px;
     color: #248a34;
     border: 1px solid #248a34;
 }
 .fa-gg {
     border-radius:50%;
-    width: 40px;
-    height: 40px;
+    width: 2.63vw;
+    height: 2.63vw;
+     line-height: 1.4vw !important;
     padding-top: 9px;
     color: orange;
     border: 1px solid orange;;
 }
 .fa-qq {
     border-radius:50%;
-    width: 40px;
-    height: 40px;
+    width: 2.63vw;
+    height: 2.63vw;
+     line-height: 1.4vw !important;
     padding-top: 9px;
     color: #2894FF;
     border: 1px solid #2894FF;
 }
 .fa-weibo {
     border-radius:50%;
-    width: 40px;
-    height: 40px;
+    width: 2.63vw;
+    height: 2.63vw;
+     line-height: 1.4vw !important;
     padding-top: 9px;
     color: red;
     border: 1px solid red;
@@ -384,13 +390,14 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     }
 }
 .card-weixin-divout {
-    width:150px;
-    height:150px;
+    width: 9.9vw;
+    height: 9.9vw;
     border:1px solid silver;
     border-radius:8px;
     position: absolute;
-    top: 323px;
-    left: 144px;
+    top: 51px;
+    left: -63.5%;
+    z-index: 5000;
     display: none;
     background-color: #eeeeee;
 }
@@ -412,6 +419,7 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     position: absolute;
     left: -14px;
     top: -12px;
+    width: 11.8vw;
 }
 
 #li-login {
@@ -536,6 +544,10 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     margin-left: -40px;
 }
 
+#main-right-text-ul {
+    overflow-y: auto;
+}
+
 /*Firefox*/
 @-moz-document url-prefix() {
     #header-text {
@@ -544,6 +556,12 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 }
 
 /* 手机 */
+@media screen and (max-device-width: 1270px) {
+    #header-text {
+        margin-left: unset !important;
+        left: 2% !important;
+    }
+}
 @media screen and (max-device-width: 700px) {
     #table-picture {
         background-repeat: no-repeat;
@@ -560,15 +578,135 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
         position: unset;
         top: 0 !important;
         left: 0;
-        width: 0 !important;
+        width: 95%;
+        margin-left: 3%;
+        margin-bottom: 50px;
     }
     #main-middle-1 {
         margin-top: 350px !important;
+    }
+    .article-content {
+        width: unset !important;
+        margin-left: 30px !important;
+        margin-right: 30px !important;
     }
 
     .prev {
         float: left !important;
         margin-left: 0;
+    }
+
+    .footer {
+        position: unset;
+        top: unset !important;
+        margin-top: 100px;
+    }
+    .head-sculpture {
+        display: none;
+    }
+
+    .article-badge {
+        top: unset !important;
+        margin-top: 120px !important;
+        margin-left: 20px !important;
+    }
+    
+    .am-container {
+        display: none !important;
+    }
+    .am-container-two {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 100%;
+        max-width: 1000px;
+        display: block !important;
+    }
+    #phone-title-button {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        margin-top: 2px !important;
+        float: right;
+        margin-right: 30px;
+    }
+
+    .phone-title-text {
+        position: absolute;
+        font-family: "xionghaizi";
+        font-size: 30px;
+        margin-top: -5px;
+        margin-left: 190px;
+    }
+    .phone-title-text:hover {
+        animation: fanzhuan 1s forwards;
+        text-decoration:none;
+    }
+
+    .phone-head-sculpture {
+        position: absolute;
+        z-index: 1;
+        margin-left: 25px;
+        width: 40px;
+        height: 40px;
+        background: no-repeat url(https://seaguller.oss-cn-beijing.aliyuncs.com/headImg/cc5d76e15a0144f4ba911ca27889e88c.jpeg) left top;
+        background-size: 100%;
+        webkit-background-size: 220px 220px;
+        moz-background-size: 220px 220px;
+        -webkit-border-radius: 110px;
+        border-radius: 110px;
+        -webkit-transition: -webkit-transform 2s ease-out;
+        -moz-transition: -moz-transform 2s ease-out;
+        -o-transition: -o-transform 2s ease-out;
+        -ms-transition: -ms-transform 2s ease-out;
+        border-top: 2px double cyan;
+        border-left: 2px double yellow;
+        border-right: 2px double hotpink;
+        border-bottom: 2px double greenyellow;
+    }
+    .phone-offcanvas-title {
+        margin-left: 70px;
+        font-size: 17px;
+        letter-spacing: 5px;
+        margin-bottom: 30px;
+    }
+    .phone-offcanvas-title-t {
+        margin-left: 45px;
+        font-size: 20px;
+        letter-spacing: 5px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .login-button-head-phone {
+        margin-left: 30px !important;
+    }
+
+
+    #login-button-circle-phone {
+        background-color: transparent;
+        border-radius: 50% !important;
+        border-color: rgba(255, 250, 240, 1);
+
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+        padding: unset !important;
+        margin-top: 3px;
+        margin-left: 50px;
+    }
+    .login-button-head {
+        margin-left: 50px;
+    }
+    .login-content-b:after, .login-content-b:before {
+        display: none;
+    }
+    .login-content {
+        left: -53px !important;
+    }
+    .am-modal-dialog {
+        width: 500px !important;
     }
 }
 

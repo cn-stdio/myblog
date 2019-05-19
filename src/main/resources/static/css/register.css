@@ -1,5 +1,5 @@
 .register-title-line {
-    width: 980px;
+    width: 63.809vw;
     height: 28px;
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
@@ -19,7 +19,7 @@
 #art-list {
     position: absolute;
     top: 700px;
-    left: 280px;
+    left: 18.45%;
 }
 .am-form-field {
     width: 400px !important;
