@@ -583,12 +583,14 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
         margin-bottom: 50px;
     }
     #main-middle-1 {
-        margin-top: 350px !important;
+        margin-top: 56% !important;
     }
     .article-content {
         width: unset !important;
-        margin-left: 30px !important;
         margin-right: 30px !important;
+        font-size: 2.6vw !important;
+        margin-top: 6vh !important;
+        margin-left: 14% !important;
     }
 
     .prev {
@@ -607,8 +609,10 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
 
     .article-badge {
         top: unset !important;
-        margin-top: 120px !important;
-        margin-left: 20px !important;
+        margin-top: 12vh !important;
+        margin-left: 3.3vw !important;
+        font-size: 2.4vw !important;
+        padding: 7px 11px 7px 5vw !important;
     }
     
     .am-container {
@@ -636,9 +640,8 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     .phone-title-text {
         position: absolute;
         font-family: "xionghaizi";
-        font-size: 30px;
-        margin-top: -5px;
-        margin-left: 190px;
+        font-size: 5vw;
+        margin-left: 32%;
     }
     .phone-title-text:hover {
         animation: fanzhuan 1s forwards;
@@ -707,6 +710,29 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     }
     .am-modal-dialog {
         width: 500px !important;
+    }
+
+    .article-title-link, .article-title-link:visited {
+        font-size: 3.3vw !important;
+    }
+    .article-meta {
+        font-size: 2.3vw;
+    }
+    #article-meta-type {
+        margin-left: unset;
+    }
+    .article-btn {
+        font-size: 2.3vw !important;
+    }
+    .main-middle {
+        height: 46vh !important;
+    }
+    .next, .prev {
+        font-size: 3vw !important;
+        padding: 10px 6vw !important;
+    }
+    .prev {
+        margin-right: 60% !important;
     }
 }
 

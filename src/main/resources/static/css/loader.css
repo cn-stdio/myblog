@@ -90,7 +90,7 @@
     top: 0;
     width: 51%;
     height: 100%;
-    background: url("http://seaguller.oss-cn-beijing.aliyuncs.com/static/loading.gif") no-repeat; /* Old browsers */
+    background: url("https://seaguller.oss-cn-beijing.aliyuncs.com/static/loading.gif") no-repeat; /* Old browsers */
     background-size: 100% 100%;
     z-index: 1000;
     -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */

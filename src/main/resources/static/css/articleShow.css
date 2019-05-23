@@ -435,3 +435,13 @@ pre {
     overflow-x: auto;
     max-width: 612px;
 }
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    .main-middle {
+        margin-top: 53%;
+    }
+    #main-middle-article, .article-content {
+        height: auto !important;
+    }
+}
