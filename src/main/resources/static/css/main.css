@@ -734,5 +734,19 @@ header.am-topbar.am-topbar-inverse.am-topbar-fixed-top {
     .prev {
         margin-right: 60% !important;
     }
+
+    #login-sign-name-phone {
+        border: none;
+        font-family: auto;
+        color: lavender;
+        background-color: transparent;
+        height: 35px;
+        font-size: 17px;
+        margin-top: 3px;
+        margin-left: -60px;
+    }
+    #login-content-ul-phone, .login-content {
+        font-size: 2.5vw !important;
+    }
 }
 

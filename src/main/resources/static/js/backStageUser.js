@@ -121,10 +121,10 @@ $.ajax({
             window.location.href = "/login";
         } else {
             if(data['replyNum']==0) {
-                $("#user-menu-reply-count").css("display", "none");
+                $(".user-menu-reply-count").css("display", "none");
             } else {
-                $("#user-menu-reply-count").html(data['replyNum']);
-                $("#user-menu-reply-count").css("display", "block");
+                $(".user-menu-reply-count").html(data['replyNum']);
+                $(".user-menu-reply-count").css("display", "block");
             }
         }
     },
@@ -374,7 +374,7 @@ $(".tpl-right").on("click", "#user-personal-profile", function () {
 });
 
 /* 个人资料点击 */
-$("#user-menu-introduce").click(function () {
+$(".user-menu-introduce").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
 
@@ -443,7 +443,7 @@ $("#user-menu-introduce").click(function () {
 });
 
 /* 密码修改点击 */
-$("#user-menu-password").click(function () {
+$(".user-menu-password").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
 
@@ -805,10 +805,10 @@ function getUserReplied(pageNum) {
 }
 
 /* 评论点击 */
-$("#user-menu-reply").click(function () {
+$(".user-menu-reply").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
-    $("#user-menu-reply-count").css("display", "none");
+    $(".user-menu-reply-count").css("display", "none");
 
     var replyInitHtml = '<div>\n' +
         '                <div class="user-reply">回复鸭</div>\n' +
@@ -826,7 +826,7 @@ $("#user-menu-reply").click(function () {
 });
 
 /* 悄悄话点击 */
-$("#user-menu-talk").click(function () {
+$(".user-menu-talk").click(function () {
     $(".nav-link").removeClass("active");
     $(this).addClass("active");
 

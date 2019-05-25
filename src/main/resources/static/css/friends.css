@@ -78,3 +78,57 @@
     .friend-a:focus {
         color: #222;
     }
+
+@media screen and (max-device-width: 700px) {
+    #friend-title {
+        left: unset;
+        font-size: 7vw;
+        top: unset;
+        margin-top: 50%;
+        width: 100%;
+    }
+    #friend-title-text {
+        font-size: 7vw;
+        margin-left: 20%;
+    }
+    #reddit-alien-first {
+        left: unset;
+        margin-left: 8%;
+        margin-top: -0.6vh;
+    }
+    #reddit-alien-second {
+        left: unset;
+        margin-left: 86%;
+        margin-top: -0.6vh;
+    }
+    #friend-src {
+        left: unset;
+        top: unset !important;
+        width: 100%;
+        margin-top: 63%;
+        left: 15%;
+    }
+    #friend-src ul li {
+        height: 10vh;
+    }
+    .friend-a {
+        height: 10vh;
+        margin-left: 3vw;
+        margin-left: 35%;
+        width: 100%;
+    }
+    .link-img {
+        width: 13vw;
+    }
+    .link-text {
+        font-size: 5vw;
+    }
+    .link-text-introduce {
+        font-size: 3vw;
+    }
+
+    .footer {
+        top: 380px !important;
+        position: relative;
+    }
+}

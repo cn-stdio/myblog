@@ -16,11 +16,40 @@ canvas{display:block; background: transparent;}
 #art-list {
     position: absolute;
     top: 650px;
-    left: 620px;
+    left: 41%;
 }
 .error-text {
     font-family: "xionghaizi";
-    font-size: 30px;
+    font-size: 2vw;
     color: cornflowerblue;
     margin-left: -70px;
 }
+#canvas {
+    width: 62.5vw;
+    height: 84.211vh;
+}
+.wrapper {
+    width: unset !important;
+}
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    #art-list {
+        top: unset !important;
+        left: unset !important;
+        margin-top: 50% !important;
+    }
+    #art-list img {
+        margin-left: unset !important;
+        width: 100% !important;
+    }
+    .error-text {
+        margin-left: unset !important;
+        font-size: 6vw !important;
+    }
+    .footer {
+        position: relative !important;
+        top: 450px !important;
+    }
+}
+

@@ -101,3 +101,50 @@
 
     display: none;
 }
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    .register-title-line {
+        width: 100%;
+    }
+    #art-list {
+        top: unset;
+        margin-top: 52%;
+        left: -1%;
+    }
+    .am-form-group {
+        margin-left: unset;
+    }
+    .article-btn {
+        font-size: 3vw !important;
+    }
+
+    .form-text-error {
+        margin-top: 3%;
+        margin-left: -16% !important;
+        display: contents !important;
+    }
+
+    .am-form fieldset {
+        margin-left: 8%;
+    }
+
+    .group-getTest {
+        top: unset;
+        left: unset;
+        position: relative;
+    }
+
+    #msg_btn {
+        margin-left: 56%;
+    }
+    #registerUpdateFormBtn {
+        margin-left: 22%;
+    }
+
+    .footer {
+        top: 900px !important;
+        position: relative;
+    }
+
+}

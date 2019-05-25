@@ -24,6 +24,15 @@
     <link href="../../static/css/article.css" rel="stylesheet"/>
 
     <link href="../../static/css/game.css" rel="stylesheet"/>
+
+    <style>
+        @media screen and (max-device-width: 700px) {
+            .footer {
+                position: relative !important;
+                top: 570px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 <div id="main-class-text">
@@ -77,8 +86,70 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 手机端适配小标题 -->
+            <div class="am-container-two" style="display: none">
+                <div class="am-btn-group login-button-head login-button-head-phone"  th:unless="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-dropdown-toggle login-button" data-am-dropdown-toggle> <span class="am-icon-user login-icon"></span></button>
+                        <ul class="am-dropdown-content login-content">
+                            <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
+                            <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
+                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown" data-am-dropdown>
+                        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name-phone">
+                            <span id="login-user-name-phone"></span>
+                            <span class="am-icon-caret-down"></span>
+                        </button>
+                        <ul class="am-dropdown-content login-content login-content-b" id="login-content-ul-phone">
+                            <li><a href="/user" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;个人中心</span></a></li>
+                            <li sec:authorize="hasAnyRole('ROLE_ADMIN')"><a href="/admin" class="login-content-a"><span class="am-icon-cog">&nbsp;&nbsp;&nbsp;管理中心</span></a></li>
+                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;馈</span></a></li>
+                            <hr />
+                            <li><a href="/logout" class="login-content-a"><span class="am-icon-sign-out">&nbsp;&nbsp;&nbsp;退出登录</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="phone-title-text">
+                    Seaguller的小窝
+                </div>
+
+                <div>
+                    <button id="phone-title-button" class="am-topbar-btn am-btn am-btn-sm am-btn-primary" data-am-offcanvas="{target: '#offcanvasId'}"><span class="am-icon-bars"></span></button>
+                </div>
+
+            </div>
         </header>
     </div>
+
+    <!-- 手机端标题侧边栏 -->
+    <div id="offcanvasId" class="am-offcanvas">
+        <div class="am-offcanvas-bar">
+            <div class="am-offcanvas-content">
+                <ul class="am-menu-nav am-avg-sm-1">
+                    <li class="phone-offcanvas-title-t">帅气的标题栏</li>
+                    <li class="phone-offcanvas-title">
+                        <a href="/" class="header-a-main">
+                            <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                        </a>
+                    </li>
+                    <li class="phone-offcanvas-title"><a href="/archive" class="header-a-main" ><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/update" class="header-a-main" ><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/music" class="header-a-main" ><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/messageBoard" class="header-a-main" ><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/friends" class="header-a-main" ><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/aboutMe" class="header-a-main" ><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- 反馈窗口 -->
     <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">
@@ -108,15 +179,15 @@
         <img src="http://seaguller.oss-cn-beijing.aliyuncs.com/static/404.jpeg"/>
         <div style="margin-top: -80px;">
             <div class="error-text">您所要寻找的页面不晓得灰到哪里去嘞w(゜Д゜)w</div>
-            <div class="error-text" style="margin-left: 50px;">不如玩个游戏放松一下(`・ω・´)~</div>
+            <div class="error-text am-show-lg-only main-left-screen" style="margin-left: 50px;">不如玩个游戏放松一下(`・ω・´)~</div>
         </div>
-        <div class="wrapper" style="margin-left: -200px">
+        <div class="wrapper am-show-lg-only main-left-screen" style="margin-left: -200px">
             <canvas id="canvas" width="960" height="640">不支持画布</canvas>
             <p>按［空格］暂停或继续</p>
         </div>
 
     </div>
-    <div class="main-left-double">
+    <div class="main-left-double am-show-lg-only main-left-screen">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
             <p>你一直说自己没努力</p>
@@ -125,7 +196,7 @@
         </div>
         <i class="fa fa-quote-right" style="float: right; margin-right: 10px; margin-top: 10px"></i>
     </div>
-    <div class="main-left">
+    <div class="main-left am-show-lg-only main-left-screen">
         <i class="fa fa-quote-left" style="float: left"></i><br/>
         <div class="main-left-text">
             <p id="left-pp">你应该要学着做你自己</p>

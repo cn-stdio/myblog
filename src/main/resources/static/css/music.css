@@ -49,3 +49,37 @@ thead {
     font-family: "xiaodanchun";
     font-size: 20px;
 }
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    .music-title {
+        margin-top: 50%;
+        width: 90vw;
+        text-align: center;
+         margin-left: 3%;
+        font-size: 7vw;
+    }
+    .music-table {
+        margin-top: 70%;
+        width: 100%;
+        margin-left: unset;
+    }
+    .footer {
+        top: 700px !important;
+        position: relative;
+    }
+    #aplayer {
+        margin-right: unset;
+        width: 98%;
+    }
+    thead {
+        font-family: unset;
+        font-size: 5vw;
+    }
+    tbody {
+        font-size: 3vw;
+    }
+    .music-table .am-table thead tr th {
+        width: 3% !important;
+    }
+}

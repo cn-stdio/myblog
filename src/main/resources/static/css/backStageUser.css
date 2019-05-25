@@ -260,7 +260,7 @@ ul, li {
     position: absolute;
     transform: translate3d(100%,0,0);
     margin-left: 300px;
-    font-size: 17px;
+    font-size: 1.1vw;
     font-family: "shaonv";
     margin-top: -52px;
 
@@ -421,4 +421,56 @@ ul, li {
     background-color: pink;
     margin-top: 30px;
     margin-left: 42.2%;
+}
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    .tpl-left-nav {
+        display: none;
+    }
+    .tpl-right {
+        width: 100%;
+         left: unset;
+    }
+    .user-introduce-input {
+        width: 45vw !important;
+    }
+
+    .admin-menu {
+        position: fixed;
+        z-index: 10;
+        bottom: 30px;
+        right: 20px;
+    }
+
+    #phone-offcanvas-bar, .am-offcanvas-bar:after {
+        background: white;
+    }
+
+    .user-captcha-button, .user-phone-button {
+        display: contents;
+    }
+    .user-captcha-btn {
+        margin-left: 50%;
+    }
+    .user-phone-btn {
+        margin-left: 80%;
+    }
+    .user-new-password-error, .user-new-password-confirm-error {
+        display: contents !important;
+    }
+
+    .user-talk-img {
+        width: 30% !important;
+    }
+    #user-talk-title {
+        font-size: 5vw;
+    }
+    #user-talk-div {
+        width: 100%;
+        left: unset;
+    }
+    #user-talk-text {
+        width: 100%;
+    }
 }

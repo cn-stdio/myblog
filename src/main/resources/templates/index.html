@@ -90,7 +90,7 @@
                     </div>
                     <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
                         <div class="am-dropdown" data-am-dropdown>
-                            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>
+                            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name-phone">
                                 <span id="login-user-name-phone"></span>
                                 <span class="am-icon-caret-down"></span>
                             </button>
@@ -135,15 +135,6 @@
                     <li class="phone-offcanvas-title"><a href="/aboutMe" class="header-a-main" ><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
 
                 </ul>
-                <!--<div th:unless="${#httpServletRequest.remoteUser}">
-                    <div >
-                        <ul class="am-menu-nav am-avg-sm-1">
-                            <li><a href="/login" class="login-content-a"><span class="am-icon-leaf">&nbsp;&nbsp;&nbsp;登录</span></a></li>
-                            <li><a href="/register" class="login-content-a"><span class="am-icon-user-plus">&nbsp;&nbsp;&nbsp;注册</span></a></li>
-                            <li><a class="login-content-a doc-prompt-toggle"><span class="am-icon-bug">&nbsp;&nbsp;&nbsp;反馈</span></a></li>
-                        </ul>
-                    </div>
-                </div>-->
             </div>
         </div>
     </div>

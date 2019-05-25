@@ -444,4 +444,41 @@ pre {
     #main-middle-article, .article-content {
         height: auto !important;
     }
+
+    #article-page-prev {
+        float: unset;
+        margin-left: -30%;
+    }
+    #article-page-next {
+        float: unset;
+        margin-right: -25%;
+    }
+
+    .article-comment {
+        position: relative;
+        width: 100%;
+        left: unset;
+        margin-top: unset !important;
+    }
+    .article-comment-nonpeople {
+        font-size: 3.5vw;
+        margin-left: 30vw;
+    }
+    .footer {
+        margin-top: 200px;
+    }
+    .comment-reply {
+        width: 100%
+    }
+    #comment-btn {
+        font-size: 3vw;
+        padding: 1px 2vw;
+    }
+    .comment-reply-btn-left, .comment-reply-btn-right {
+        font-size: 2.6vw;
+        padding: 1px 2vw;
+    }
+    .footer {
+        display: none;
+    }
 }

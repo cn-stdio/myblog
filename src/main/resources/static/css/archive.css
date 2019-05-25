@@ -148,3 +148,51 @@
     max-height: 361px;
     overflow-y: auto;
 }
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    #art-list {
+        left: unset;
+        top: unset;
+        margin-top: 50%;
+        width: 100%;
+    }
+    .container-before-icon {
+        font-size: 3vw;
+        margin-left: 10.5%;
+    }
+    .container {
+        margin-top: 6vh;
+        margin-left: 6%;
+    }
+    .VivaTimeline dl:before {
+        left: 14vw !important;
+    }
+    .VivaTimeline dl dt {
+        margin: 0 4vw 30px !important;
+    }
+    .VivaTimeline dl dt {
+        width: 20vw;
+        font-size: 3.3vw;
+        top: 2vh;
+    }
+    .VivaTimeline dl dd .circ {
+        left: 19% !important;
+    }
+    .VivaTimeline dl dd .time {
+        margin-left: -2vw !important;
+        font-size: 3vw;
+    }
+    .events {
+        font-size: 2.7vw;
+    }
+    .VivaTimeline dl dd .events .events-header {
+        font-size: 3vw !important;
+    }
+    .footer {
+        display: none;
+    }
+    .VivaTimeline dl dd.pos-right .events, .VivaTimeline dl dd.pos-left .events {
+        width: 73% !important;
+    }
+}

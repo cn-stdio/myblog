@@ -66,3 +66,38 @@
 #aboutMe-title-img-third {
     width: 29.37vw;
 }
+
+@media screen and (max-device-width: 700px) {
+    .aboutMe-list {
+        left: unset;
+        top: unset;
+        margin-top: 50%;
+    }
+    #aboutMe-title-img {
+        width: 100%;
+    }
+    .am-icon-hand-o-right {
+        left: unset;
+    }
+    .aboutMe-title-text {
+        font-size: 8vw;
+        margin-left: 4%;
+    }
+    .aboutMe-title-text div {
+        margin-left: 10%;
+    }
+    .aboutMe-main-text {
+        font-size: 4.5vw;
+        width: 90%;
+        margin-left: 20px;
+    }
+    .aboutMe-main-img, .aboutMe-main-img2, .aboutMe-main-img3 {
+        margin-left: unset;
+        width: 100% !important;
+    }
+
+    .footer {
+        position: relative;
+        margin-top: 1280%;
+    }
+}

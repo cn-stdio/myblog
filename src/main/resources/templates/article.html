@@ -95,7 +95,7 @@
                 </div>
                 <div class="am-btn-group login-button-head"  th:if="${#httpServletRequest.remoteUser}">
                     <div class="am-dropdown" data-am-dropdown>
-                        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>
+                        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle id="login-sign-name-phone">
                             <span id="login-user-name-phone"></span>
                             <span class="am-icon-caret-down"></span>
                         </button>
@@ -120,6 +120,31 @@
             </div>
         </header>
     </div>
+
+    <!-- 手机端标题侧边栏 -->
+    <div id="offcanvasId" class="am-offcanvas">
+        <div class="am-offcanvas-bar">
+            <div class="am-offcanvas-content">
+                <ul class="am-menu-nav am-avg-sm-1">
+                    <li class="phone-offcanvas-title-t">帅气的标题栏</li>
+                    <li class="phone-offcanvas-title">
+                        <a href="/" class="header-a-main">
+                            <span class="am-icon-home">&nbsp;首&nbsp;&nbsp;页</span>
+                        </a>
+                    </li>
+                    <li class="phone-offcanvas-title"><a href="/archive" class="header-a-main" ><span class="am-icon-archive">&nbsp;归&nbsp;&nbsp;档</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/update" class="header-a-main" ><span class="am-icon-calendar-plus-o">&nbsp;更&nbsp;&nbsp;新</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/music" class="header-a-main" ><span class="am-icon-music">&nbsp;音乐馆</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/messageBoard" class="header-a-main" ><span class="am-icon-pencil">&nbsp;留言板</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/friends" class="header-a-main" ><span class="am-icon-mars">&nbsp;友&nbsp;&nbsp;链</span></a></li>
+                    <li class="phone-offcanvas-title"><a href="/aboutMe" class="header-a-main" ><span class="am-icon-paper-plane-o">&nbsp;关于俺</span></a></li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
     <!-- 反馈窗口 -->
     <div class="am-modal am-modal-prompt " tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">

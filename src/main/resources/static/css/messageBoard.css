@@ -26,3 +26,53 @@
     left: 63px !important;
     width: 92% !important;
 }
+
+@media screen and (max-device-width: 700px) {
+    .message-list {
+        left: unset;
+        top: 120%;
+    }
+    #message-title-img {
+        width: 100%;
+        margin-left: unset;
+    }
+    #message-title-text {
+        font-size: 4.6vw;
+        margin-left: 2%;
+    }
+
+    #comment-text {
+        width: 100% !important;
+    }
+    .comment-reply {
+        width: 100%
+    }
+    #comment-btn {
+        font-size: 4vw !important;
+        padding: 1px 2vw;
+        margin-left: 78% !important;
+    }
+    .comment-reply-btn-left, .comment-reply-btn-right {
+        font-size: 4vw !important;
+        padding: 1px 2vw;
+    }
+    .article-comment {
+        position: relative;
+        width: 100%;
+        left: unset;
+        margin-top: unset !important;
+    }
+    .article-comment-nonpeople {
+        font-size: 3.5vw;
+        margin-left: 30vw;
+    }
+    .footer {
+        display: none;
+    }
+    .comment-reply-btn-right {
+        margin-left: 35% !important;
+    }
+    .article-comment {
+        top: 800px;
+    }
+}

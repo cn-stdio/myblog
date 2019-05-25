@@ -107,3 +107,44 @@
     margin-left: 30%;
     margin-bottom: -50px;
 }
+
+/* 手机 */
+@media screen and (max-device-width: 700px) {
+    .register-title-line {
+        width: 100%;
+    }
+    #art-list {
+        top: unset;
+        margin-top: 52%;
+        left: 10%;
+    }
+    .am-form-group {
+        margin-left: unset;
+    }
+    .article-btn {
+        font-size: 3vw !important;
+    }
+
+    .form-text-error {
+        margin-top: 3%;
+        margin-left: -50% !important;
+        display: contents !important;
+    }
+
+    #doc-ipt-3 {
+        width: 100% !important;
+    }
+    #doc-ipt-pwd-2 {
+        width: 100% !important;
+    }
+
+    #form-phone, #form-password {
+        width: 85vw;
+    }
+
+    .footer {
+        top: 640px !important;
+        position: relative;
+    }
+
+}
