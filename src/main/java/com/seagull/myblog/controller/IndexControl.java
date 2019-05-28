@@ -37,6 +37,11 @@ public class IndexControl {
         return "index";
     }
 
+    @GetMapping("/403")
+    public String errorAuthority() {
+        return "error/403";
+    }
+
     /**
      * 获得用户昵称
      * @param principal 用于获得登录后的用户ID

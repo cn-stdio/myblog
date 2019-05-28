@@ -379,4 +379,275 @@ $("#admin-menu-reply").click(function () {
     getFeedback(1);
 });
 
+/* 友链全选 */
+var isCheckAll = false;
+function swapCheck() {
+    if (isCheckAll) {
+        $("input[type='checkbox']").each(function() {
+            this.checked = false;
+        });
+        isCheckAll = false;
+    } else {
+        $("input[type='checkbox']").each(function() {
+            this.checked = true;
+        });
+        isCheckAll = true;
+    }
+}
 
+/* 友链显示获取 */
+function getFriends() {
+    $.ajax(
+        {
+            type:"post",
+            url:"/getFriends",
+            dataType:"json",
+            async:false,
+            success:function(data){
+                if(data['msg']=="noFriends") {
+                    var adminTitle = '<div class="admin-title">友链鸭</div>\n' +
+                        '            <img id="user-reply-img" src="../static/img/replyImg.gif"/>\n' +
+                        '            <hr/>';
+                    $(".admin-title-div").html(adminTitle);
+
+                    $(".admin-list").html("");
+                    $("#user-reply-none").css("display", "block");
+                    $(".tpl-right").css("height", 250);
+                    $("#user-paper-white").css("margin-top", 0);
+                } else {
+                    $("#user-reply-none").css("display", "none");
+                    $(".tpl-right").css("height", "auto");
+
+                    var adminTitle = '<div class="admin-title">友链鸭</div>\n' +
+                        '            <img id="user-reply-img" src="../static/img/replyImg.gif"/>\n' +
+                        '            <hr/>';
+                    $(".admin-title-div").html(adminTitle);
+
+                    var friendsHtml = '<table class="am-table am-table-striped am-table-hover admin-friend-table">\n' +
+                        '                <thead>\n' +
+                        '                <tr class="admin-friend-tr">\n' +
+                        '                    <th><input type="checkbox" onclick="swapCheck()" /></th>' +
+                        '                    <th>链接名称</th>\n' +
+                        '                    <th>链接描述</th>\n' +
+                        '                    <th>链接URL</th>\n' +
+                        '                    <th>链接头像外链</th>\n' +
+                        '                    <th>编辑</th>\n' +
+                        '                </tr>\n' +
+                        '                </thead>\n' +
+                        '                <tbody class="admin-friend-tbody">';
+                    $.each(data['data'], function (index, obj) {
+                        friendsHtml += '<tr>\n' +
+                            '                    <td><input type="checkbox" name="friends" value="'+ obj['name'] +'" />' +
+                            '                    <td class="admin-friend-name">'+ obj['name'] +'</td>\n' +
+                            '                    <td class="admin-friend-introduce">'+ obj['introduce'] +'</td>\n' +
+                            '                    <td class="admin-friend-url">'+ obj['url'] +'</td>\n' +
+                            '                    <td class="admin-friend-headimg">'+ obj['img'] +'</td>\n' +
+                            '                    <td><i class="am-icon-star admin-friend-update" style="color: coral; font-size: 1.3vw;"><input type="hidden" value="'+ obj['id'] +'"/></i></td>\n' +
+                            '                </tr>';
+                    });
+
+                    friendsHtml += '</tbody>\n' +
+                        '            </table>' +
+                        '<div class="admin-friend-button">' +
+                        '            <button type="button" class="admin-article-button admin-friend-button-add">添加</button>\n' +
+                        '            <button type="button" class="admin-article-button admin-friend-button-delete admin-friend-button-danger">删除</button>\n' +
+                        '</div>';
+
+                    $(".admin-list").html(friendsHtml);
+
+                    var tplHeight = $(".tpl-right").css("height");
+                    tplHeight = parseInt(tplHeight.split("p")[0]) + 50;
+                    $(".tpl-right").css("height", tplHeight);
+                    $("#user-paper-white").css("margin-top", tplHeight + 50);
+                }
+            },
+            error:function(){
+                console.log("获取友链列表失败");
+            }
+        });
+}
+
+/* 友链管理点击 */
+$("#admin-menu-friends").click(function () {
+    $(".nav-link").removeClass("active");
+    $(this).addClass("active");
+
+    var menuFriendsHtml = '<div class="admin-title-div"></div>\n' +
+        '        <div class="admin-list"></div>\n' +
+        '        <div id="user-reply-none">目前您没有设置任何友链鸭~</div>\n';
+
+    $(".tpl-right").html(menuFriendsHtml);
+
+    getFriends();
+
+});
+
+/* 友链编辑点击 */
+$('.tpl-right').on('click', '.admin-friend-update', function () {
+    var $friendUnit = $(this).parent();
+    var $friendUnitName = $friendUnit.siblings(".admin-friend-name");
+    var $friendUnitIntroduce = $friendUnit.siblings(".admin-friend-introduce");
+    var $friendUnitUrl = $friendUnit.siblings(".admin-friend-url");
+    var $friendUnitImg = $friendUnit.siblings(".admin-friend-headimg");
+
+    $(".admin-friend-prompt-name").val($friendUnitName.html());
+    $(".admin-friend-prompt-introduce").val($friendUnitIntroduce.html());
+    $(".admin-friend-prompt-url").val($friendUnitUrl.html());
+    $(".admin-friend-prompt-img").val($friendUnitImg.html());
+
+    $('#admin-friend-prompt').modal({
+        relatedTarget: this,
+
+        onConfirm: function(options) {
+            var $friendId = $(this.relatedTarget).children("input");
+
+            var friendId = $friendId.val();
+            var friendName = $(".admin-friend-prompt-name").val();
+            var friendIntroduce = $(".admin-friend-prompt-introduce").val();
+            var friendUrl = $(".admin-friend-prompt-url").val();
+            var friendImg = $(".admin-friend-prompt-img").val();
+
+            if(friendName.replace(/\s*/g,"")=="" ||
+                friendIntroduce.replace(/\s*/g,"")=="" ||
+                friendUrl.replace(/\s*/g,"")=="" ||
+                friendImg.replace(/\s*/g,"")==""
+            ) {
+                $("#notice-box-text").html("有信息麻油按规则填写鸭~");
+                $(".notice-box").css("color", "lightcoral");
+                $(".notice-box").css("display", "block");
+                $(".notice-box").delay(2000).hide(0);
+            } else {
+                var $friendUnitDouble = $(this.relatedTarget).parent();
+                var $friendUnitNameDouble = $friendUnitDouble.siblings(".admin-friend-name");
+                var $friendUnitIntroduceDouble = $friendUnitDouble.siblings(".admin-friend-introduce");
+                var $friendUnitUrlDouble = $friendUnitDouble.siblings(".admin-friend-url");
+                var $friendUnitImgDouble = $friendUnitDouble.siblings(".admin-friend-headimg");
+
+                $.ajax(
+                    {
+                        type:"post",
+                        url:"/updateFriends",
+                        dataType:"json",
+                        async:false,
+                        data: {
+                            id: friendId,
+                            name: friendName,
+                            introduce: friendIntroduce,
+                            url: friendUrl,
+                            img: friendImg
+                        },
+                        success:function(data) {
+                            if(data['msg']=="noLogin") {
+                                window.location.href = "/login";
+                            } else {
+                                $("#notice-box-text").html("修改成功啦，耶！");
+                                $(".notice-box").css("color", "limegreen");
+                                $(".notice-box").css("display", "block");
+                                $(".notice-box").delay(2000).hide(0);
+
+                                $friendUnitNameDouble.html(friendName);
+                                $friendUnitIntroduceDouble.html(friendIntroduce);
+                                $friendUnitUrlDouble.html(friendUrl);
+                                $friendUnitImgDouble.html(friendImg);
+                            }
+                        },
+                        error:function(){
+                            console.log("更新友链列表失败");
+                        }
+                    });
+            }
+        }
+    });
+});
+
+$(".a").click(function () {
+    $('#admin-friend-prompt').modal({
+        onConfirm: function(options) {
+            alert(1)
+        }
+    });
+});
+
+$(".b").click(function () {
+    $('#admin-friend-prompt').modal({
+        onConfirm: function(options) {
+            alert(2)
+        }
+    });
+});
+
+
+/* 友链添加点击 */
+var count = 1;
+$('.tpl-right').on('click', '.admin-friend-button-add', function () {
+
+    $('#admin-friend-prompt-insert').modal({
+        relatedTarget: this,
+
+        onConfirm: function(options) {
+            var friendName = $(".admin-friend-prompt-insert-name").val();
+            var friendIntroduce = $(".admin-friend-prompt-insert-introduce").val();
+            var friendUrl = $(".admin-friend-prompt-insert-url").val();
+            var friendImg = $(".admin-friend-prompt-insert-img").val();
+
+            $(".admin-friend-prompt-insert-name").val("");
+            $(".admin-friend-prompt-insert-introduce").val("");
+            $(".admin-friend-prompt-insert-url").val("");
+            $(".admin-friend-prompt-insert-img").val("");
+
+            if(friendName.replace(/\s*/g,"")=="" ||
+                friendIntroduce.replace(/\s*/g,"")=="" ||
+                friendUrl.replace(/\s*/g,"")=="" ||
+                friendImg.replace(/\s*/g,"")==""
+            ) {
+                $("#notice-box-text").html("有信息麻油按规则填写鸭~");
+                $(".notice-box").css("color", "lightcoral");
+                $(".notice-box").css("display", "block");
+                $(".notice-box").delay(2000).hide(0);
+            } else {
+                $.ajax(
+                    {
+                        type:"post",
+                        url:"/insertFriend",
+                        dataType:"json",
+                        async:false,
+                        data: {
+                            name: friendName,
+                            introduce: friendIntroduce,
+                            url: friendUrl,
+                            img: friendImg
+                        },
+                        success:function(data) {
+                            if(data['msg']=="noLogin") {
+                                window.location.href = "/login";
+                            } else {
+                                $("#notice-box-text").html("添加成功啦，耶！");
+                                $(".notice-box").css("color", "limegreen");
+                                $(".notice-box").css("display", "block");
+                                $(".notice-box").delay(2000).hide(0);
+
+                                var friendHtmlUnit  = '<tr>\n' +
+                                    '                    <td><input type="checkbox" name="friends" value="'+ friendName +'" />' +
+                                    '                    <td class="admin-friend-name">'+ friendName +'</td>\n' +
+                                    '                    <td class="admin-friend-introduce">'+ friendIntroduce +'</td>\n' +
+                                    '                    <td class="admin-friend-url">'+ friendUrl +'</td>\n' +
+                                    '                    <td class="admin-friend-headimg">'+ friendImg +'</td>\n' +
+                                    '                    <td><i class="am-icon-star admin-friend-update" style="color: coral; font-size: 1.3vw;"><input type="hidden" value="'+ data['id'] +'"/></i></td>\n' +
+                                    '                </tr>';
+
+                                $(".admin-friend-tbody").append(friendHtmlUnit);
+
+                                var tplHeight = $(".tpl-right").css("height");
+                                tplHeight = parseInt(tplHeight.split("p")[0]) + 50;
+                                $(".tpl-right").css("height", tplHeight);
+                                $("#user-paper-white").css("margin-top", tplHeight + 50);
+                            }
+                        },
+                        error:function(){
+                            console.log("插入友链失败");
+                        }
+                    });
+            }
+        }
+    });
+});

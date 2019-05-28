@@ -77,3 +77,52 @@
     color: deepskyblue;
     cursor: auto;
 }
+
+/* 友链 */
+.admin-friend-table tr {
+    height: 50px;
+}
+.admin-friend-table tbody td {
+    display: table-cell;
+    vertical-align: middle !important;
+}
+.admin-friend-tr {
+    color: cornflowerblue;
+    font-size: 1.2vw;
+}
+
+.admin-friend-table {
+    width: 98%;
+    margin-left: -2%;
+}
+.admin-friend-update {
+    cursor: pointer;
+}
+.admin-friend-prompt-body {
+    text-align: left;
+    margin-left: 10%;
+    color: cornflowerblue;
+    font-size: 1.3vw;
+}
+
+.admin-friend-button-add {
+    margin-left: -20%;
+}
+.admin-friend-button-delete {
+    margin-right: 2%;
+}
+.admin-friend-button {
+    margin-right: 5% !important;
+    margin-top: 3% !important;
+}
+.admin-friend-button-danger {
+    border: 1px solid deeppink !important;
+    color: deeppink !important;
+}
+.admin-friend-button-danger:hover {
+    background-color: deeppink !important;
+    color: white !important;
+}
+.admin-friend-button-danger:focus {
+    color: deeppink !important;
+}

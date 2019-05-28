@@ -145,7 +145,6 @@
     </div>
 </div>
 
-
 <!-- 主体 -->
 <div>
     <div class="tpl-left-nav tpl-left-nav-hover">
@@ -158,9 +157,15 @@
                     </a>
                 </li>
                 <li class="tpl-left-nav-item">
+                    <a class="nav-link" id="admin-menu-friends">
+                        <i class="am-icon-group"></i>
+                        <span>&nbsp;友链管理</span>
+                    </a>
+                </li>
+                <li class="tpl-left-nav-item">
                     <a class="nav-link tpl-left-nav-link-list" id="admin-menu-reply">
                         <i class="am-icon-comments-o"></i>
-                        <span>&nbsp;&nbsp;反馈消息</span>
+                        <span>&nbsp;反馈消息</span>
                         <i class="tpl-left-nav-content tpl-badge-danger" id="admin-menu-feedback-count">
                             12
                         </i>
@@ -174,6 +179,60 @@
         <div class="admin-list"></div>
         <div id="user-reply-none">目前您没有写任何文章鸭~</div>
         <div id="admin-turn"></div>
+    </div>
+</div>
+
+<!-- 友链编辑模态窗 -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="admin-friend-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">友链更改</div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">名称</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-name">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">描述</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-introduce">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">URL</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-url">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">头像外链</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-img">
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
+    </div>
+</div>
+
+<!-- 友链添加模态窗（amazeUI的模态框不能复用，只能再声明一个） -->
+<div class="am-modal am-modal-prompt" tabindex="-1" id="admin-friend-prompt-insert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">友链添加</div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">名称</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-insert-name">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">描述</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-insert-introduce">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">URL</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-insert-url">
+        </div>
+        <div class="am-modal-bd">
+            <div class="admin-friend-prompt-body">头像外链</div>
+            <input type="text" class="am-modal-prompt-input admin-friend-prompt-insert-img">
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+        </div>
     </div>
 </div>
 
