@@ -474,7 +474,7 @@ $("#admin-menu-friends").click(function () {
 
     var menuFriendsHtml = '<div class="admin-title-div"></div>\n' +
         '        <div class="admin-list"></div>\n' +
-        '        <div id="user-reply-none">目前您没有设置任何友链鸭~</div>\n';
+        '        <div id="user-reply-none">目前您没有任何友链鸭~</div>\n';
 
     $(".tpl-right").html(menuFriendsHtml);
 
@@ -560,25 +560,7 @@ $('.tpl-right').on('click', '.admin-friend-update', function () {
     });
 });
 
-$(".a").click(function () {
-    $('#admin-friend-prompt').modal({
-        onConfirm: function(options) {
-            alert(1)
-        }
-    });
-});
-
-$(".b").click(function () {
-    $('#admin-friend-prompt').modal({
-        onConfirm: function(options) {
-            alert(2)
-        }
-    });
-});
-
-
 /* 友链添加点击 */
-var count = 1;
 $('.tpl-right').on('click', '.admin-friend-button-add', function () {
 
     $('#admin-friend-prompt-insert').modal({
@@ -651,3 +633,41 @@ $('.tpl-right').on('click', '.admin-friend-button-add', function () {
         }
     });
 });
+
+/* 友链删除点击 */
+$('.tpl-right').on('click', '.admin-friend-button-delete', function () {
+
+    $('[name="friends"]').each(function () {
+        if(this.checked && this.value != "0") {
+            var $friendUnit = $(this).parent();
+            var friendId = $(this).parent().siblings().find("input").val();
+
+            $.ajax(
+                {
+                    type:"post",
+                    url:"/deleteFriend",
+                    dataType:"json",
+                    async:false,
+                    data: {
+                        friendId: friendId
+                    },
+                    success:function(data) {
+                        if(data['msg']=="noLogin") {
+                            window.location.href = "/login";
+                        } else {
+                            $("#notice-box-text").html("删除成功啦，耶！");
+                            $(".notice-box").css("color", "limegreen");
+                            $(".notice-box").css("display", "block");
+                            $(".notice-box").delay(2000).hide(0);
+
+                            $friendUnit.parent().remove();
+                        }
+                    },
+                    error:function(){
+                        console.log("删除友链失败");
+                    }
+                });
+        }
+    });
+});
+

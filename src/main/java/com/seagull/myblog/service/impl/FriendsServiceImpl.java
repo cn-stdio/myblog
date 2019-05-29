@@ -72,4 +72,15 @@ public class FriendsServiceImpl implements FriendsService {
         friendJSON.put("msg", "success");
         return friendJSON;
     }
+
+    @Override
+    public JSONObject deleteFriendById(String id) {
+        JSONObject friendJSON = new JSONObject();
+
+        friendsMapper.deleteFriendById(id);
+
+        friendJSON.put("code", 200);
+        friendJSON.put("msg", "success");
+        return friendJSON;
+    }
 }

@@ -32,4 +32,11 @@ public interface FriendsService {
      * @return JSON
      */
     public JSONObject insertFriend(Friend friend);
+
+    /**
+     * 删除指定友链信息
+     * @param id 友链uuid
+     * @return JSON
+     */
+    public JSONObject deleteFriendById(String id);
 }

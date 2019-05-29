@@ -1,10 +1,7 @@
 package com.seagull.myblog.mapper;
 
 import com.seagull.myblog.model.Friend;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,4 +38,12 @@ public interface FriendsMapper {
      */
     @Insert("INSERT INTO `friend`(name, introduce, head_img, url) VALUES(#{name}, #{introduce}, #{headImg}, #{url})")
     public int insertFriend(Friend friend);
+
+    /**
+     * 删除指定友链信息
+     * @param id 友链uuid
+     * @return 删除数目
+     */
+    @Delete("DELETE FROM `friend` WHERE id = #{id}")
+    public int deleteFriendById(String id);
 }

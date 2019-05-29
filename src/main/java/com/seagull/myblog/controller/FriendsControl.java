@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,6 +90,23 @@ public class FriendsControl {
             friend.setHeadImg(img);
 
             friends = friendsService.insertFriend(friend);
+        }
+
+        return friends;
+    }
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @ResponseBody
+    @RequestMapping("/deleteFriend")
+    public JSONObject deleteFriend(@AuthenticationPrincipal Principal principal, @RequestParam("friendId") String id) {
+        JSONObject friends = new JSONObject();
+
+        if (principal == null) {
+            friends.put("code", 200);
+            friends.put("msg", "noLogin");
+            return friends;
+        } else {
+            friends = friendsService.deleteFriendById(id);
         }
 
         return friends;
