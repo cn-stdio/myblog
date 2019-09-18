@@ -48,6 +48,7 @@
         border-radius: 5px;
         list-style: none;
         height: 100px;
+        width: 50%;
     }
     #friend-src ul li:hover {
         background: rgba(230,244,250,.5);

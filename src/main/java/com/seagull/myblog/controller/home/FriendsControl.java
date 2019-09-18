@@ -1,4 +1,4 @@
-package com.seagull.myblog.controller;
+package com.seagull.myblog.controller.home;
 
 import com.seagull.myblog.model.Friend;
 import com.seagull.myblog.service.FriendsService;
@@ -60,7 +60,13 @@ public class FriendsControl {
             String url = request.getParameter("url");
             String img = request.getParameter("img");
 
-            Friend friend = new Friend(id, name, introduce, url, img);
+            Friend friend = new Friend();
+            friend.setId(id);
+            friend.setName(name);
+            friend.setIntroduce(introduce);
+            friend.setUrl(url);
+            friend.setHeadImg(img);
+
             friends = friendsService.updateFriendById(friend);
         }
 
